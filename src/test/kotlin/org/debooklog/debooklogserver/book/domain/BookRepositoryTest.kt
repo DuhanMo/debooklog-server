@@ -13,7 +13,7 @@ class BookRepositoryTest(private val bookRepository: BookRepository) : ExpectSpe
     extensions(SpringTestExtension(SpringTestLifecycleMode.Root))
 
     context("책 조회") {
-        bookRepository.save(Book(1L, "책제목", "작가", "123123123", "http://thumbnail.co.kr"))
+        bookRepository.save(Book(1L, "책제목", "작가", listOf("123123123"), "http://thumbnail.co.kr"))
 
         expect("모든 책을 조회한다") {
             bookRepository.findAll() shouldHaveSize 1

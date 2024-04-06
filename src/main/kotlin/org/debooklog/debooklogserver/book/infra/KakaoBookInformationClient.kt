@@ -20,7 +20,7 @@ class KakaoBookInformationClient(
             BookInformationData(
                 title = it.title ?: "",
                 author = it.authors?.joinToString() ?: "",
-                isbn = it.isbn ?: "",
+                isbn = it.isbn?.split(",")?.map { isbn -> isbn.trim() } ?: emptyList(),
                 thumbnail = it.thumbnail ?: "",
             )
         }

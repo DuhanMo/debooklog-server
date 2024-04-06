@@ -15,10 +15,10 @@ class BookQueryServiceTest : BehaviorSpec({
         every { bookInformationGetter.search("홍길동전") } returns
             listOf(
                 BookInformationData(
-                    "홍길동전",
-                    "권혁래",
-                    "8998110571 9788998110574",
-                    "https://thumbnail.co.kr",
+                    title = "홍길동전",
+                    author = "권혁래",
+                    isbn = listOf("8998110571", "9788998110574"),
+                    thumbnail = "https://thumbnail.co.kr",
                 ),
             )
 
@@ -28,7 +28,7 @@ class BookQueryServiceTest : BehaviorSpec({
             Then("책 정보를 응답한다") {
                 actual.first().title shouldBe "홍길동전"
                 actual.first().author shouldBe "권혁래"
-                actual.first().isbn shouldBe "8998110571 9788998110574"
+                actual.first().isbn shouldBe listOf("8998110571", "9788998110574")
                 actual.first().thumbnail shouldBe "https://thumbnail.co.kr"
             }
         }

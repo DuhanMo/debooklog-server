@@ -1,0 +1,9 @@
+:doctype: book
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 1
+:sectlinks:
+
+== Lostark-info-platform
+
+include::book.adoc[]

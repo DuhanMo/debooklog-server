@@ -41,3 +41,6 @@ out/
 
 ### Secret File ###
 *-secret.yml
+
+### Spring REST Docs ###
+**/src/main/resources/static/docs/

@@ -5,7 +5,7 @@ import org.debooklog.debooklogserver.book.domain.BookInformationData
 data class BookInformationResponse(
     val title: String,
     val author: String,
-    val isbn: String,
+    val isbn: List<String>,
     val thumbnail: String,
 ) {
     constructor(data: BookInformationData) : this(
