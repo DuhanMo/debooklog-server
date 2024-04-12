@@ -27,6 +27,11 @@ repositories {
 }
 
 val asciidoctorExt: Configuration by configurations.creating
+
+object Version {
+    const val JJWT = "0.11.5"
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -46,6 +51,10 @@ dependencies {
     testImplementation("com.ninja-squad:springmockk:4.0.2")
     // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    // jwt
+    implementation("io.jsonwebtoken:jjwt-api:${Version.JJWT}")
+    implementation("io.jsonwebtoken:jjwt-impl:${Version.JJWT}")
+    implementation("io.jsonwebtoken:jjwt-jackson:${Version.JJWT}")
 
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     asciidoctorExt("org.springframework.restdocs:spring-restdocs-asciidoctor")

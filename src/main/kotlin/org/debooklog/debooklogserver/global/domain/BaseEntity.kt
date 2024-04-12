@@ -15,7 +15,7 @@ import java.time.LocalDateTime
 abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    val id: Long = 0L
+    val id: Long? = null
 
     @CreatedDate
     var createdAt: LocalDateTime = LocalDateTime.MAX

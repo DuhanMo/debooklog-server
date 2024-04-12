@@ -11,6 +11,7 @@
 
 # API
 
+- 멤버 로그인 (github OAuth2 사용)
 - 책장 목록 조회
 - 책장 이름 변경
 - 책 검색 (Daum Book Search API 사용)

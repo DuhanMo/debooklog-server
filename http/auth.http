@@ -1,0 +1,8 @@
+### permitAll
+GET localhost:8080/api/auth
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzE4MDI3NzA2LCJleHAiOjE3MTgwMzEzMDZ9.umlkoMfY8WxSIbb-zo6dDhiBlR9COIgmTBQNr5wV9vg
+
+### secure
+GET localhost:8080/api/secure
+Content-Type: application/json
