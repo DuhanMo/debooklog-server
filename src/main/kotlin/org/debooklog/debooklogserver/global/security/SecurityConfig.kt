@@ -1,6 +1,5 @@
 package org.debooklog.debooklogserver.global.security
 
-import org.debooklog.debooklogserver.member.domain.MemberRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -9,14 +8,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(
-    private val memberRepository: MemberRepository,
-    private val jwtProvider: JwtProvider,
-) {
+class SecurityConfig {
     @Bean
     fun webSecurityCustomizer(): WebSecurityCustomizer {
         return WebSecurityCustomizer { web ->
@@ -33,16 +28,7 @@ class SecurityConfig(
             formLogin { disable() }
             httpBasic { disable() }
             sessionManagement { sessionCreationPolicy = STATELESS }
-            authorizeHttpRequests {
-                authorize("/api/auth/**", permitAll)
-                authorize(anyRequest, authenticated)
-            }
-            addFilterBefore<UsernamePasswordAuthenticationFilter>(
-                JwtAuthenticationFilter(
-                    memberRepository,
-                    jwtProvider,
-                ),
-            )
+            authorizeHttpRequests { authorize(anyRequest, permitAll) }
         }
         return http.build()
     }

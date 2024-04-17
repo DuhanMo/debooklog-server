@@ -26,6 +26,6 @@ class ApplicationInitEvent(
                     provider = GITHUB,
                 ),
             )
-        logger.info(jwtProvider.generateAccessJwt(member))
+        logger.info(jwtProvider.createAccessJwt(member.id!!.toString()))
     }
 }
