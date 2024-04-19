@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.global.config
+package org.debooklog.debooklogserver.common.config
 
-import org.debooklog.debooklogserver.global.security.LoginMemberResolver
+import org.debooklog.debooklogserver.common.security.LoginMemberResolver
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer

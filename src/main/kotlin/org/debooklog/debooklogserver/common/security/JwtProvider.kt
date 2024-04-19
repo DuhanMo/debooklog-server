@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.security
+package org.debooklog.debooklogserver.common.security
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jws

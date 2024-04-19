@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.support
 
-import org.debooklog.debooklogserver.global.config.JpaConfig
+import org.debooklog.debooklogserver.common.config.JpaConfig
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ActiveProfiles

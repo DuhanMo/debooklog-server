@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.global.data
+package org.debooklog.debooklogserver.common.data
 
-import org.debooklog.debooklogserver.global.security.JwtProvider
+import org.debooklog.debooklogserver.common.security.JwtProvider
 import org.debooklog.debooklogserver.member.domain.Member
 import org.debooklog.debooklogserver.member.domain.MemberRepository
 import org.debooklog.debooklogserver.member.domain.SocialProvider.GITHUB

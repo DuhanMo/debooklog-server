@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.security
+package org.debooklog.debooklogserver.common.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

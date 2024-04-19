@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.config
+package org.debooklog.debooklogserver.common.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod

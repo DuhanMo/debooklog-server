@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.support
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.debooklog.debooklogserver.global.controller.ApiResponse
+import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired

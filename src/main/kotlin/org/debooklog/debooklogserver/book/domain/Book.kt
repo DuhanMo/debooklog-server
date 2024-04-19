@@ -2,8 +2,8 @@ package org.debooklog.debooklogserver.book.domain
 
 import jakarta.persistence.Convert
 import jakarta.persistence.Entity
-import org.debooklog.debooklogserver.global.domain.BaseEntity
-import org.debooklog.debooklogserver.global.domain.StringListConverter
+import org.debooklog.debooklogserver.common.domain.BaseEntity
+import org.debooklog.debooklogserver.common.domain.StringListConverter
 
 @Entity
 class Book(

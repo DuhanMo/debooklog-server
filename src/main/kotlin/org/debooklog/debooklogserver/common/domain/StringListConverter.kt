@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.domain
+package org.debooklog.debooklogserver.common.domain
 
 import jakarta.persistence.AttributeConverter
 import jakarta.persistence.Converter

@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.auth.controller
 
-import org.debooklog.debooklogserver.global.security.LoginMember
+import org.debooklog.debooklogserver.common.security.LoginMember
 import org.debooklog.debooklogserver.member.domain.Member
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

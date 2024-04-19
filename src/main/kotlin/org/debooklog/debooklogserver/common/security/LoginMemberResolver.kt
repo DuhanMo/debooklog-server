@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.security
+package org.debooklog.debooklogserver.common.security
 
 import org.debooklog.debooklogserver.member.domain.Member
 import org.debooklog.debooklogserver.member.domain.MemberRepository

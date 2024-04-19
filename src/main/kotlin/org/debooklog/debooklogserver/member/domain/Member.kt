@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.member.domain
 
 import jakarta.persistence.Entity
-import org.debooklog.debooklogserver.global.domain.BaseEntity
+import org.debooklog.debooklogserver.common.domain.BaseEntity
 
 @Entity
 class Member(

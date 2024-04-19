@@ -4,7 +4,7 @@ import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
 import org.debooklog.debooklogserver.book.service.BookQueryService
 import org.debooklog.debooklogserver.book.service.BookService
 import org.debooklog.debooklogserver.book.service.dto.BookInformationResponse
-import org.debooklog.debooklogserver.global.controller.ApiResponse
+import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping

@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.global.controller
+package org.debooklog.debooklogserver.common.controller
 
 data class ApiResponse<T>(
     val message: String = "success",
