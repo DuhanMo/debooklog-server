@@ -1,5 +1,0 @@
-= Book 관련 API
-
-== 책 제목으로 책 검색
-
-operation::book-search-get[snippets='http-request,http-response']

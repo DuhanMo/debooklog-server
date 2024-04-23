@@ -4,7 +4,6 @@ plugins {
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
-    id("org.asciidoctor.jvm.convert") version "3.3.2"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
     kotlin("plugin.jpa") version "1.9.23"
@@ -66,8 +65,6 @@ dependencyManagement {
     }
 }
 
-val snippetsDir by extra { file("build/generated-snippets") }
-
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
@@ -75,29 +72,7 @@ tasks {
             jvmTarget = "21"
         }
     }
-
     withType<Test> {
         useJUnitPlatform()
-    }
-    // spring-restdocs-mockmvc를 통해 만들어진 파일을 index 파일로 생성 (템플릿은 src/docs/asciidoc/index.adoc에 구현)
-    asciidoctor {
-        dependsOn(test)
-        configurations("asciidoctorExt")
-        baseDirFollowsSourceFile()
-        inputs.dir(snippetsDir)
-    }
-    // 만들어진 index 파일을 로컬에서 확인가능하게 카피
-    register<Copy>("copyDocument") {
-        dependsOn(asciidoctor)
-        from("${asciidoctor.get().outputDir}/index.html")
-        into("src/main/resources/static/docs")
-    }
-    // 만들어진 index 파일을 jar파일안에 삽입
-    bootJar {
-        dependsOn("copyDocument")
-        dependsOn("copyDocument")
-        from("${asciidoctor.get().outputDir}/index.html") {
-            into("static/docs")
-        }
     }
 }

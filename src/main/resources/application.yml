@@ -32,9 +32,9 @@ kakao:
     search-url: https://dapi.kakao.com
 
 jwt:
-    secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
-    access-expiration: 3600000
-    refresh-expiration: 604800000
+  secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
+  access-expiration: 3600000
+  refresh-expiration: 604800000
 ---
 spring.config.activate.on-profile: test
 spring:
@@ -54,6 +54,6 @@ kakao:
   api-key: test
 
 jwt:
-    secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-    access-expiration: 3600000
-    refresh-expiration: 604800000
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+  access-expiration: 3600000
+  refresh-expiration: 604800000

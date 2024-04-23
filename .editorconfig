@@ -12,3 +12,6 @@ trim_trailing_whitespace = true
 
 [*.{kt,kts}]
 ij_kotlin_allow_trailing_comma = true
+
+[*.{yml,yaml}]
+indent_size = 2
