@@ -46,17 +46,12 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.8.1")
     testImplementation("io.kotest:kotest-property:5.8.1")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
-    // mockk + mockkBean
-    testImplementation("com.ninja-squad:springmockk:4.0.2")
     // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:${Version.JJWT}")
     implementation("io.jsonwebtoken:jjwt-impl:${Version.JJWT}")
     implementation("io.jsonwebtoken:jjwt-jackson:${Version.JJWT}")
-
-    testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
-    asciidoctorExt("org.springframework.restdocs:spring-restdocs-asciidoctor")
 }
 
 dependencyManagement {

@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.book.infra.dto
+package org.debooklog.debooklogserver.book.infrastructure.dto
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy
 import com.fasterxml.jackson.databind.annotation.JsonNaming
