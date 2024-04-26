@@ -1,8 +1,8 @@
-package org.debooklog.debooklogserver.book.infra
+package org.debooklog.debooklogserver.book.infrastructure
 
 import org.debooklog.debooklogserver.book.domain.BookInformationData
 import org.debooklog.debooklogserver.book.domain.BookInformationGetter
-import org.debooklog.debooklogserver.book.infra.api.KakaoDaumSearchApi
+import org.debooklog.debooklogserver.book.infrastructure.api.KakaoDaumSearchApi
 import org.springframework.stereotype.Component
 
 @Component

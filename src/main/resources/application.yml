@@ -19,7 +19,7 @@ spring:
 
 logging:
   level:
-    org.debooklog.debooklogserver.book.infra.api.KakaoDaumSearchApi: DEBUG
+    org.debooklog.debooklogserver.book.infrastructure.api.KakaoDaumSearchApi: DEBUG
 
 spring.cloud.openfeign:
   client:
