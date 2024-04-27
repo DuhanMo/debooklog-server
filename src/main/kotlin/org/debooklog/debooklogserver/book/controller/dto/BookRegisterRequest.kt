@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.book.controller.dto
 
-import org.debooklog.debooklogserver.book.service.dto.BookRegisterCommand
+import org.debooklog.debooklogserver.book.domain.BookRegisterCommand
 
 data class BookRegisterRequest(
     val title: String,

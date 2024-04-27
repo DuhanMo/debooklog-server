@@ -1,9 +1,9 @@
 package org.debooklog.debooklogserver.book.controller
 
+import org.debooklog.debooklogserver.book.controller.dto.BookInformationResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
-import org.debooklog.debooklogserver.book.service.BookQueryService
-import org.debooklog.debooklogserver.book.service.BookService
-import org.debooklog.debooklogserver.book.service.dto.BookInformationResponse
+import org.debooklog.debooklogserver.book.controller.port.BookQueryService
+import org.debooklog.debooklogserver.book.controller.port.BookService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,7 +20,7 @@ class BookController(
 ) {
     @GetMapping("/search")
     fun search(title: String): ResponseEntity<ApiResponse<List<BookInformationResponse>>> {
-        return ResponseEntity.ok(ApiResponse.of(bookQueryService.search(title)))
+        return ResponseEntity.ok(ApiResponse.of(bookQueryService.search(title).map(BookInformationResponse::from)))
     }
 
     @PostMapping

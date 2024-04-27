@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.book.service.dto
+package org.debooklog.debooklogserver.book.domain
 
 data class BookRegisterCommand(
     val memberId: Long,
