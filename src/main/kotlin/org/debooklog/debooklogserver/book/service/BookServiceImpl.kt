@@ -26,5 +26,5 @@ class BookServiceImpl(
     private fun isAlreadySavedBook(command: BookRegisterCommand): Boolean {
         val books = bookRepository.findAllByMemberId(command.memberId)
         return books.flatMap { it.isbn }.intersect(command.isbn.toSet()).isNotEmpty()
-    }
+    }q
 }
