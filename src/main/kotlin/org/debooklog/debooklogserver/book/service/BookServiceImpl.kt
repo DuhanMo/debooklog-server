@@ -13,18 +13,9 @@ class BookServiceImpl(
     private val bookRepository: BookRepository,
 ) : BookService {
     override fun register(command: BookRegisterCommand) {
-        verifyBook(command)
-        bookRepository.save(Book.from(command))
-    }
-
-    private fun verifyBook(command: BookRegisterCommand) {
-        if (isAlreadySavedBook(command)) {
-            throw IllegalArgumentException("이미 저장한 책입니다!")
-        }
-    }
-
-    private fun isAlreadySavedBook(command: BookRegisterCommand): Boolean {
         val books = bookRepository.findAllByMemberId(command.memberId)
-        return books.flatMap { it.isbn }.intersect(command.isbn.toSet()).isNotEmpty()
-    }q
+        val book = Book.from(command)
+        book.validateForDuplicate(books)
+        bookRepository.save(book)
+    }
 }

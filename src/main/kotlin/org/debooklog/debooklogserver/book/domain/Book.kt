@@ -18,4 +18,10 @@ class Book(
             )
         }
     }
+
+    fun validateForDuplicate(books: List<Book>) {
+        if (this.isbn.intersect(books.flatMap { it.isbn }.toSet()).isNotEmpty()) {
+            throw DuplicateBookException()
+        }
+    }
 }
