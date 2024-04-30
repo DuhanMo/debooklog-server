@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.book.infrastructure.client
+package org.debooklog.debooklogserver.book.infrastructure.client.kakao
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

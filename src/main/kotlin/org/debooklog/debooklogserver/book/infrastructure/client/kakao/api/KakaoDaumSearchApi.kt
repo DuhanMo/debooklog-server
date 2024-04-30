@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.book.infrastructure.client.api
+package org.debooklog.debooklogserver.book.infrastructure.client.kakao.api
 
-import org.debooklog.debooklogserver.book.infrastructure.client.dto.KakaoBookInformationResponse
+import org.debooklog.debooklogserver.book.infrastructure.client.kakao.dto.KakaoBookInformationResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.HttpHeaders.AUTHORIZATION
 import org.springframework.web.bind.annotation.GetMapping
