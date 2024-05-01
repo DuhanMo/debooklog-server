@@ -37,11 +37,14 @@ class BookEntity(
 
     fun toModel(): Book {
         return Book(
+            id = id,
             memberId = memberId,
             title = title,
             author = author,
             isbn = isbn,
             thumbnail = thumbnail,
+            createdAt = createdAt,
+            updatedAt = updatedAt,
         )
     }
 }

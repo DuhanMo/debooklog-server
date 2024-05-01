@@ -32,6 +32,7 @@ class BookTest {
         // given
         val savedBook1 =
             Book(
+                id = 1L,
                 memberId = 1L,
                 title = "title",
                 author = "author",
@@ -40,6 +41,7 @@ class BookTest {
             )
         val savedBook2 =
             Book(
+                id = 2L,
                 memberId = 1L,
                 title = "title",
                 author = "author",
@@ -48,6 +50,7 @@ class BookTest {
             )
         val newBook =
             Book(
+                id = null,
                 memberId = 1L,
                 title = "title",
                 author = "author",
@@ -65,6 +68,7 @@ class BookTest {
         // given
         val savedBook1 =
             Book(
+                id = 1L,
                 memberId = 1L,
                 title = "title",
                 author = "author",
@@ -73,6 +77,7 @@ class BookTest {
             )
         val savedBook2 =
             Book(
+                id = 2L,
                 memberId = 1L,
                 title = "title",
                 author = "author",
@@ -81,6 +86,7 @@ class BookTest {
             )
         val newBook =
             Book(
+                id = null,
                 memberId = 1L,
                 title = "title",
                 author = "author",
