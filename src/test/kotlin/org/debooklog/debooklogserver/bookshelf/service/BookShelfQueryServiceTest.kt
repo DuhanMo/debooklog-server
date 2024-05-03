@@ -37,12 +37,11 @@ class BookShelfQueryServiceTest {
                 deletedAt = LocalDateTime.now(),
             )
         )
-        val bookShelfQueryService = BookShelfQueryServiceImpl(fakeBookShelfRepository)
+        bookShelfQueryService = BookShelfQueryServiceImpl(fakeBookShelfRepository)
         // when
-        val bookShelfs = bookShelfQueryService.findAll()
+        val bookShelves = bookShelfQueryService.findAll()
         // then
-        assertThat(bookShelfs.size).isEqualTo(2)
-
+        assertThat(bookShelves.size).isEqualTo(2)
     }
 }
 

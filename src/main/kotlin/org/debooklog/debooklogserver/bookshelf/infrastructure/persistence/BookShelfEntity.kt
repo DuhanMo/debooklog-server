@@ -8,7 +8,7 @@ import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
 import org.debooklog.debooklogserver.common.domain.BaseEntity
 
 @Entity
-@Table(name = "bookshelfs")
+@Table(name = "bookshelves")
 class BookShelfEntity(
     @Column(name = "member_id")
     val memberId: Long,
