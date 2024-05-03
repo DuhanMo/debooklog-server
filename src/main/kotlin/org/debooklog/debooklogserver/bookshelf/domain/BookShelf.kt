@@ -9,11 +9,13 @@ class BookShelf(
     val name: String,
     val createdAt: LocalDateTime = LocalDateTime.MAX,
     val updatedAt: LocalDateTime = LocalDateTime.MAX,
+    val deletedAt: LocalDateTime?,
 ) {
     constructor(memberId: Long, bookShelfNameGenerator: BookShelfNameGenerator) : this(
         id = null,
         memberId = memberId,
         name = bookShelfNameGenerator.generate(),
+        deletedAt = null,
     )
 
     fun update(name: String): BookShelf {
@@ -21,6 +23,7 @@ class BookShelf(
             id = id,
             memberId = memberId,
             name = name,
+            deletedAt = null,
         )
     }
 }

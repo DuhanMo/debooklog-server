@@ -6,4 +6,6 @@ interface BookShelfRepository {
     fun save(bookShelf: BookShelf): BookShelf
 
     fun getById(id: Long): BookShelf
+
+    fun findAll(): List<BookShelf>
 }

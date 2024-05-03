@@ -18,4 +18,8 @@ class BookShelfRepositoryImpl(
             ?.toModel()
             ?: throw NoSuchElementException()
     }
+
+    override fun findAll(): List<BookShelf> {
+        return bookShelfJpaRepository.findAllByDeletedAtIsNull().map { it.toModel() }
+    }
 }
