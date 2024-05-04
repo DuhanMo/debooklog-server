@@ -3,9 +3,9 @@ package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
-import java.time.LocalDateTime
 import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
 import org.debooklog.debooklogserver.common.domain.BaseEntity
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "bookshelves")
@@ -33,7 +33,7 @@ class BookShelfEntity(
             name = name,
             createdAt = createdAt,
             updatedAt = updatedAt,
-            deletedAt = deletedAt
+            deletedAt = deletedAt,
         )
     }
 }

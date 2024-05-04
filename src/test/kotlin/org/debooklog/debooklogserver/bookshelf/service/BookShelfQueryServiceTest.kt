@@ -1,10 +1,10 @@
 package org.debooklog.debooklogserver.bookshelf.service
 
-import java.time.LocalDateTime
 import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
 import org.debooklog.debooklogserver.bookshelf.mock.FakeBookShelfRepository
 import org.junit.jupiter.api.Test
+import java.time.LocalDateTime
 
 class BookShelfQueryServiceTest {
     private lateinit var bookShelfQueryService: BookShelfQueryServiceImpl
@@ -19,7 +19,7 @@ class BookShelfQueryServiceTest {
                 memberId = 1L,
                 "책장1",
                 deletedAt = null,
-            )
+            ),
         )
         fakeBookShelfRepository.save(
             BookShelf(
@@ -27,7 +27,7 @@ class BookShelfQueryServiceTest {
                 memberId = 2L,
                 "책장2",
                 deletedAt = null,
-            )
+            ),
         )
         fakeBookShelfRepository.save(
             BookShelf(
@@ -35,7 +35,7 @@ class BookShelfQueryServiceTest {
                 memberId = 3L,
                 "책장3",
                 deletedAt = LocalDateTime.now(),
-            )
+            ),
         )
         bookShelfQueryService = BookShelfQueryServiceImpl(fakeBookShelfRepository)
         // when
@@ -44,5 +44,3 @@ class BookShelfQueryServiceTest {
         assertThat(bookShelves.size).isEqualTo(2)
     }
 }
-
-
