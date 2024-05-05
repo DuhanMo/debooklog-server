@@ -49,6 +49,11 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-jackson:${Version.JJWT}")
     // swagger
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    // kotest
+    testImplementation("io.kotest:kotest-runner-junit5:5.8.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.8.1")
+    testImplementation("io.kotest:kotest-property:5.8.1")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
 }
 
 dependencyManagement {

@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
 import org.debooklog.debooklogserver.bookshelf.mock.FakeBookShelfRepository
 import org.junit.jupiter.api.Test
-import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 
 class BookShelfQueryServiceTest {
     private lateinit var bookShelfQueryService: BookShelfQueryServiceImpl
@@ -17,7 +17,9 @@ class BookShelfQueryServiceTest {
             BookShelf(
                 id = 1L,
                 memberId = 1L,
-                "책장1",
+                name = "책장1",
+                createdAt = now(),
+                updatedAt = now(),
                 deletedAt = null,
             ),
         )
@@ -25,7 +27,9 @@ class BookShelfQueryServiceTest {
             BookShelf(
                 id = 2L,
                 memberId = 2L,
-                "책장2",
+                name = "책장2",
+                createdAt = now(),
+                updatedAt = now(),
                 deletedAt = null,
             ),
         )
@@ -33,8 +37,10 @@ class BookShelfQueryServiceTest {
             BookShelf(
                 id = 3L,
                 memberId = 3L,
-                "책장3",
-                deletedAt = LocalDateTime.now(),
+                name = "책장3",
+                createdAt = now(),
+                updatedAt = now(),
+                deletedAt = now(),
             ),
         )
         bookShelfQueryService = BookShelfQueryServiceImpl(fakeBookShelfRepository)

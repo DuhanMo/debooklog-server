@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
+import java.time.LocalDateTime
 
 @Component
 class ApplicationInitEvent(
@@ -21,9 +22,12 @@ class ApplicationInitEvent(
         val member =
             memberRepository.save(
                 Member(
+                    id = null,
                     name = "홍길동",
                     socialId = "123123123",
                     provider = GITHUB,
+                    createdAt = LocalDateTime.now(),
+                    updatedAt = LocalDateTime.now(),
                 ),
             )
         logger.info(jwtProvider.createAccessJwt(member.id!!.toString()))
