@@ -1,8 +1,7 @@
 package org.debooklog.debooklogserver.common.security
 
 import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.domain.MemberRepository
-import org.debooklog.debooklogserver.member.domain.getOrThrow
+import org.debooklog.debooklogserver.member.service.port.MemberRepository
 import org.springframework.core.MethodParameter
 import org.springframework.http.HttpHeaders.AUTHORIZATION
 import org.springframework.stereotype.Component
@@ -33,7 +32,7 @@ class LoginMemberResolver(
             throw LoginFailedException()
         }
         val memberId = jwtProvider.getSubject(jwt).toLong()
-        return memberRepository.getOrThrow(memberId)
+        return memberRepository.getById(memberId)
     }
 
     private fun extractJwt(webRequest: NativeWebRequest): String {

@@ -2,8 +2,8 @@ package org.debooklog.debooklogserver.common.data
 
 import org.debooklog.debooklogserver.common.security.JwtProvider
 import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.domain.MemberRepository
 import org.debooklog.debooklogserver.member.domain.SocialProvider.GITHUB
+import org.debooklog.debooklogserver.member.service.port.MemberRepository
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
