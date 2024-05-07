@@ -17,6 +17,7 @@ class BookServiceTest {
         bookService.register(
             BookRegisterCommand(
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("111111111"),

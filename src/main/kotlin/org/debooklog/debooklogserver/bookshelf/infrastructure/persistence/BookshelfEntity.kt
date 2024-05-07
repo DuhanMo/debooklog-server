@@ -3,13 +3,13 @@ package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
-import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
+import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.common.domain.BaseEntity
 import java.time.LocalDateTime
 
 @Entity
 @Table(name = "bookshelves")
-class BookShelfEntity(
+class BookshelfEntity(
     @Column(name = "member_id")
     val memberId: Long,
     @Column(name = "name")
@@ -18,16 +18,16 @@ class BookShelfEntity(
     val deletedAt: LocalDateTime?,
 ) : BaseEntity() {
     companion object {
-        fun from(bookShelf: BookShelf): BookShelfEntity =
-            BookShelfEntity(
-                memberId = bookShelf.memberId,
-                name = bookShelf.name,
-                deletedAt = bookShelf.deletedAt,
+        fun from(bookshelf: Bookshelf): BookshelfEntity =
+            BookshelfEntity(
+                memberId = bookshelf.memberId,
+                name = bookshelf.name,
+                deletedAt = bookshelf.deletedAt,
             )
     }
 
-    fun toModel(): BookShelf {
-        return BookShelf(
+    fun toModel(): Bookshelf {
+        return Bookshelf(
             id = id,
             memberId = memberId,
             name = name,

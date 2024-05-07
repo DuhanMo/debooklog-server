@@ -12,6 +12,7 @@ class BookTest {
         val bookRegisterCommand =
             BookRegisterCommand(
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("1234567890", "0000000000"),
@@ -34,6 +35,7 @@ class BookTest {
             Book(
                 id = 1L,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("1111111111", "2222222222"),
@@ -43,6 +45,7 @@ class BookTest {
             Book(
                 id = 2L,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("3333333333", "4444444444"),
@@ -52,6 +55,7 @@ class BookTest {
             Book(
                 id = null,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("4444444444"),
@@ -70,6 +74,7 @@ class BookTest {
             Book(
                 id = 1L,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("1111111111", "2222222222"),
@@ -79,6 +84,7 @@ class BookTest {
             Book(
                 id = 2L,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("3333333333", "4444444444"),
@@ -88,6 +94,7 @@ class BookTest {
             Book(
                 id = null,
                 memberId = 1L,
+                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("5555555555"),

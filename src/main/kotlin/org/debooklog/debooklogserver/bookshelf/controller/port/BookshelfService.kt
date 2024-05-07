@@ -1,5 +1,5 @@
 package org.debooklog.debooklogserver.bookshelf.controller.port
 
-interface BookShelfService {
+interface BookshelfService {
     fun create(memberId: Long)
 }

@@ -10,7 +10,7 @@ private val ADJECTIVES =
     )
 
 @Component
-class BookShelfNameGenerator {
+class BookshelfNameGenerator {
     fun generate(memberName: String): String {
         return "${ADJECTIVES[Random.nextInt(ADJECTIVES.size)]} ${memberName}의 책장"
     }

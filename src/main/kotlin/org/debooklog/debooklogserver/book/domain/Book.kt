@@ -5,6 +5,7 @@ import java.time.LocalDateTime
 class Book(
     val id: Long?,
     val memberId: Long,
+    val bookshelfId: Long,
     val title: String,
     val author: String,
     val isbn: List<String>,
@@ -17,6 +18,7 @@ class Book(
             return Book(
                 id = null,
                 memberId = command.memberId,
+                bookshelfId = command.bookshelfId,
                 title = command.title,
                 author = command.author,
                 isbn = command.isbn,

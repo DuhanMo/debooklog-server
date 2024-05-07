@@ -3,7 +3,7 @@ package org.debooklog.debooklogserver.bookshelf.domain
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
-class BookShelf(
+class Bookshelf(
     val id: Long?,
     val memberId: Long,
     val name: String,
@@ -20,8 +20,8 @@ class BookShelf(
         deletedAt = null,
     )
 
-    fun update(name: String): BookShelf {
-        return BookShelf(
+    fun update(name: String): Bookshelf {
+        return Bookshelf(
             id = id,
             memberId = memberId,
             name = name,

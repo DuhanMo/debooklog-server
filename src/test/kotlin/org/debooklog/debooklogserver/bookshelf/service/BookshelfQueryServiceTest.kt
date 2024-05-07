@@ -1,20 +1,20 @@
 package org.debooklog.debooklogserver.bookshelf.service
 
 import org.assertj.core.api.Assertions.assertThat
-import org.debooklog.debooklogserver.bookshelf.domain.BookShelf
-import org.debooklog.debooklogserver.bookshelf.mock.FakeBookShelfRepository
+import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
+import org.debooklog.debooklogserver.bookshelf.mock.FakeBookshelfRepository
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime.now
 
-class BookShelfQueryServiceTest {
-    private lateinit var bookShelfQueryService: BookShelfQueryServiceImpl
+class BookshelfQueryServiceTest {
+    private lateinit var bookshelfQueryService: BookshelfQueryServiceImpl
 
     @Test
-    fun `findAll 은 삭제되지 않은 모든 BookShelf 를 조회한다`() {
+    fun `findAll 은 삭제되지 않은 모든 Bookshelf 를 조회한다`() {
         // given
-        val fakeBookShelfRepository = FakeBookShelfRepository()
-        fakeBookShelfRepository.save(
-            BookShelf(
+        val fakeBookshelfRepository = FakeBookshelfRepository()
+        fakeBookshelfRepository.save(
+            Bookshelf(
                 id = 1L,
                 memberId = 1L,
                 name = "책장1",
@@ -23,8 +23,8 @@ class BookShelfQueryServiceTest {
                 deletedAt = null,
             ),
         )
-        fakeBookShelfRepository.save(
-            BookShelf(
+        fakeBookshelfRepository.save(
+            Bookshelf(
                 id = 2L,
                 memberId = 2L,
                 name = "책장2",
@@ -33,8 +33,8 @@ class BookShelfQueryServiceTest {
                 deletedAt = null,
             ),
         )
-        fakeBookShelfRepository.save(
-            BookShelf(
+        fakeBookshelfRepository.save(
+            Bookshelf(
                 id = 3L,
                 memberId = 3L,
                 name = "책장3",
@@ -43,9 +43,9 @@ class BookShelfQueryServiceTest {
                 deletedAt = now(),
             ),
         )
-        bookShelfQueryService = BookShelfQueryServiceImpl(fakeBookShelfRepository)
+        bookshelfQueryService = BookshelfQueryServiceImpl(fakeBookshelfRepository)
         // when
-        val bookShelves = bookShelfQueryService.findAll()
+        val bookShelves = bookshelfQueryService.findAll()
         // then
         assertThat(bookShelves.size).isEqualTo(2)
     }
