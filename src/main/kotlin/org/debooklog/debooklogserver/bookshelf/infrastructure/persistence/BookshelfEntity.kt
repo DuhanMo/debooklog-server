@@ -16,16 +16,7 @@ class BookshelfEntity(
     val name: String,
     @Column(name = "deleted_at")
     val deletedAt: LocalDateTime?,
-) : BaseEntity() {
-    companion object {
-        fun from(bookshelf: Bookshelf): BookshelfEntity =
-            BookshelfEntity(
-                memberId = bookshelf.memberId,
-                name = bookshelf.name,
-                deletedAt = bookshelf.deletedAt,
-            )
-    }
-
+) : BaseEntity<BookshelfEntity>() {
     fun toModel(): Bookshelf {
         return Bookshelf(
             id = id,
@@ -35,5 +26,14 @@ class BookshelfEntity(
             updatedAt = updatedAt,
             deletedAt = deletedAt,
         )
+    }
+
+    companion object {
+        fun from(bookshelf: Bookshelf): BookshelfEntity =
+            BookshelfEntity(
+                memberId = bookshelf.memberId,
+                name = bookshelf.name,
+                deletedAt = bookshelf.deletedAt,
+            )
     }
 }

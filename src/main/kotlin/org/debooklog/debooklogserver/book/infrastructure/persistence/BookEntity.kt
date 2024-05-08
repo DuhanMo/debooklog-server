@@ -24,7 +24,7 @@ class BookEntity(
     val isbn: List<String>,
     @Column(name = "thumbnail")
     val thumbnail: String,
-) : BaseEntity() {
+) : BaseEntity<BookEntity>() {
     companion object {
         fun from(book: Book): BookEntity {
             return BookEntity(
