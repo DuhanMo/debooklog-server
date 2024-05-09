@@ -19,7 +19,7 @@ class Member(
                 id = null,
                 name = command.name,
                 email = command.email,
-                password = command.passwrod,
+                password = command.password,
                 socialId = "",
                 provider = SocialProvider.GITHUB,
                 createdAt = now(),
