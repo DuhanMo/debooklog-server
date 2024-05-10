@@ -6,4 +6,6 @@ interface MemberRepository {
     fun save(member: Member): Member
 
     fun getById(id: Long): Member
+
+    fun findAll(): List<Member>
 }

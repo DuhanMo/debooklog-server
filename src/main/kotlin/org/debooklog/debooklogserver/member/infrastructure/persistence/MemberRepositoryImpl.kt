@@ -18,4 +18,8 @@ class MemberRepositoryImpl(
             ?.toModel()
             ?: throw NoSuchElementException()
     }
+
+    override fun findAll(): List<Member> {
+        return memberJpaRepository.findAll().map(MemberEntity::toModel)
+    }
 }

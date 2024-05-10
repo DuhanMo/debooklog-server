@@ -33,4 +33,8 @@ class FakeMemberRepository : MemberRepository {
     override fun getById(id: Long): Member {
         return data.first { it.id == id }
     }
+
+    override fun findAll(): List<Member> {
+        return data
+    }
 }
