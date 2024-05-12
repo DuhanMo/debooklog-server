@@ -10,8 +10,6 @@ import org.debooklog.debooklogserver.member.domain.SocialProvider
 @Entity
 class MemberEntity(
     val name: String,
-    val email: String,
-    val password: String,
     val socialId: String,
     val provider: SocialProvider,
 ) : BaseEntity<MemberEntity>() {
@@ -19,8 +17,6 @@ class MemberEntity(
         fun from(member: Member): MemberEntity {
             return MemberEntity(
                 name = member.name,
-                email = member.email,
-                password = member.password,
                 socialId = member.socialId,
                 provider = member.provider,
             )
@@ -31,8 +27,6 @@ class MemberEntity(
         return Member(
             id = id,
             name = name,
-            email = email,
-            password = password,
             socialId = socialId,
             provider = provider,
             createdAt = createdAt,

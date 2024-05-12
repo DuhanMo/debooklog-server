@@ -10,8 +10,6 @@ class MemberTest : BehaviorSpec({
             val actual = Member.from(command)
             Then("멤버가 생성된다") {
                 actual.name shouldBe "홍길동"
-                actual.email shouldBe "test@gmail.com"
-                actual.password shouldBe "password"
             }
         }
     }

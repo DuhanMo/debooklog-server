@@ -24,8 +24,6 @@ class ApplicationInitEvent(
                 Member(
                     id = null,
                     name = "홍길동",
-                    email = "test@email.com",
-                    password = "password",
                     socialId = "123123123",
                     provider = GITHUB,
                     createdAt = LocalDateTime.now(),

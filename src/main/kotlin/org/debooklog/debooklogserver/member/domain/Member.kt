@@ -1,13 +1,12 @@
 package org.debooklog.debooklogserver.member.domain
 
+import org.debooklog.debooklogserver.member.domain.SocialProvider.GITHUB
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
 class Member(
     val id: Long?,
     val name: String,
-    val email: String,
-    val password: String,
     val socialId: String,
     val provider: SocialProvider,
     val createdAt: LocalDateTime,
@@ -18,10 +17,8 @@ class Member(
             Member(
                 id = null,
                 name = command.name,
-                email = command.email,
-                password = command.password,
                 socialId = "",
-                provider = SocialProvider.GITHUB,
+                provider = GITHUB,
                 createdAt = now(),
                 updatedAt = now(),
             )

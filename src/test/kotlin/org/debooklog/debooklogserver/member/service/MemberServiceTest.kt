@@ -16,8 +16,6 @@ class MemberServiceTest : BehaviorSpec({
             Then("멤버가 생성된다") {
                 val member = fakeMemberRepository.getById(1)
                 member.name shouldBe "홍길동"
-                member.email shouldBe "test@gmail.com"
-                member.password shouldBe "password"
             }
         }
     }
