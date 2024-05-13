@@ -35,6 +35,12 @@ jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
   access-expiration: 3600000
   refresh-expiration: 604800000
+
+oauth2:
+  kakao:
+    token:
+      host: https://kauth.kakao.com
+
 ---
 spring.config.activate.on-profile: test
 spring:
@@ -43,6 +49,7 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
   jpa:
     hibernate:
       ddl-auto: create
@@ -57,3 +64,4 @@ jwt:
   secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
   access-expiration: 3600000
   refresh-expiration: 604800000
+
