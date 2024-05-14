@@ -3,7 +3,10 @@ package org.debooklog.debooklogserver.auth.service
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
 import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderContext
+import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
+import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvider
+import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
 import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
 
 class OAuth2ServiceTest : BehaviorSpec({
@@ -17,6 +20,12 @@ class OAuth2ServiceTest : BehaviorSpec({
                     OAuth2AuthCodeUrlProviderContext(
                         setOf(
                             FakeGoogleOAuth2AuthCodeUrlProvider("http://redirect.url"),
+                        ),
+                    ),
+                oAuth2UserDataGetterContext =
+                    OAuth2UserDataGetterContext(
+                        setOf(
+                            FakeGoogleOAuth2UserDataGetter(OAuth2UserData(GOOGLE, "123456", "구글길동")),
                         ),
                     ),
             )

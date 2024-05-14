@@ -36,7 +36,6 @@ class MemberEntity(
 
     @PostPersist
     fun onPostPersist() {
-        println(">>> id is $id")
         registerEvent(MemberCreatedEvent(id ?: throw IllegalStateException("id must not be null")))
     }
 }

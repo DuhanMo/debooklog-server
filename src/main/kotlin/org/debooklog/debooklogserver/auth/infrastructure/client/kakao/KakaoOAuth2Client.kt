@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 
 @FeignClient(
     name = "kakao-oauth2-client",
-    url = "\${oauth2.kakao.token.host}",
+    url = "\${kakao.oauth2-token-url}",
     configuration = [FormFeignEncoderConfig::class],
 )
 interface KakaoOAuth2Client {

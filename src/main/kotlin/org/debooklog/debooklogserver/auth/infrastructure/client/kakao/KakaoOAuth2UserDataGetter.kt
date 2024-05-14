@@ -26,7 +26,6 @@ class KakaoOAuth2UserDataGetter(
                 "redirect_uri" to properties.redirectUri,
             )
         val fetchToken = kakaoOAuth2Client.fetchToken(form)
-        println(fetchToken)
         return OAuth2UserData(KAKAO, "", "")
     }
 

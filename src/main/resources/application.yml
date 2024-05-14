@@ -30,16 +30,12 @@ spring.cloud.openfeign:
 kakao:
   daum:
     search-url: https://dapi.kakao.com
+  oauth2-token-url: https://kauth.kakao.com
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
   access-expiration: 3600000
   refresh-expiration: 604800000
-
-oauth2:
-  kakao:
-    token:
-      host: https://kauth.kakao.com
 
 ---
 spring.config.activate.on-profile: test
@@ -59,9 +55,24 @@ kakao:
   daum:
     search-url: http://test-url
   api-key: test
+  oauth2-token-url: https://test.kakao.com
 
 jwt:
-  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+  secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
   access-expiration: 3600000
   refresh-expiration: 604800000
 
+oauth2:
+  kakao:
+    client-id: test-client-id
+    client-secret: test-client-secret
+    redirect-uri: test-redirect-uri
+    scope:
+      - "profile_nickname"
+  google:
+    client-id: test-client-id
+    client-secret: test-client-id
+    redirect-uri: test-client-secret
+    scope:
+      - "email"
+      - "profile"
