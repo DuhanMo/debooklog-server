@@ -31,6 +31,7 @@ kakao:
   daum:
     search-url: https://dapi.kakao.com
   oauth2-token-url: https://kauth.kakao.com
+  api-url: https://kapi.kakao.com
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
@@ -55,7 +56,8 @@ kakao:
   daum:
     search-url: http://test-url
   api-key: test
-  oauth2-token-url: https://test.kakao.com
+  oauth2-token-url: https://test-oauth2.kakao.com
+  api-url: https://test-api.kakao.com
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret

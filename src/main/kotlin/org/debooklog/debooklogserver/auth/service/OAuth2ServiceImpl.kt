@@ -23,7 +23,6 @@ class OAuth2ServiceImpl(
         provider: SocialProvider,
         code: String,
     ) {
-        logger.info("login 시도 provider: $provider, code: $code")
         val oAuth2UserData = oAuth2UserDataGetterContext.getOAuth2UserData(provider, code)
         logger.info("oAuth2UserData: $oAuth2UserData")
         // todo token 응답
