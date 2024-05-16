@@ -32,6 +32,9 @@ kakao:
     search-url: https://dapi.kakao.com
   oauth2-token-url: https://kauth.kakao.com
   api-url: https://kapi.kakao.com
+google:
+  oauth2-token-url: https://oauth2.googleapis.com
+  api-url: https://www.googleapis.com
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
@@ -58,6 +61,10 @@ kakao:
   api-key: test
   oauth2-token-url: https://test-oauth2.kakao.com
   api-url: https://test-api.kakao.com
+google:
+  oauth2-token-url: https://test.googleapis.com
+  api-url: https://test.google-api.com
+
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret

@@ -34,6 +34,8 @@ class OAuth2Controller(
         @RequestParam(name = "state", required = false) state: String?,
         response: HttpServletResponse,
     ) {
+        println(code)
+        println(state)
         response.sendRedirect(getTargetUrl(code, state, provider))
     }
 
