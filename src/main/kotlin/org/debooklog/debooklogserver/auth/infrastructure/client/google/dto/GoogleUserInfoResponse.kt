@@ -12,6 +12,6 @@ data class GoogleUserInfoResponse(
     val email: String,
 ) {
     fun toOAuth2UserData(): OAuth2UserData {
-        return OAuth2UserData(GOOGLE, sub, name)
+        return OAuth2UserData(GOOGLE, sub, email, name)
     }
 }

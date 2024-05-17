@@ -4,21 +4,20 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
 import org.debooklog.debooklogserver.member.domain.SocialProvider
-import java.time.LocalDateTime
 
 @JsonNaming(value = SnakeCaseStrategy::class)
 data class KakaoUserInfoResponse(
     val id: Long,
-    val connectedAt: LocalDateTime,
-    val properties: KakaoUserProperties,
+    val connectedAt: String,
+    val properties: Properties,
     val kakaoAccount: KakaoAccount,
 ) {
     fun toOAuth2UserData(): OAuth2UserData {
-        return OAuth2UserData(SocialProvider.KAKAO, id.toString(), properties.nickname)
+        return OAuth2UserData(SocialProvider.KAKAO, id.toString(), kakaoAccount.email, properties.nickname)
     }
 
     @JsonNaming(value = SnakeCaseStrategy::class)
-    data class KakaoUserProperties(
+    data class Properties(
         val nickname: String,
         val profileImage: String?,
     )
@@ -26,11 +25,17 @@ data class KakaoUserInfoResponse(
     @JsonNaming(value = SnakeCaseStrategy::class)
     data class KakaoAccount(
         val profileNicknameNeedsAgreement: Boolean,
-        val profile: KakaoAccountProfile,
+        val profile: Profile,
+        val hasEmail: Boolean,
+        val emailNeedsAgreement: Boolean,
+        val isEmailValid: Boolean,
+        val isEmailVerified: Boolean,
+        val email: String,
     )
 
     @JsonNaming(value = SnakeCaseStrategy::class)
-    data class KakaoAccountProfile(
+    data class Profile(
         val nickname: String,
+        val isDefaultNickname: Boolean,
     )
 }
