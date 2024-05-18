@@ -1,9 +1,11 @@
 package org.debooklog.debooklogserver.auth.controller
 
 import jakarta.servlet.http.HttpServletResponse
+import org.debooklog.debooklogserver.auth.controller.dto.LoginResponse
 import org.debooklog.debooklogserver.auth.controller.dto.OAuth2LoginRequest
 import org.debooklog.debooklogserver.auth.controller.port.OAuth2Service
 import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -34,16 +36,14 @@ class OAuth2Controller(
         @RequestParam(name = "state", required = false) state: String?,
         response: HttpServletResponse,
     ) {
-        println(code)
-        println(state)
         response.sendRedirect(getTargetUrl(code, state, provider))
     }
 
     @PostMapping("/login")
     fun loginByAuthCode(
         @RequestBody request: OAuth2LoginRequest,
-    ) {
-        oAuth2Service.loginByAuthCode(request.provider, request.code)
+    ): ResponseEntity<LoginResponse> {
+        return ResponseEntity.ok(LoginResponse.from(oAuth2Service.loginByAuthCode(request.provider, request.code)))
     }
 
     private fun getTargetUrl(

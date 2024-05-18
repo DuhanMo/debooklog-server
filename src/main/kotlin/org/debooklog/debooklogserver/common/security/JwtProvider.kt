@@ -26,6 +26,18 @@ class JwtProvider(
             .compact()
     }
 
+    fun createRefreshJwt(payload: String): String {
+        val claims: Claims = Jwts.claims().setSubject(payload)
+        val now = Date()
+        val expiration = Date(now.time + properties.refreshExpiration)
+        return Jwts.builder()
+            .setClaims(claims)
+            .setIssuedAt(now)
+            .setExpiration(expiration)
+            .signWith(getSignInKey())
+            .compact()
+    }
+
     fun getSubject(jwt: String): String =
         getClaimsJws(jwt)
             .body

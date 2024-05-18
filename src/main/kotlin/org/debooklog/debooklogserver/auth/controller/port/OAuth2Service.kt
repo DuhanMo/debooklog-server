@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.auth.controller.port
 
+import org.debooklog.debooklogserver.auth.domain.TokenData
 import org.debooklog.debooklogserver.member.domain.SocialProvider
 
 interface OAuth2Service {
@@ -11,5 +12,5 @@ interface OAuth2Service {
     fun loginByAuthCode(
         provider: SocialProvider,
         code: String,
-    )
+    ): TokenData
 }
