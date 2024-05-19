@@ -5,7 +5,9 @@ import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderContex
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.auth.domain.TokenData
 import org.debooklog.debooklogserver.common.security.JwtProvider
+import org.debooklog.debooklogserver.member.domain.Member
 import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.member.service.port.MemberRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -14,6 +16,7 @@ class OAuth2ServiceImpl(
     private val oAuth2AuthCodeUrlProviderContext: OAuth2AuthCodeUrlProviderContext,
     private val oAuth2UserDataGetterContext: OAuth2UserDataGetterContext,
     private val jwtProvider: JwtProvider,
+    private val memberRepository: MemberRepository,
 ) : OAuth2Service {
     override fun getRedirectUrl(
         provider: SocialProvider,
@@ -27,6 +30,10 @@ class OAuth2ServiceImpl(
         code: String,
     ): TokenData {
         val oAuth2UserData = oAuth2UserDataGetterContext.getOAuth2UserData(provider, code)
+        val member = memberRepository.findByEmail(oAuth2UserData.email)
+        if (member == null) {
+            memberRepository.save(Member.from(oAuth2UserData))
+        }
         return TokenData(
             jwtProvider.createAccessJwt(oAuth2UserData.email),
             jwtProvider.createRefreshJwt(oAuth2UserData.email),

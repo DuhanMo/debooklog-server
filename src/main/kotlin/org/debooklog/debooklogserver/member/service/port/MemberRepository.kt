@@ -8,4 +8,6 @@ interface MemberRepository {
     fun getById(id: Long): Member
 
     fun findAll(): List<Member>
+
+    fun findByEmail(email: String): Member?
 }

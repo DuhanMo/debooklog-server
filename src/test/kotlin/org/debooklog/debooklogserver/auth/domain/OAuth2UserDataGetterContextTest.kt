@@ -16,6 +16,7 @@ class OAuth2UserDataGetterContextTest : BehaviorSpec({
                     OAuth2UserData(
                         provider = GOOGLE,
                         id = "123123",
+                        email = "test@gmail.com",
                         nickname = "구글길동",
                     ),
             )

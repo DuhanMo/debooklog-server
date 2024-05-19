@@ -22,4 +22,8 @@ class MemberRepositoryImpl(
     override fun findAll(): List<Member> {
         return memberJpaRepository.findAll().map(MemberEntity::toModel)
     }
+
+    override fun findByEmail(email: String): Member? {
+        return memberJpaRepository.findByEmail(email)?.toModel()
+    }
 }

@@ -7,7 +7,10 @@ import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvider
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
+import org.debooklog.debooklogserver.common.security.JwtProperties
+import org.debooklog.debooklogserver.common.security.JwtProvider
 import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.member.mock.FakeMemberRepository
 
 class OAuth2ServiceTest : BehaviorSpec({
 
@@ -25,9 +28,11 @@ class OAuth2ServiceTest : BehaviorSpec({
                 oAuth2UserDataGetterContext =
                     OAuth2UserDataGetterContext(
                         setOf(
-                            FakeGoogleOAuth2UserDataGetter(OAuth2UserData(GOOGLE, "123456", "구글길동")),
+                            FakeGoogleOAuth2UserDataGetter(OAuth2UserData(GOOGLE, "123456", "test@gmail.com", "구글길동")),
                         ),
                     ),
+                jwtProvider = JwtProvider(JwtProperties("sercet", 2000L, 2000L)),
+                memberRepository = FakeMemberRepository(),
             )
         When("getRedirectUrl을 호출하면") {
             val actual = sut.getRedirectUrl(GOOGLE, "keepState")
