@@ -40,4 +40,8 @@ class FakeMemberRepository : MemberRepository {
     override fun findByEmail(email: String): Member? {
         return data.firstOrNull { it.email == email }
     }
+
+    override fun deleteById(memberId: Long) {
+        data.removeIf { it.id == memberId }
+    }
 }

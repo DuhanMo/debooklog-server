@@ -10,7 +10,12 @@ import org.debooklog.debooklogserver.common.domain.BaseEntity
 import org.debooklog.debooklogserver.member.domain.Member
 import org.debooklog.debooklogserver.member.domain.MemberCreatedEvent
 import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.hibernate.annotations.SQLDelete
+import org.hibernate.annotations.SQLRestriction
+import java.time.LocalDateTime
 
+@SQLDelete(sql = "update members set is_deleted = true, deleted_at = now() where id = ?")
+@SQLRestriction("is_deleted = false")
 @Entity
 @Table(name = "members")
 class MemberEntity(
@@ -23,6 +28,10 @@ class MemberEntity(
     @Enumerated(STRING)
     @Column(name = "provider")
     val provider: SocialProvider,
+    @Column(name = "deleted_at")
+    var deleteAt: LocalDateTime?,
+    @Column(name = "is_deleted")
+    var isDeleted: Boolean,
 ) : BaseEntity<MemberEntity>() {
     companion object {
         fun from(member: Member): MemberEntity {
@@ -31,6 +40,8 @@ class MemberEntity(
                 email = member.email,
                 socialId = member.socialId,
                 provider = member.provider,
+                deleteAt = null,
+                isDeleted = false,
             )
         }
     }

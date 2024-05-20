@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.common.domain
 
+import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
@@ -16,11 +17,14 @@ import java.time.LocalDateTime
 abstract class BaseEntity<T : AbstractAggregateRoot<T>> : AbstractAggregateRoot<T>() {
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
     val id: Long? = null
 
     @CreatedDate
+    @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.MAX
 
     @LastModifiedDate
+    @Column(name = "updated_at")
     var updatedAt: LocalDateTime = LocalDateTime.MAX
 }
