@@ -26,8 +26,4 @@ class MemberRepositoryImpl(
     override fun findByEmail(email: String): Member? {
         return memberJpaRepository.findByEmail(email)?.toModel()
     }
-
-    override fun deleteById(memberId: Long) {
-        memberJpaRepository.deleteById(memberId)
-    }
 }

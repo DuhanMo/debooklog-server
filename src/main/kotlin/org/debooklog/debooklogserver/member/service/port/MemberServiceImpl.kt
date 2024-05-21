@@ -15,7 +15,8 @@ class MemberServiceImpl(
     }
 
     @Transactional
-    override fun withdrawal(memberId: Long) {
-        memberRepository.deleteById(memberId)
+    override fun withdrawal(memberId: Long): Member {
+        val member = memberRepository.getById(memberId)
+        return memberRepository.save(member.withdrawal())
     }
 }

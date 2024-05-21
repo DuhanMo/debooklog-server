@@ -10,11 +10,9 @@ import org.debooklog.debooklogserver.common.domain.BaseEntity
 import org.debooklog.debooklogserver.member.domain.Member
 import org.debooklog.debooklogserver.member.domain.MemberCreatedEvent
 import org.debooklog.debooklogserver.member.domain.SocialProvider
-import org.hibernate.annotations.SQLDelete
 import org.hibernate.annotations.SQLRestriction
 import java.time.LocalDateTime
 
-@SQLDelete(sql = "update members set is_deleted = true, deleted_at = now() where id = ?")
 @SQLRestriction("is_deleted = false")
 @Entity
 @Table(name = "members")
@@ -55,6 +53,8 @@ class MemberEntity(
             provider = provider,
             createdAt = createdAt,
             updatedAt = updatedAt,
+            deletedAt = deleteAt,
+            isDeleted = isDeleted,
         )
     }
 

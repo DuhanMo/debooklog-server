@@ -19,6 +19,8 @@ class FakeMemberRepository : MemberRepository {
                     provider = member.provider,
                     createdAt = now(),
                     updatedAt = now(),
+                    deletedAt = null,
+                    isDeleted = false,
                 )
             data.add(newMember)
             return newMember
@@ -39,9 +41,5 @@ class FakeMemberRepository : MemberRepository {
 
     override fun findByEmail(email: String): Member? {
         return data.firstOrNull { it.email == email }
-    }
-
-    override fun deleteById(memberId: Long) {
-        data.removeIf { it.id == memberId }
     }
 }

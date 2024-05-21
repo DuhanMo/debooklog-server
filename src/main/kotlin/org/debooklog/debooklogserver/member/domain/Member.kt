@@ -4,7 +4,7 @@ import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
-class Member(
+data class Member(
     val id: Long?,
     val name: String,
     val email: String,
@@ -12,7 +12,13 @@ class Member(
     val provider: SocialProvider,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
+    val deletedAt: LocalDateTime?,
+    val isDeleted: Boolean,
 ) {
+    fun withdrawal(): Member {
+        return this.copy(deletedAt = now(), isDeleted = true)
+    }
+
     companion object {
         fun from(oAuth2UserData: OAuth2UserData): Member =
             Member(
@@ -23,6 +29,8 @@ class Member(
                 provider = oAuth2UserData.provider,
                 createdAt = now(),
                 updatedAt = now(),
+                deletedAt = null,
+                isDeleted = false,
             )
     }
 }

@@ -10,6 +10,4 @@ interface MemberRepository {
     fun findAll(): List<Member>
 
     fun findByEmail(email: String): Member?
-
-    fun deleteById(memberId: Long)
 }

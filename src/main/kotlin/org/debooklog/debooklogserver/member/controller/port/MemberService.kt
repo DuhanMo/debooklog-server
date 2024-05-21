@@ -5,5 +5,5 @@ import org.debooklog.debooklogserver.member.domain.Member
 interface MemberService {
     fun findAll(): List<Member>
 
-    fun withdrawal(memberId: Long)
+    fun withdrawal(memberId: Long): Member
 }
