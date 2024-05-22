@@ -26,7 +26,7 @@ class BookshelfListenerImpl(
             Bookshelf(
                 memberId = member.id!!,
                 name = bookshelfName,
-                createdAt = now(),
+                now = now(),
             )
         bookshelfRepository.save(bookshelf)
     }

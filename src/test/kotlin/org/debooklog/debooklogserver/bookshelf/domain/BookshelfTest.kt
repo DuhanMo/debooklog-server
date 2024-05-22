@@ -30,7 +30,7 @@ class BookshelfTest : BehaviorSpec({
                 Bookshelf(
                     memberId = 1L,
                     name = "책장",
-                    createdAt = now(),
+                    now = now(),
                 )
 
             Then("자동으로 초기화 된다") {
