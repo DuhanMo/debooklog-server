@@ -17,6 +17,7 @@ class BookshelfTest : BehaviorSpec({
                     createdAt = now(),
                     updatedAt = now(),
                     deletedAt = null,
+                    isDeleted = false,
                 )
 
             Then("파라미터 값으로 생성된다") {
@@ -49,6 +50,7 @@ class BookshelfTest : BehaviorSpec({
                 createdAt = now,
                 updatedAt = now,
                 deletedAt = null,
+                isDeleted = false,
             )
         When("이름을 전달하면") {
             val updatedBookshelf = bookshelf.update("수정책장")

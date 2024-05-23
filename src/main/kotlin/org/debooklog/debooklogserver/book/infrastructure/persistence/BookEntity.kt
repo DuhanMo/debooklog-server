@@ -3,14 +3,24 @@ package org.debooklog.debooklogserver.book.infrastructure.persistence
 import jakarta.persistence.Column
 import jakarta.persistence.Convert
 import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType.IDENTITY
+import jakarta.persistence.Id
 import jakarta.persistence.Table
 import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.common.domain.BaseEntity
 import org.debooklog.debooklogserver.common.domain.StringListConverter
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedDate
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "books")
 class BookEntity(
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
+    val id: Long? = null,
     @Column(name = "member_id")
     val memberId: Long,
     @Column(name = "bookshelf_id")
@@ -24,16 +34,25 @@ class BookEntity(
     val isbn: List<String>,
     @Column(name = "thumbnail")
     val thumbnail: String,
+    @CreatedDate
+    @Column(name = "created_at")
+    var createdAt: LocalDateTime = LocalDateTime.MAX,
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    var updatedAt: LocalDateTime = LocalDateTime.MAX,
 ) : BaseEntity<BookEntity>() {
     companion object {
         fun from(book: Book): BookEntity {
             return BookEntity(
+                id = book.id,
                 memberId = book.memberId,
                 bookshelfId = book.bookshelfId,
                 title = book.title,
                 author = book.author,
                 isbn = book.isbn,
                 thumbnail = book.thumbnail,
+                createdAt = book.createdAt,
+                updatedAt = book.updatedAt,
             )
         }
     }

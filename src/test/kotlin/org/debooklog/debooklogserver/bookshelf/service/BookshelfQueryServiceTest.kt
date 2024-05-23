@@ -21,6 +21,7 @@ class BookshelfQueryServiceTest {
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = null,
+                isDeleted = false,
             ),
         )
         fakeBookshelfRepository.save(
@@ -31,6 +32,7 @@ class BookshelfQueryServiceTest {
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = null,
+                isDeleted = false,
             ),
         )
         fakeBookshelfRepository.save(
@@ -41,6 +43,7 @@ class BookshelfQueryServiceTest {
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = now(),
+                isDeleted = false,
             ),
         )
         bookshelfQueryService = BookshelfQueryServiceImpl(fakeBookshelfRepository)

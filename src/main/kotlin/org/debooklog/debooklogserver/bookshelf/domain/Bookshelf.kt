@@ -10,6 +10,7 @@ data class Bookshelf(
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
     val deletedAt: LocalDateTime?,
+    val isDeleted: Boolean,
 ) {
     constructor(memberId: Long, name: String, now: LocalDateTime) : this(
         id = null,
@@ -18,6 +19,7 @@ data class Bookshelf(
         createdAt = now,
         updatedAt = now,
         deletedAt = null,
+        isDeleted = false,
     )
 
     fun update(name: String): Bookshelf {

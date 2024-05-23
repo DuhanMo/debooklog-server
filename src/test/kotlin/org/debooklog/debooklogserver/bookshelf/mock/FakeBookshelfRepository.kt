@@ -18,6 +18,7 @@ class FakeBookshelfRepository : BookshelfRepository {
                     createdAt = now(),
                     updatedAt = now(),
                     deletedAt = bookshelf.deletedAt,
+                    isDeleted = bookshelf.isDeleted,
                 )
             data.add(newBookshelf)
             return bookshelf
