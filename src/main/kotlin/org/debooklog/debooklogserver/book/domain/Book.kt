@@ -1,8 +1,9 @@
 package org.debooklog.debooklogserver.book.domain
 
 import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 
-class Book(
+data class Book(
     val id: Long?,
     val memberId: Long,
     val bookshelfId: Long,
@@ -10,9 +11,21 @@ class Book(
     val author: String,
     val isbn: List<String>,
     val thumbnail: String,
-    var createdAt: LocalDateTime = LocalDateTime.MAX,
-    var updatedAt: LocalDateTime = LocalDateTime.MAX,
+    val createdAt: LocalDateTime = LocalDateTime.MAX,
+    val updatedAt: LocalDateTime = LocalDateTime.MAX,
+    val deletedAt: LocalDateTime?,
+    val isDeleted: Boolean,
 ) {
+    fun validateForDuplicate(books: List<Book>) {
+        if (this.isbn.intersect(books.flatMap { it.isbn }.toSet()).isNotEmpty()) {
+            throw DuplicateBookException()
+        }
+    }
+
+    fun delete(): Book {
+        return this.copy(deletedAt = now(), isDeleted = true)
+    }
+
     companion object {
         fun from(command: BookRegisterCommand): Book {
             return Book(
@@ -23,13 +36,9 @@ class Book(
                 author = command.author,
                 isbn = command.isbn,
                 thumbnail = command.thumbnail,
+                deletedAt = null,
+                isDeleted = false,
             )
-        }
-    }
-
-    fun validateForDuplicate(books: List<Book>) {
-        if (this.isbn.intersect(books.flatMap { it.isbn }.toSet()).isNotEmpty()) {
-            throw DuplicateBookException()
         }
     }
 }

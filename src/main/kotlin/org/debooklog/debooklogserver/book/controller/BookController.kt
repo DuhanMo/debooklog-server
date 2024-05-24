@@ -6,7 +6,9 @@ import org.debooklog.debooklogserver.book.controller.port.BookQueryService
 import org.debooklog.debooklogserver.book.controller.port.BookService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -26,8 +28,17 @@ class BookController(
     @PostMapping
     fun register(
         @RequestBody request: BookRegisterRequest,
-    ): ResponseEntity<Unit> {
+    ): ResponseEntity<ApiResponse<Nothing>> {
+        // TODO("멤버 아이디 인증객체에서 추출 후 전달")
         bookService.register(request.toCommand(1L))
-        return ResponseEntity.noContent().build()
+        return ResponseEntity.ok(ApiResponse.empty())
+    }
+
+    @DeleteMapping("/{bookId}")
+    fun delete(
+        @PathVariable bookId: Long,
+    ): ResponseEntity<ApiResponse<Nothing>> {
+        bookService.delete(bookId)
+        return ResponseEntity.ok(ApiResponse.empty())
     }
 }

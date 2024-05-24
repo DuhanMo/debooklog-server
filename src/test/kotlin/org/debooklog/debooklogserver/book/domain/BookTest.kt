@@ -1,5 +1,7 @@
 package org.debooklog.debooklogserver.book.domain
 
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatCode
 import org.assertj.core.api.Assertions.assertThatThrownBy
@@ -40,6 +42,8 @@ class BookTest {
                 author = "author",
                 isbn = listOf("1111111111", "2222222222"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         val savedBook2 =
             Book(
@@ -50,6 +54,8 @@ class BookTest {
                 author = "author",
                 isbn = listOf("3333333333", "4444444444"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         val newBook =
             Book(
@@ -60,6 +66,8 @@ class BookTest {
                 author = "author",
                 isbn = listOf("4444444444"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         // when & then
         assertThatThrownBy {
@@ -79,6 +87,8 @@ class BookTest {
                 author = "author",
                 isbn = listOf("1111111111", "2222222222"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         val savedBook2 =
             Book(
@@ -89,6 +99,8 @@ class BookTest {
                 author = "author",
                 isbn = listOf("3333333333", "4444444444"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         val newBook =
             Book(
@@ -99,10 +111,36 @@ class BookTest {
                 author = "author",
                 isbn = listOf("5555555555"),
                 thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
             )
         // when
         assertThatCode {
             newBook.validateForDuplicate(listOf(savedBook1, savedBook2))
         }.doesNotThrowAnyException()
+    }
+
+    @Test
+    fun `Book을 삭제하는 경우 소프트 딜리트 된다`() {
+        // given
+        val book =
+            Book(
+                id = null,
+                memberId = 1L,
+                bookshelfId = 1L,
+                title = "title",
+                author = "author",
+                isbn = listOf("5555555555"),
+                thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
+            )
+
+        // when
+        val deletedBook = book.delete()
+
+        // then
+        deletedBook.isDeleted shouldBe true
+        deletedBook.deletedAt shouldNotBe null
     }
 }

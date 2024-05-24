@@ -42,24 +42,13 @@ class MemberEntity(
     @Column(name = "updated_at")
     var updatedAt: LocalDateTime = LocalDateTime.MAX,
     @Column(name = "deleted_at")
-    var deleteAt: LocalDateTime?,
+    val deletedAt: LocalDateTime?,
     @Column(name = "is_deleted")
-    var isDeleted: Boolean,
+    val isDeleted: Boolean,
 ) : BaseEntity<MemberEntity>() {
-    companion object {
-        fun from(member: Member): MemberEntity {
-            return MemberEntity(
-                id = member.id,
-                name = member.name,
-                email = member.email,
-                socialId = member.socialId,
-                provider = member.provider,
-                createdAt = member.createdAt,
-                updatedAt = member.updatedAt,
-                deleteAt = null,
-                isDeleted = false,
-            )
-        }
+    @PostPersist
+    fun onPostPersist() {
+        registerEvent(MemberCreatedEvent(id ?: throw IllegalStateException("id must not be null")))
     }
 
     fun toModel(): Member {
@@ -71,13 +60,24 @@ class MemberEntity(
             provider = provider,
             createdAt = createdAt,
             updatedAt = updatedAt,
-            deletedAt = deleteAt,
+            deletedAt = deletedAt,
             isDeleted = isDeleted,
         )
     }
 
-    @PostPersist
-    fun onPostPersist() {
-        registerEvent(MemberCreatedEvent(id ?: throw IllegalStateException("id must not be null")))
+    companion object {
+        fun from(member: Member): MemberEntity {
+            return MemberEntity(
+                id = member.id,
+                name = member.name,
+                email = member.email,
+                socialId = member.socialId,
+                provider = member.provider,
+                createdAt = member.createdAt,
+                updatedAt = member.updatedAt,
+                deletedAt = null,
+                isDeleted = false,
+            )
+        }
     }
 }

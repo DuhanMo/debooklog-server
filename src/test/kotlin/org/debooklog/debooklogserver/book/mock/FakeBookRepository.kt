@@ -24,6 +24,8 @@ class FakeBookRepository : BookRepository {
                     thumbnail = book.thumbnail,
                     createdAt = book.createdAt,
                     updatedAt = book.updatedAt,
+                    deletedAt = book.deletedAt,
+                    isDeleted = book.isDeleted,
                 )
             data.add(newBook)
             return newBook
@@ -32,5 +34,9 @@ class FakeBookRepository : BookRepository {
             data.add(book)
             return book
         }
+    }
+
+    override fun getById(bookId: Long): Book {
+        return data.first { it.id == bookId }
     }
 }

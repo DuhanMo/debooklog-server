@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.member.controller
 
+import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.debooklog.debooklogserver.member.controller.dto.MemberResponse
 import org.debooklog.debooklogserver.member.controller.port.MemberService
 import org.springframework.http.ResponseEntity
@@ -22,8 +23,8 @@ class MemberController(
     @DeleteMapping("/{memberId}")
     fun withdrawal(
         @PathVariable("memberId") memberId: Long,
-    ): ResponseEntity<Unit> {
+    ): ResponseEntity<ApiResponse<Nothing>> {
         memberService.withdrawal(memberId)
-        return ResponseEntity.ok().build()
+        return ResponseEntity.ok(ApiResponse.empty())
     }
 }

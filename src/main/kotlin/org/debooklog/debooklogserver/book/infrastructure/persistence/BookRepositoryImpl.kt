@@ -2,6 +2,7 @@ package org.debooklog.debooklogserver.book.infrastructure.persistence
 
 import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.book.service.port.BookRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -14,5 +15,11 @@ class BookRepositoryImpl(
 
     override fun save(book: Book): Book {
         return bookJpaRepository.save(BookEntity.from(book)).toModel()
+    }
+
+    override fun getById(bookId: Long): Book {
+        return bookJpaRepository.findByIdOrNull(bookId)
+            ?.toModel()
+            ?: throw NoSuchElementException()
     }
 }

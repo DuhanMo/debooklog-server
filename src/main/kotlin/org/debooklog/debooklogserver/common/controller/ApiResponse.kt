@@ -8,5 +8,9 @@ data class ApiResponse<T>(
         fun <T> of(data: T): ApiResponse<T> {
             return ApiResponse(data = data)
         }
+
+        fun empty(): ApiResponse<Nothing> {
+            return ApiResponse(data = null)
+        }
     }
 }

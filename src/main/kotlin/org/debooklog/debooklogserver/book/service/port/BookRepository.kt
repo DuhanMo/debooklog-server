@@ -6,4 +6,6 @@ interface BookRepository {
     fun findAllByMemberId(memberId: Long): List<Book>
 
     fun save(book: Book): Book
+
+    fun getById(bookId: Long): Book
 }

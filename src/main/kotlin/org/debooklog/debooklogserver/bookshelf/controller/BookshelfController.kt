@@ -28,8 +28,8 @@ class BookshelfController(
     fun update(
         @PathVariable bookshelfId: Long,
         @RequestBody request: BookshelfUpdateRequest,
-    ): ResponseEntity<Unit> {
+    ): ResponseEntity<ApiResponse<Nothing>> {
         bookshelfService.update(bookshelfId, request.name)
-        return ResponseEntity.ok().build()
+        return ResponseEntity.ok(ApiResponse.empty())
     }
 }

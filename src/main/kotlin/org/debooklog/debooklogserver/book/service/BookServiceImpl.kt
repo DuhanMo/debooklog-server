@@ -18,4 +18,10 @@ class BookServiceImpl(
         book.validateForDuplicate(books)
         bookRepository.save(book)
     }
+
+    override fun delete(bookId: Long) {
+        // TODO("자신의 책만 삭제할 수 있도록 검증")
+        val book = bookRepository.getById(bookId)
+        bookRepository.save(book.delete())
+    }
 }

@@ -10,10 +10,12 @@ import jakarta.persistence.Table
 import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.common.domain.BaseEntity
 import org.debooklog.debooklogserver.common.domain.StringListConverter
+import org.hibernate.annotations.SQLRestriction
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
+@SQLRestriction("is_deleted = false")
 @Entity
 @Table(name = "books")
 class BookEntity(
@@ -40,7 +42,27 @@ class BookEntity(
     @LastModifiedDate
     @Column(name = "updated_at")
     var updatedAt: LocalDateTime = LocalDateTime.MAX,
+    @Column(name = "deleted_at")
+    val deletedAt: LocalDateTime?,
+    @Column(name = "is_deleted")
+    val isDeleted: Boolean,
 ) : BaseEntity<BookEntity>() {
+    fun toModel(): Book {
+        return Book(
+            id = id,
+            memberId = memberId,
+            bookshelfId = bookshelfId,
+            title = title,
+            author = author,
+            isbn = isbn,
+            thumbnail = thumbnail,
+            createdAt = createdAt,
+            updatedAt = updatedAt,
+            deletedAt = deletedAt,
+            isDeleted = isDeleted,
+        )
+    }
+
     companion object {
         fun from(book: Book): BookEntity {
             return BookEntity(
@@ -53,21 +75,9 @@ class BookEntity(
                 thumbnail = book.thumbnail,
                 createdAt = book.createdAt,
                 updatedAt = book.updatedAt,
+                deletedAt = book.deletedAt,
+                isDeleted = book.isDeleted,
             )
         }
-    }
-
-    fun toModel(): Book {
-        return Book(
-            id = id,
-            memberId = memberId,
-            bookshelfId = bookshelfId,
-            title = title,
-            author = author,
-            isbn = isbn,
-            thumbnail = thumbnail,
-            createdAt = createdAt,
-            updatedAt = updatedAt,
-        )
     }
 }
