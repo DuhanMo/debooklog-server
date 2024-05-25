@@ -3,6 +3,7 @@ package org.debooklog.debooklogserver.book.service
 import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.debooklogserver.book.domain.BookInformationData
 import org.debooklog.debooklogserver.book.mock.FakeBookInformationGetter
+import org.debooklog.debooklogserver.book.mock.FakeBookRepository
 import org.junit.jupiter.api.Test
 
 class BookQueryServiceTest {
@@ -21,7 +22,8 @@ class BookQueryServiceTest {
                 ),
             )
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = books)
-        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter)
+        val fakeBookRepository = FakeBookRepository()
+        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
         // when
         val actual = bookQueryService.search("미움받을용기")
         // then
@@ -36,7 +38,8 @@ class BookQueryServiceTest {
     fun `책 제목을 검색하는 경우 책이 존재하지 않으면 빈 리스트를 응답한다`() {
         // given
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = emptyList())
-        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter)
+        val fakeBookRepository = FakeBookRepository()
+        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
         // when
         val actual = bookQueryService.search("검색결과없는타이틀")
         // then

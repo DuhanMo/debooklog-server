@@ -22,4 +22,8 @@ class BookRepositoryImpl(
             ?.toModel()
             ?: throw NoSuchElementException()
     }
+
+    override fun findAllByBookshelfId(bookshelfId: Long): List<Book> {
+        return bookJpaRepository.findAllByBookshelfId(bookshelfId).map(BookEntity::toModel)
+    }
 }
