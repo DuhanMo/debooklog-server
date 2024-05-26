@@ -6,6 +6,8 @@ import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
 import org.debooklog.debooklogserver.book.controller.port.BookQueryService
 import org.debooklog.debooklogserver.book.controller.port.BookService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
+import org.debooklog.debooklogserver.common.security.LoginMember
+import org.debooklog.debooklogserver.member.domain.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -39,8 +41,9 @@ class BookController(
     @DeleteMapping("/{bookId}")
     fun delete(
         @PathVariable bookId: Long,
+        @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Nothing>> {
-        bookService.delete(bookId)
+        bookService.delete(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 

@@ -31,8 +31,9 @@ class LoginMemberResolver(
         if (!jwtProvider.isValidJwt(jwt)) {
             throw LoginFailedException()
         }
-        val memberId = jwtProvider.getSubject(jwt).toLong()
-        return memberRepository.getById(memberId)
+        val email = jwtProvider.getSubject(jwt)
+        return memberRepository.findByEmail(email)
+            ?: throw LoginFailedException()
     }
 
     private fun extractJwt(webRequest: NativeWebRequest): String {

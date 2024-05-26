@@ -22,7 +22,10 @@ data class Book(
         }
     }
 
-    fun delete(): Book {
+    fun delete(memberId: Long): Book {
+        if (this.memberId != memberId) {
+            throw IllegalArgumentException("권한이 없습니다")
+        }
         return this.copy(deletedAt = now(), isDeleted = true)
     }
 

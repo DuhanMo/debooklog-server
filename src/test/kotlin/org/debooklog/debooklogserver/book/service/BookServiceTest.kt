@@ -56,7 +56,7 @@ class BookServiceTest : BehaviorSpec({
         sut = BookServiceImpl(fakeBookRepository)
 
         When("책을 삭제하면") {
-            sut.delete(1L)
+            sut.delete(1L, 1L)
 
             Then("소프트 딜리트 된다") {
                 val deletedBook = fakeBookRepository.getById(1L)

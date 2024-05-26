@@ -1,16 +1,13 @@
 package org.debooklog.debooklogserver.book.domain
 
+import io.kotest.assertions.throwables.shouldNotThrow
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatCode
-import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.junit.jupiter.api.Test
 
-class BookTest {
-    @Test
-    fun `BookRegisterCommand를 통해 Book을 생성한다`() {
-        // given
+class BookTest : BehaviorSpec({
+    Given("Book 을 생성하는 경우") {
         val bookRegisterCommand =
             BookRegisterCommand(
                 memberId = 1L,
@@ -20,19 +17,21 @@ class BookTest {
                 isbn = listOf("1234567890", "0000000000"),
                 thumbnail = "www.thumbnail.com",
             )
-        // when
-        val actual = Book.from(bookRegisterCommand)
-        // then
-        assertThat(actual.memberId).isEqualTo(1L)
-        assertThat(actual.title).isEqualTo("title")
-        assertThat(actual.author).isEqualTo("author")
-        assertThat(actual.isbn).isEqualTo(listOf("1234567890", "0000000000"))
-        assertThat(actual.thumbnail).isEqualTo("www.thumbnail.com")
+
+        When("Book 을 생성하면") {
+            val actual = Book.from(bookRegisterCommand)
+
+            Then("Book 이 생성된다") {
+                actual.memberId shouldBe 1L
+                actual.title shouldBe "title"
+                actual.author shouldBe "author"
+                actual.isbn shouldBe listOf("1234567890", "0000000000")
+                actual.thumbnail shouldBe "www.thumbnail.com"
+            }
+        }
     }
 
-    @Test
-    fun `isbn이 동일한 책이 이미 저장된 경우 중복검증하면 예외 발생한다`() {
-        // given
+    Given("isbn이 동일한 책이 저장되어 있는 경우") {
         val savedBook1 =
             Book(
                 id = 1L,
@@ -69,15 +68,17 @@ class BookTest {
                 deletedAt = null,
                 isDeleted = false,
             )
-        // when & then
-        assertThatThrownBy {
-            newBook.validateForDuplicate(listOf(savedBook1, savedBook2))
+
+        When("Book 을 저장하면") {
+            Then("예외 발생한다") {
+                shouldThrow<DuplicateBookException> {
+                    newBook.validateForDuplicate(listOf(savedBook1, savedBook2))
+                }
+            }
         }
     }
 
-    @Test
-    fun `동일한 isbn이 없는 경우 중복검증하면 예외 발생하지 않는다`() {
-        // given
+    Given("isbn이 동일한 책이 저장되어 있지 않은 경우") {
         val savedBook1 =
             Book(
                 id = 1L,
@@ -114,15 +115,17 @@ class BookTest {
                 deletedAt = null,
                 isDeleted = false,
             )
-        // when
-        assertThatCode {
-            newBook.validateForDuplicate(listOf(savedBook1, savedBook2))
-        }.doesNotThrowAnyException()
+
+        When("Book 을 저장하면") {
+            Then("예외 발생하지 않는다") {
+                shouldNotThrow<DuplicateBookException> {
+                    newBook.validateForDuplicate(listOf(savedBook1, savedBook2))
+                }
+            }
+        }
     }
 
-    @Test
-    fun `Book을 삭제하는 경우 소프트 딜리트 된다`() {
-        // given
+    Given("Book 의 memberId와 요청한 memberId가 동일한 경우") {
         val book =
             Book(
                 id = null,
@@ -136,11 +139,36 @@ class BookTest {
                 isDeleted = false,
             )
 
-        // when
-        val deletedBook = book.delete()
+        When("Book 을 삭제하면") {
+            val deletedBook = book.delete(1L)
 
-        // then
-        deletedBook.isDeleted shouldBe true
-        deletedBook.deletedAt shouldNotBe null
+            Then("Book 이 소프트 딜리트 된다") {
+                deletedBook.deletedAt shouldNotBe null
+                deletedBook.isDeleted shouldBe true
+            }
+        }
     }
-}
+
+    Given("Book 의 memberId와 요청한 memberId가 동일하지 않은 경우") {
+        val book =
+            Book(
+                id = null,
+                memberId = 1L,
+                bookshelfId = 1L,
+                title = "title",
+                author = "author",
+                isbn = listOf("5555555555"),
+                thumbnail = "www.thumbnail.com",
+                deletedAt = null,
+                isDeleted = false,
+            )
+
+        When("Book 을 삭제하면") {
+            Then("예외 발생한다") {
+                shouldThrow<IllegalArgumentException> {
+                    book.delete(2L)
+                }
+            }
+        }
+    }
+})
