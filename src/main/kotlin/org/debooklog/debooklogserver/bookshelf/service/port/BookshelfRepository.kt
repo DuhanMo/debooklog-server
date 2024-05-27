@@ -8,4 +8,6 @@ interface BookshelfRepository {
     fun getById(id: Long): Bookshelf
 
     fun findAll(): List<Bookshelf>
+
+    fun findByMemberId(memberId: Long): Bookshelf?
 }

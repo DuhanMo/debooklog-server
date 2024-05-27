@@ -7,6 +7,9 @@ import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.book.domain.BookRegisterCommand
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
+import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
+import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
+import org.debooklog.debooklogserver.bookshelf.mock.FakeBookshelfRepository
 import java.time.LocalDateTime.now
 
 class BookServiceTest : BehaviorSpec({
@@ -14,13 +17,20 @@ class BookServiceTest : BehaviorSpec({
 
     Given("책을 저장하는 경우") {
         val fakeBookRepository = FakeBookRepository()
-        sut = BookServiceImpl(fakeBookRepository)
+        val fakeBookshelfRepository = FakeBookshelfRepository()
+        fakeBookshelfRepository.save(
+            Bookshelf(
+                memberId = 1L,
+                name = BookshelfNameGenerator.generate("홍길동"),
+                now = now(),
+            ),
+        )
+        sut = BookServiceImpl(fakeBookRepository, fakeBookshelfRepository)
 
         When("책을 저장하면") {
             sut.register(
                 BookRegisterCommand(
                     memberId = 1L,
-                    bookshelfId = 1L,
                     title = "title",
                     author = "author",
                     isbn = listOf("111111111"),
@@ -38,6 +48,7 @@ class BookServiceTest : BehaviorSpec({
 
     Given("책을 삭제하는 경우") {
         val fakeBookRepository = FakeBookRepository()
+        val fakeBookshelfRepository = FakeBookshelfRepository()
         fakeBookRepository.save(
             Book(
                 id = 1L,
@@ -53,7 +64,7 @@ class BookServiceTest : BehaviorSpec({
                 isDeleted = false,
             ),
         )
-        sut = BookServiceImpl(fakeBookRepository)
+        sut = BookServiceImpl(fakeBookRepository, fakeBookshelfRepository)
 
         When("책을 삭제하면") {
             sut.delete(1L, 1L)

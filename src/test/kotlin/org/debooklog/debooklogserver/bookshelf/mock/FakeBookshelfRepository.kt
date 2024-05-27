@@ -36,4 +36,8 @@ class FakeBookshelfRepository : BookshelfRepository {
     override fun findAll(): List<Bookshelf> {
         return data.filter { it.deletedAt == null }
     }
+
+    override fun findByMemberId(memberId: Long): Bookshelf? {
+        return data.firstOrNull { it.memberId == memberId }
+    }
 }

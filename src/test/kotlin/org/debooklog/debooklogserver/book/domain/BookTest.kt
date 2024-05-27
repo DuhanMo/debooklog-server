@@ -11,7 +11,6 @@ class BookTest : BehaviorSpec({
         val bookRegisterCommand =
             BookRegisterCommand(
                 memberId = 1L,
-                bookshelfId = 1L,
                 title = "title",
                 author = "author",
                 isbn = listOf("1234567890", "0000000000"),
@@ -19,7 +18,7 @@ class BookTest : BehaviorSpec({
             )
 
         When("Book 을 생성하면") {
-            val actual = Book.from(bookRegisterCommand)
+            val actual = Book.from(bookRegisterCommand, 1L)
 
             Then("Book 이 생성된다") {
                 actual.memberId shouldBe 1L

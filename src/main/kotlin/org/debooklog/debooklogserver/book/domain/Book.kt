@@ -30,11 +30,14 @@ data class Book(
     }
 
     companion object {
-        fun from(command: BookRegisterCommand): Book {
+        fun from(
+            command: BookRegisterCommand,
+            bookshelfId: Long,
+        ): Book {
             return Book(
                 id = null,
                 memberId = command.memberId,
-                bookshelfId = command.bookshelfId,
+                bookshelfId = bookshelfId,
                 title = command.title,
                 author = command.author,
                 isbn = command.isbn,

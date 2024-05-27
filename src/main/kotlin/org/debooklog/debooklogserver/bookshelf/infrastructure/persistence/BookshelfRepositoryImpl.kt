@@ -22,4 +22,8 @@ class BookshelfRepositoryImpl(
     override fun findAll(): List<Bookshelf> {
         return bookshelfJpaRepository.findAllByDeletedAtIsNull().map { it.toModel() }
     }
+
+    override fun findByMemberId(memberId: Long): Bookshelf? {
+        return bookshelfJpaRepository.findByMemberId(memberId)?.toModel()
+    }
 }

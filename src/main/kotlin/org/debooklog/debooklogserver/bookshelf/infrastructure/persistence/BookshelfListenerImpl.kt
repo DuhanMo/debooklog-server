@@ -13,7 +13,6 @@ import java.time.LocalDateTime.now
 
 @Component
 class BookshelfListenerImpl(
-    private val bookshelfNameGenerator: BookshelfNameGenerator,
     private val bookshelfRepository: BookshelfRepository,
     private val memberRepository: MemberRepository,
 ) : BookshelfListener {
@@ -21,7 +20,7 @@ class BookshelfListenerImpl(
     @Transactional
     override fun handle(event: MemberCreatedEvent) {
         val member = memberRepository.getById(event.memberId)
-        val bookshelfName = bookshelfNameGenerator.generate(member.name)
+        val bookshelfName = BookshelfNameGenerator.generate(member.name)
         val bookshelf =
             Bookshelf(
                 memberId = member.id!!,

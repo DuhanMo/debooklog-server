@@ -32,9 +32,9 @@ class BookController(
     @PostMapping
     fun register(
         @RequestBody request: BookRegisterRequest,
+        @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Nothing>> {
-        // TODO("멤버 아이디 인증객체에서 추출 후 전달")
-        bookService.register(request.toCommand(1L))
+        bookService.register(request.toCommand(member.id!!))
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
