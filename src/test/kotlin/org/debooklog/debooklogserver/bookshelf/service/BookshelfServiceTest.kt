@@ -25,7 +25,7 @@ class BookshelfServiceTest : BehaviorSpec({
         sut = BookshelfServiceImpl(fakeBookshelfRepository)
 
         When("책장이름을 수정하면") {
-            sut.update(1L, "수정된 책장이름")
+            sut.update(1L, "수정된 책장이름", 1L)
 
             Then("책장이름이 정상 수정된다") {
                 val bookshelf = fakeBookshelfRepository.getById(1L)

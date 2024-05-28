@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.bookshelf.domain
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.shouldBe
@@ -40,6 +41,7 @@ class BookshelfTest : BehaviorSpec({
             }
         }
     }
+
     Given("Bookshelf를 수정하는 경우") {
         val now = now()
         val bookshelf =
@@ -53,7 +55,7 @@ class BookshelfTest : BehaviorSpec({
                 isDeleted = false,
             )
         When("이름을 전달하면") {
-            val updatedBookshelf = bookshelf.update("수정책장")
+            val updatedBookshelf = bookshelf.update("수정책장", 1L)
 
             Then("전달한 이름으로 수정된다") {
                 updatedBookshelf.name shouldBe "수정책장"
@@ -61,10 +63,32 @@ class BookshelfTest : BehaviorSpec({
         }
 
         When("수정요청하면") {
-            val updatedBookshelf = bookshelf.update("수정책장")
+            val updatedBookshelf = bookshelf.update("수정책장", 1L)
 
             Then("updatedAt이 갱신된다") {
                 updatedBookshelf.updatedAt shouldBeAfter updatedBookshelf.createdAt
+            }
+        }
+    }
+
+    Given("Bookshelf 의 memberId와 요청자의 memberId가 다른 경우") {
+        val now = now()
+        val bookshelf =
+            Bookshelf(
+                id = null,
+                memberId = 1L,
+                name = "책장",
+                createdAt = now,
+                updatedAt = now,
+                deletedAt = null,
+                isDeleted = false,
+            )
+
+        When("Bookshelf 이름을 수정하는 경우") {
+            Then("예외 발생한다") {
+                shouldThrow<IllegalArgumentException> {
+                    bookshelf.update("수정책장", 99L)
+                }
             }
         }
     }

@@ -22,7 +22,13 @@ data class Bookshelf(
         isDeleted = false,
     )
 
-    fun update(name: String): Bookshelf {
+    fun update(
+        name: String,
+        memberId: Long,
+    ): Bookshelf {
+        if (this.memberId != memberId) {
+            throw IllegalArgumentException("권한이 없습니다")
+        }
         return this.copy(name = name, updatedAt = now())
     }
 }

@@ -5,6 +5,8 @@ import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfUpdateReq
 import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQueryService
 import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
+import org.debooklog.debooklogserver.common.security.LoginMember
+import org.debooklog.debooklogserver.member.domain.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -28,8 +30,9 @@ class BookshelfController(
     fun update(
         @PathVariable bookshelfId: Long,
         @RequestBody request: BookshelfUpdateRequest,
+        @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Nothing>> {
-        bookshelfService.update(bookshelfId, request.name)
+        bookshelfService.update(bookshelfId, request.name, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 }

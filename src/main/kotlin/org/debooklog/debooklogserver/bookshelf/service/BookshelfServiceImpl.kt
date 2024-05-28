@@ -13,9 +13,9 @@ class BookshelfServiceImpl(
     override fun update(
         bookshelfId: Long,
         name: String,
+        memberId: Long,
     ) {
         val bookshelf = bookshelfRepository.getById(bookshelfId)
-        // todo 자신의 책장만 수정 가능하도록 검증
-        bookshelfRepository.save(bookshelf.update(name))
+        bookshelfRepository.save(bookshelf.update(name, memberId))
     }
 }

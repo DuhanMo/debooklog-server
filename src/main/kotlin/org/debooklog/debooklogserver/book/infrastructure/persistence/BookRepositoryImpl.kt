@@ -26,4 +26,8 @@ class BookRepositoryImpl(
     override fun findAllByBookshelfId(bookshelfId: Long): List<Book> {
         return bookJpaRepository.findAllByBookshelfId(bookshelfId).map(BookEntity::toModel)
     }
+
+    override fun findAll(): List<Book> {
+        TODO("Not yet implemented")
+    }
 }
