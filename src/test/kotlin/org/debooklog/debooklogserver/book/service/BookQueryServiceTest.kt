@@ -1,17 +1,20 @@
 package org.debooklog.debooklogserver.book.service
 
+import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.collections.shouldContainExactly
+import io.kotest.matchers.shouldBe
 import org.assertj.core.api.Assertions.assertThat
+import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.book.domain.BookInformationData
+import org.debooklog.debooklogserver.book.domain.BookRank
 import org.debooklog.debooklogserver.book.mock.FakeBookInformationGetter
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
-import org.junit.jupiter.api.Test
+import org.debooklog.debooklogserver.fixture.createBook
 
-class BookQueryServiceTest {
-    private lateinit var bookQueryService: BookQueryServiceImpl
+class BookQueryServiceTest : BehaviorSpec({
+    lateinit var sut: BookQueryServiceImpl
 
-    @Test
-    fun `책 제목을 검색하는 경우 책이 존재하면 책을 응답한다`() {
-        // given
+    Given("외부 API 책 검색결과가 존재하는 경우") {
         val books =
             listOf(
                 BookInformationData(
@@ -23,26 +26,95 @@ class BookQueryServiceTest {
             )
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = books)
         val fakeBookRepository = FakeBookRepository()
-        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
-        // when
-        val actual = bookQueryService.search("미움받을용기")
-        // then
-        assertThat(actual.size).isEqualTo(1)
-        assertThat(actual.first().title).isEqualTo("미움받을용기")
-        assertThat(actual.first().author).isEqualTo("author1")
-        assertThat(actual.first().isbn).contains("111111111")
-        assertThat(actual.first().thumbnail).isEqualTo("thumbnail")
+        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+
+        When("책을 검색하면") {
+            val actual = sut.search("미움받을용기")
+
+            Then("책을 응답한다") {
+                actual.size shouldBe 1
+                actual.first().title shouldBe "미움받을용기"
+                actual.first().author shouldBe "author1"
+                actual.first().isbn shouldBe listOf("111111111")
+                actual.first().thumbnail shouldBe "thumbnail"
+            }
+        }
     }
 
-    @Test
-    fun `책 제목을 검색하는 경우 책이 존재하지 않으면 빈 리스트를 응답한다`() {
-        // given
+    Given("외부 API 책 검색결과가 존재하지 않는 경우") {
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = emptyList())
         val fakeBookRepository = FakeBookRepository()
-        bookQueryService = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
-        // when
-        val actual = bookQueryService.search("검색결과없는타이틀")
-        // then
-        assertThat(actual).isEmpty()
+        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+
+        When("책을 검색하면") {
+            val actual = sut.search("검색결과없는타이틀")
+
+            Then("빈 목록을 응답한다") {
+                assertThat(actual).isEmpty()
+            }
+        }
     }
-}
+
+    Given("책이 존재하는 경우") {
+        val fakeBookInformationGetter = FakeBookInformationGetter()
+        val fakeBookRepository = FakeBookRepository()
+        createBooks().forEach { book ->
+            fakeBookRepository.save(book)
+        }
+        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+
+        When("책 랭크를 검색하면") {
+            val actual = sut.findBookRanks()
+
+            Then("isbn이 많은 순서대로 정렬하여 응답한다") {
+                actual.size shouldBe 3
+                actual shouldContainExactly
+                    listOf(
+                        BookRank(1, "12345678", "책1", 3),
+                        BookRank(2, "22345678", "책2", 2),
+                        BookRank(3, "32345678", "책3", 1),
+                    )
+            }
+        }
+    }
+})
+
+private fun createBooks(): List<Book> =
+    listOf(
+        createBook(
+            memberId = 1L,
+            bookshelfId = 1L,
+            title = "책1",
+            isbn = listOf("12345678", "1234567890"),
+        ),
+        createBook(
+            memberId = 1L,
+            bookshelfId = 1L,
+            title = "책2",
+            isbn = listOf("22345678", "2234567890"),
+        ),
+        createBook(
+            memberId = 1L,
+            bookshelfId = 1L,
+            title = "책3",
+            isbn = listOf("32345678", "3234567890"),
+        ),
+        createBook(
+            memberId = 2L,
+            bookshelfId = 2L,
+            title = "책1",
+            isbn = listOf("12345678", "1234567890"),
+        ),
+        createBook(
+            memberId = 2L,
+            bookshelfId = 2L,
+            title = "책2",
+            isbn = listOf("22345678", "2234567890"),
+        ),
+        createBook(
+            memberId = 3L,
+            bookshelfId = 3L,
+            title = "책1",
+            isbn = listOf("12345678", "1234567890"),
+        ),
+    )

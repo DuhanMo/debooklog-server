@@ -43,4 +43,8 @@ class FakeBookRepository : BookRepository {
     override fun findAllByBookshelfId(bookshelfId: Long): List<Book> {
         return data.filter { it.bookshelfId == bookshelfId }
     }
+
+    override fun findAll(): List<Book> {
+        return data
+    }
 }

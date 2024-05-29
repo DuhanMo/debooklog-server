@@ -2,6 +2,7 @@ package org.debooklog.debooklogserver.book.controller
 
 import org.debooklog.debooklogserver.book.controller.dto.BookInformationResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookListResponse
+import org.debooklog.debooklogserver.book.controller.dto.BookRankResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
 import org.debooklog.debooklogserver.book.controller.port.BookQueryService
 import org.debooklog.debooklogserver.book.controller.port.BookService
@@ -52,7 +53,14 @@ class BookController(
         @RequestParam(name = "bookshelfId", required = true) bookshelfId: Long,
     ): ResponseEntity<ApiResponse<List<BookListResponse>>> {
         return ResponseEntity.ok(
-            ApiResponse.of(bookQueryService.findAllByBookshelfId(bookshelfId).map(BookListResponse::from)),
+            ApiResponse.of(
+                bookQueryService.findAllByBookshelfId(bookshelfId).map(BookListResponse::from),
+            ),
         )
+    }
+
+    @GetMapping("/ranks")
+    fun findBookRanks(): ResponseEntity<ApiResponse<List<BookRankResponse>>> {
+        return ResponseEntity.ok(ApiResponse.of(bookQueryService.findBookRanks().map(BookRankResponse::from)))
     }
 }

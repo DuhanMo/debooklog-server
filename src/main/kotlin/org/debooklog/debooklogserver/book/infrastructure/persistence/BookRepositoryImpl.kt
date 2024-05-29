@@ -28,6 +28,6 @@ class BookRepositoryImpl(
     }
 
     override fun findAll(): List<Book> {
-        TODO("Not yet implemented")
+        return bookJpaRepository.findAll().map(BookEntity::toModel)
     }
 }
