@@ -9,7 +9,7 @@ import org.debooklog.debooklogserver.book.domain.BookInformationData
 import org.debooklog.debooklogserver.book.domain.BookRank
 import org.debooklog.debooklogserver.book.mock.FakeBookInformationGetter
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
-import org.debooklog.debooklogserver.fixture.createBook
+import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class BookQueryServiceTest : BehaviorSpec({
     lateinit var sut: BookQueryServiceImpl
@@ -81,37 +81,37 @@ class BookQueryServiceTest : BehaviorSpec({
 
 private fun createBooks(): List<Book> =
     listOf(
-        createBook(
+        createBookFixture(
             memberId = 1L,
             bookshelfId = 1L,
             title = "책1",
             isbn = listOf("12345678", "1234567890"),
         ),
-        createBook(
+        createBookFixture(
             memberId = 1L,
             bookshelfId = 1L,
             title = "책2",
             isbn = listOf("22345678", "2234567890"),
         ),
-        createBook(
+        createBookFixture(
             memberId = 1L,
             bookshelfId = 1L,
             title = "책3",
             isbn = listOf("32345678", "3234567890"),
         ),
-        createBook(
+        createBookFixture(
             memberId = 2L,
             bookshelfId = 2L,
             title = "책1",
             isbn = listOf("12345678", "1234567890"),
         ),
-        createBook(
+        createBookFixture(
             memberId = 2L,
             bookshelfId = 2L,
             title = "책2",
             isbn = listOf("22345678", "2234567890"),
         ),
-        createBook(
+        createBookFixture(
             memberId = 3L,
             bookshelfId = 3L,
             title = "책1",

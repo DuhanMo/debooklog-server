@@ -36,6 +36,8 @@ class BookEntity(
     val isbn: List<String>,
     @Column(name = "thumbnail")
     val thumbnail: String,
+    @Column(name = "like_count")
+    val likeCount: Int,
     @CreatedDate
     @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.MAX,
@@ -56,6 +58,7 @@ class BookEntity(
             author = author,
             isbn = isbn,
             thumbnail = thumbnail,
+            likeCount = likeCount,
             createdAt = createdAt,
             updatedAt = updatedAt,
             deletedAt = deletedAt,
@@ -73,6 +76,7 @@ class BookEntity(
                 author = book.author,
                 isbn = book.isbn,
                 thumbnail = book.thumbnail,
+                likeCount = book.likeCount,
                 createdAt = book.createdAt,
                 updatedAt = book.updatedAt,
                 deletedAt = book.deletedAt,

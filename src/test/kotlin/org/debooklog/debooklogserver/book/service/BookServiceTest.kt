@@ -18,6 +18,7 @@ class BookServiceTest : BehaviorSpec({
     Given("책을 저장하는 경우") {
         val fakeBookRepository = FakeBookRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
+
         fakeBookshelfRepository.save(
             Bookshelf(
                 memberId = 1L,
@@ -58,6 +59,7 @@ class BookServiceTest : BehaviorSpec({
                 author = "어니스트 해밍웨이",
                 isbn = listOf("1231231230"),
                 thumbnail = "thumbnail",
+                likeCount = 0,
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = null,

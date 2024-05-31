@@ -6,6 +6,7 @@ import org.debooklog.debooklogserver.book.controller.dto.BookRankResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
 import org.debooklog.debooklogserver.book.controller.port.BookQueryService
 import org.debooklog.debooklogserver.book.controller.port.BookService
+import org.debooklog.debooklogserver.book.controller.port.LikeService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.debooklog.debooklogserver.common.security.LoginMember
 import org.debooklog.debooklogserver.member.domain.Member
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController
 class BookController(
     private val bookQueryService: BookQueryService,
     private val bookService: BookService,
+    private val likeService: LikeService,
 ) {
     @GetMapping("/search")
     fun search(title: String): ResponseEntity<ApiResponse<List<BookInformationResponse>>> {
@@ -62,5 +64,14 @@ class BookController(
     @GetMapping("/ranks")
     fun findBookRanks(): ResponseEntity<ApiResponse<List<BookRankResponse>>> {
         return ResponseEntity.ok(ApiResponse.of(bookQueryService.findBookRanks().map(BookRankResponse::from)))
+    }
+
+    @PostMapping("/{bookId}/like")
+    fun createLike(
+        @PathVariable bookId: Long,
+        @LoginMember member: Member,
+    ): ResponseEntity<ApiResponse<Nothing>> {
+        likeService.create(bookId, member.id!!)
+        return ResponseEntity.ok(ApiResponse.empty())
     }
 }

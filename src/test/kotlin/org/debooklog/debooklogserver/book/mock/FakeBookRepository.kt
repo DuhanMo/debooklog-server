@@ -22,6 +22,7 @@ class FakeBookRepository : BookRepository {
                     author = book.author,
                     isbn = book.isbn,
                     thumbnail = book.thumbnail,
+                    likeCount = book.likeCount,
                     createdAt = book.createdAt,
                     updatedAt = book.updatedAt,
                     deletedAt = book.deletedAt,

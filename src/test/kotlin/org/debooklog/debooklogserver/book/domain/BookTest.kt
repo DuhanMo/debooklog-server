@@ -5,6 +5,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class BookTest : BehaviorSpec({
     Given("Book 을 생성하는 경우") {
@@ -32,40 +33,24 @@ class BookTest : BehaviorSpec({
 
     Given("isbn이 동일한 책이 저장되어 있는 경우") {
         val savedBook1 =
-            Book(
+            createBookFixture(
                 id = 1L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("1111111111", "2222222222"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
         val savedBook2 =
-            Book(
+            createBookFixture(
                 id = 2L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("3333333333", "4444444444"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
         val newBook =
-            Book(
-                id = null,
+            createBookFixture(
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("4444444444"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
 
         When("Book 을 저장하면") {
@@ -79,40 +64,24 @@ class BookTest : BehaviorSpec({
 
     Given("isbn이 동일한 책이 저장되어 있지 않은 경우") {
         val savedBook1 =
-            Book(
+            createBookFixture(
                 id = 1L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("1111111111", "2222222222"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
         val savedBook2 =
-            Book(
+            createBookFixture(
                 id = 2L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("3333333333", "4444444444"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
         val newBook =
-            Book(
-                id = null,
+            createBookFixture(
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
                 isbn = listOf("5555555555"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
             )
 
         When("Book 을 저장하면") {
@@ -126,16 +95,11 @@ class BookTest : BehaviorSpec({
 
     Given("Book 의 memberId와 요청한 memberId가 동일한 경우") {
         val book =
-            Book(
-                id = null,
+            createBookFixture(
+                id = 1L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
-                isbn = listOf("5555555555"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
+                isbn = listOf("1111111111", "2222222222"),
             )
 
         When("Book 을 삭제하면") {
@@ -150,22 +114,17 @@ class BookTest : BehaviorSpec({
 
     Given("Book 의 memberId와 요청한 memberId가 동일하지 않은 경우") {
         val book =
-            Book(
-                id = null,
+            createBookFixture(
+                id = 1L,
                 memberId = 1L,
                 bookshelfId = 1L,
-                title = "title",
-                author = "author",
-                isbn = listOf("5555555555"),
-                thumbnail = "www.thumbnail.com",
-                deletedAt = null,
-                isDeleted = false,
+                isbn = listOf("1111111111", "2222222222"),
             )
 
         When("Book 을 삭제하면") {
             Then("예외 발생한다") {
                 shouldThrow<IllegalArgumentException> {
-                    book.delete(2L)
+                    book.delete(99L)
                 }
             }
         }

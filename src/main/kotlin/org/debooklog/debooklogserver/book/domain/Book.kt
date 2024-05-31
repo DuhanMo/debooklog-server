@@ -11,6 +11,7 @@ data class Book(
     val author: String,
     val isbn: List<String>,
     val thumbnail: String,
+    val likeCount: Int,
     val createdAt: LocalDateTime = LocalDateTime.MAX,
     val updatedAt: LocalDateTime = LocalDateTime.MAX,
     val deletedAt: LocalDateTime?,
@@ -29,6 +30,14 @@ data class Book(
         return this.copy(deletedAt = now(), isDeleted = true)
     }
 
+    fun increaseLikeCount(): Book {
+        return this.copy(likeCount = this.likeCount + 1, updatedAt = now())
+    }
+
+    fun decreaseLikeCount(): Book {
+        return this.copy(likeCount = this.likeCount - 1, updatedAt = now())
+    }
+
     companion object {
         fun from(
             command: BookRegisterCommand,
@@ -42,6 +51,7 @@ data class Book(
                 author = command.author,
                 isbn = command.isbn,
                 thumbnail = command.thumbnail,
+                likeCount = 0,
                 deletedAt = null,
                 isDeleted = false,
             )
