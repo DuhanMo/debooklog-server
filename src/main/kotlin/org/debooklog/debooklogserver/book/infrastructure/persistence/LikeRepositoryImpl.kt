@@ -18,4 +18,11 @@ class LikeRepositoryImpl(
     ): Boolean {
         return likeJpaRepository.existsByBookIdAndMemberId(bookId, memberId)
     }
+
+    override fun findByBookIdAndMemberId(
+        bookId: Long,
+        memberId: Long,
+    ): Like? {
+        return likeJpaRepository.findByBookIdAndMemberId(bookId, memberId)?.toModel()
+    }
 }

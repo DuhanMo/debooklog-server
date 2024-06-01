@@ -74,4 +74,13 @@ class BookController(
         likeService.create(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
+
+    @PostMapping("/{bookId}/cancel-like")
+    fun cancelLike(
+        @PathVariable bookId: Long,
+        @LoginMember member: Member,
+    ): ResponseEntity<ApiResponse<Nothing>> {
+        likeService.remove(bookId, member.id!!)
+        return ResponseEntity.ok(ApiResponse.empty())
+    }
 }

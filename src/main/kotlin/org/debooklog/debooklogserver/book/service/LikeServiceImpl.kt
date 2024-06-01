@@ -23,4 +23,18 @@ class LikeServiceImpl(
 
         likeRepository.save(Like(bookId = bookId, memberId = memberId))
     }
+
+    override fun remove(
+        bookId: Long,
+        memberId: Long,
+    ) {
+        if (!likeRepository.existsByBookIdAndMemberId(bookId, memberId)) {
+            return
+        }
+        val book = bookRepository.getById(bookId)
+        bookRepository.save(book.decreaseLikeCount())
+
+        val like = likeRepository.findByBookIdAndMemberId(bookId, memberId) ?: return
+        likeRepository.save(like.delete())
+    }
 }

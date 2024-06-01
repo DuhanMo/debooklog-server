@@ -9,4 +9,9 @@ interface LikeRepository {
         bookId: Long,
         memberId: Long,
     ): Boolean
+
+    fun findByBookIdAndMemberId(
+        bookId: Long,
+        memberId: Long,
+    ): Like?
 }

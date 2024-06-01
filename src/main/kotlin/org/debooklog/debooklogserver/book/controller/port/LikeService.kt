@@ -5,4 +5,9 @@ interface LikeService {
         bookId: Long,
         memberId: Long,
     )
+
+    fun remove(
+        bookId: Long,
+        memberId: Long,
+    )
 }

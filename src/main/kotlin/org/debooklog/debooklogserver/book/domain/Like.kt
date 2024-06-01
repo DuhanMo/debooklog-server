@@ -1,6 +1,7 @@
 package org.debooklog.debooklogserver.book.domain
 
 import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 
 data class Like(
     val id: Long?,
@@ -11,6 +12,10 @@ data class Like(
     val deletedAt: LocalDateTime?,
     val isDeleted: Boolean,
 ) {
+    fun delete(): Like {
+        return this.copy(deletedAt = now(), isDeleted = true)
+    }
+
     constructor(bookId: Long, memberId: Long) : this(
         id = null,
         bookId = bookId,

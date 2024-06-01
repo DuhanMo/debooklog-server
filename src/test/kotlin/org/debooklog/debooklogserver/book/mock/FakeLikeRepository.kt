@@ -34,4 +34,11 @@ class FakeLikeRepository : LikeRepository {
     ): Boolean {
         return data.firstOrNull { it.bookId == bookId && it.memberId == memberId } != null
     }
+
+    override fun findByBookIdAndMemberId(
+        bookId: Long,
+        memberId: Long,
+    ): Like? {
+        return data.singleOrNull { it.bookId == bookId && it.memberId == memberId }
+    }
 }

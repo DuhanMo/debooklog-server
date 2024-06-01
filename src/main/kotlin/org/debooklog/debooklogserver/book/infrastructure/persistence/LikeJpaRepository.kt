@@ -7,4 +7,9 @@ interface LikeJpaRepository : JpaRepository<LikeEntity, Long> {
         bookId: Long,
         memberId: Long,
     ): Boolean
+
+    fun findByBookIdAndMemberId(
+        bookId: Long,
+        memberId: Long,
+    ): LikeEntity?
 }
