@@ -30,11 +30,11 @@ class MemberServiceTest : BehaviorSpec({
         sut = MemberServiceImpl(fakeMemberRepository)
 
         When("회원 탈퇴하면") {
-            val withdrawalMember = sut.withdrawal(savedMember.id!!)
+            sut.withdrawal(savedMember.id!!)
 
             Then("소프트 딜리트된다") {
-                withdrawalMember.isDeleted shouldBe true
-                withdrawalMember.deletedAt shouldNotBe null
+                fakeMemberRepository.getById(savedMember.id!!).isDeleted shouldBe true
+                fakeMemberRepository.getById(savedMember.id!!).deletedAt shouldNotBe null
             }
         }
     }
