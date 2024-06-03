@@ -23,7 +23,7 @@ class MemberController(
     @DeleteMapping("/{memberId}")
     fun withdrawal(
         @PathVariable("memberId") memberId: Long,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         memberService.withdrawal(memberId)
         return ResponseEntity.ok(ApiResponse.empty())
     }

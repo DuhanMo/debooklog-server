@@ -36,7 +36,7 @@ class BookController(
     fun register(
         @RequestBody request: BookRegisterRequest,
         @LoginMember member: Member,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         bookService.register(request.toCommand(member.id!!))
         return ResponseEntity.ok(ApiResponse.empty())
     }
@@ -45,7 +45,7 @@ class BookController(
     fun delete(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         bookService.delete(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
@@ -70,7 +70,7 @@ class BookController(
     fun createLike(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         likeService.create(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
@@ -79,7 +79,7 @@ class BookController(
     fun cancelLike(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         likeService.remove(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }

@@ -31,7 +31,7 @@ class BookshelfController(
         @PathVariable bookshelfId: Long,
         @RequestBody request: BookshelfUpdateRequest,
         @LoginMember member: Member,
-    ): ResponseEntity<ApiResponse<Nothing>> {
+    ): ResponseEntity<ApiResponse<Unit>> {
         bookshelfService.update(bookshelfId, request.name, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }

@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.common.controller
 
 data class ApiResponse<T>(
-    val message: String = "success",
+    val message: String? = "success",
     val data: T? = null,
 ) {
     companion object {
@@ -9,7 +9,9 @@ data class ApiResponse<T>(
             return ApiResponse(data = data)
         }
 
-        fun empty(): ApiResponse<Nothing> {
+        fun error(message: String?): ApiResponse<Unit> = ApiResponse(message = message)
+
+        fun empty(): ApiResponse<Unit> {
             return ApiResponse(data = null)
         }
     }
