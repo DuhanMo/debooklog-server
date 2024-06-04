@@ -13,17 +13,13 @@ data class MemberResponse(
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
 ) {
-    companion object {
-        fun from(member: Member): MemberResponse {
-            return MemberResponse(
-                id = member.id,
-                name = member.name,
-                email = member.email,
-                socialId = member.socialId,
-                provider = member.provider,
-                createdAt = member.createdAt,
-                updatedAt = member.updatedAt,
-            )
-        }
-    }
+    constructor(member: Member) : this(
+        id = member.id,
+        name = member.name,
+        email = member.email,
+        socialId = member.socialId,
+        provider = member.provider,
+        createdAt = member.createdAt,
+        updatedAt = member.updatedAt,
+    )
 }

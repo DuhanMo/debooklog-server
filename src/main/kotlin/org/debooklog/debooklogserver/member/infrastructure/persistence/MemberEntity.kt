@@ -46,6 +46,18 @@ class MemberEntity(
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) : BaseEntity<MemberEntity>() {
+    constructor(member: Member) : this(
+        id = member.id,
+        name = member.name,
+        email = member.email,
+        socialId = member.socialId,
+        provider = member.provider,
+        createdAt = member.createdAt,
+        updatedAt = member.updatedAt,
+        deletedAt = null,
+        isDeleted = false,
+    )
+
     @PostPersist
     fun onPostPersist() {
         registerEvent(MemberCreatedEvent(id ?: throw IllegalStateException("id must not be null")))
@@ -63,21 +75,5 @@ class MemberEntity(
             deletedAt = deletedAt,
             isDeleted = isDeleted,
         )
-    }
-
-    companion object {
-        fun from(member: Member): MemberEntity {
-            return MemberEntity(
-                id = member.id,
-                name = member.name,
-                email = member.email,
-                socialId = member.socialId,
-                provider = member.provider,
-                createdAt = member.createdAt,
-                updatedAt = member.updatedAt,
-                deletedAt = null,
-                isDeleted = false,
-            )
-        }
     }
 }

@@ -8,9 +8,10 @@ data class BookRankResponse(
     val bookTitle: String,
     val count: Int,
 ) {
-    companion object {
-        fun from(bookRank: BookRank): BookRankResponse {
-            return BookRankResponse(bookRank.rank, bookRank.isbn, bookRank.bookTitle, bookRank.count)
-        }
-    }
+    constructor(bookRank: BookRank) : this(
+        rank = bookRank.rank,
+        isbn = bookRank.isbn,
+        bookTitle = bookRank.bookTitle,
+        count = bookRank.count,
+    )
 }

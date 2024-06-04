@@ -8,14 +8,10 @@ data class BookInformationResponse(
     val isbn: List<String>,
     val thumbnail: String,
 ) {
-    companion object {
-        fun from(data: BookInformationData): BookInformationResponse {
-            return BookInformationResponse(
-                data.title,
-                data.author,
-                data.isbn,
-                data.thumbnail,
-            )
-        }
-    }
+    constructor(data: BookInformationData) : this(
+        title = data.title,
+        author = data.author,
+        isbn = data.isbn,
+        thumbnail = data.thumbnail,
+    )
 }

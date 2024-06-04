@@ -17,7 +17,7 @@ class MemberController(
 ) {
     @GetMapping
     fun findAll(): ResponseEntity<List<MemberResponse>> {
-        return ResponseEntity.ok(memberService.findAll().map(MemberResponse::from))
+        return ResponseEntity.ok(memberService.findAll().map(::MemberResponse))
     }
 
     @DeleteMapping("/{memberId}")

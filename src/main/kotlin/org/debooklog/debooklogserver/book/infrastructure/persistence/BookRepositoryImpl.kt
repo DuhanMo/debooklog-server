@@ -14,7 +14,7 @@ class BookRepositoryImpl(
     }
 
     override fun save(book: Book): Book {
-        return bookJpaRepository.save(BookEntity.from(book)).toModel()
+        return bookJpaRepository.save(BookEntity(book)).toModel()
     }
 
     override fun getById(bookId: Long): Book {

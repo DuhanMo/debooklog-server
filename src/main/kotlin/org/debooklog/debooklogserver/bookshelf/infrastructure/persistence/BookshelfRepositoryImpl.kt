@@ -10,7 +10,7 @@ class BookshelfRepositoryImpl(
     private val bookshelfJpaRepository: BookshelfJpaRepository,
 ) : BookshelfRepository {
     override fun save(bookshelf: Bookshelf): Bookshelf {
-        return bookshelfJpaRepository.save(BookshelfEntity.from(bookshelf)).toModel()
+        return bookshelfJpaRepository.save(BookshelfEntity(bookshelf)).toModel()
     }
 
     override fun getById(id: Long): Bookshelf {

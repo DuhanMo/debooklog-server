@@ -32,7 +32,7 @@ class OAuth2ServiceImpl(
         val oAuth2UserData = oAuth2UserDataGetterContext.getOAuth2UserData(provider, code)
         val member = memberRepository.findByEmail(oAuth2UserData.email)
         if (member == null) {
-            memberRepository.save(Member.from(oAuth2UserData))
+            memberRepository.save(Member(oAuth2UserData))
         }
         return TokenData(
             jwtProvider.createAccessJwt(oAuth2UserData.email),

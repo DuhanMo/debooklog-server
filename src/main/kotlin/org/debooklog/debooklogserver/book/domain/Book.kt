@@ -17,6 +17,19 @@ data class Book(
     val deletedAt: LocalDateTime?,
     val isDeleted: Boolean,
 ) {
+    constructor(command: BookRegisterCommand, bookshelfId: Long) : this(
+        id = null,
+        memberId = command.memberId,
+        bookshelfId = bookshelfId,
+        title = command.title,
+        author = command.author,
+        isbn = command.isbn,
+        thumbnail = command.thumbnail,
+        likeCount = 0,
+        deletedAt = null,
+        isDeleted = false,
+    )
+
     fun validateForDuplicate(books: List<Book>) {
         if (this.isbn.intersect(books.flatMap { it.isbn }.toSet()).isNotEmpty()) {
             throw DuplicateBookException()
@@ -36,25 +49,5 @@ data class Book(
 
     fun decreaseLikeCount(): Book {
         return this.copy(likeCount = this.likeCount - 1, updatedAt = now())
-    }
-
-    companion object {
-        fun from(
-            command: BookRegisterCommand,
-            bookshelfId: Long,
-        ): Book {
-            return Book(
-                id = null,
-                memberId = command.memberId,
-                bookshelfId = bookshelfId,
-                title = command.title,
-                author = command.author,
-                isbn = command.isbn,
-                thumbnail = command.thumbnail,
-                likeCount = 0,
-                deletedAt = null,
-                isDeleted = false,
-            )
-        }
     }
 }

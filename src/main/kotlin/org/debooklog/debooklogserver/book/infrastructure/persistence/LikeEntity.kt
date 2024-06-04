@@ -35,6 +35,16 @@ class LikeEntity(
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) {
+    constructor(like: Like) : this(
+        id = like.id,
+        bookId = like.bookId,
+        memberId = like.memberId,
+        createdAt = like.createdAt,
+        updatedAt = like.updatedAt,
+        deletedAt = like.deletedAt,
+        isDeleted = like.isDeleted,
+    )
+
     fun toModel(): Like {
         return Like(
             id = id,
@@ -45,19 +55,5 @@ class LikeEntity(
             deletedAt = deletedAt,
             isDeleted = isDeleted,
         )
-    }
-
-    companion object {
-        fun from(like: Like): LikeEntity {
-            return LikeEntity(
-                id = like.id,
-                bookId = like.bookId,
-                memberId = like.memberId,
-                createdAt = like.createdAt,
-                updatedAt = like.updatedAt,
-                deletedAt = like.deletedAt,
-                isDeleted = like.isDeleted,
-            )
-        }
     }
 }

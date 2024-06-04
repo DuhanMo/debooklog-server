@@ -19,7 +19,7 @@ class BookServiceImpl(
         val bookshelf =
             bookshelfRepository.findByMemberId(command.memberId)
                 ?: throw NoSuchElementException("책장을 찾지 못했습니다")
-        val book = Book.from(command, bookshelf.id!!)
+        val book = Book(command, bookshelf.id!!)
         book.validateForDuplicate(books)
         bookRepository.save(book)
     }

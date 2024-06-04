@@ -29,7 +29,7 @@ class BookController(
 ) {
     @GetMapping("/search")
     fun search(title: String): ResponseEntity<ApiResponse<List<BookInformationResponse>>> {
-        return ResponseEntity.ok(ApiResponse.of(bookQueryService.search(title).map(BookInformationResponse::from)))
+        return ResponseEntity.ok(ApiResponse.of(bookQueryService.search(title).map(::BookInformationResponse)))
     }
 
     @PostMapping
@@ -56,14 +56,14 @@ class BookController(
     ): ResponseEntity<ApiResponse<List<BookListResponse>>> {
         return ResponseEntity.ok(
             ApiResponse.of(
-                bookQueryService.findAllByBookshelfId(bookshelfId).map(BookListResponse::from),
+                bookQueryService.findAllByBookshelfId(bookshelfId).map(::BookListResponse),
             ),
         )
     }
 
     @GetMapping("/ranks")
     fun findBookRanks(): ResponseEntity<ApiResponse<List<BookRankResponse>>> {
-        return ResponseEntity.ok(ApiResponse.of(bookQueryService.findBookRanks().map(BookRankResponse::from)))
+        return ResponseEntity.ok(ApiResponse.of(bookQueryService.findBookRanks().map(::BookRankResponse)))
     }
 
     @PostMapping("/{bookId}/like")

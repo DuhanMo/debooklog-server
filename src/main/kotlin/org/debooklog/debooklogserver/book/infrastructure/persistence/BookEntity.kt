@@ -49,6 +49,21 @@ class BookEntity(
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) : BaseEntity<BookEntity>() {
+    constructor(book: Book) : this(
+        id = book.id,
+        memberId = book.memberId,
+        bookshelfId = book.bookshelfId,
+        title = book.title,
+        author = book.author,
+        isbn = book.isbn,
+        thumbnail = book.thumbnail,
+        likeCount = book.likeCount,
+        createdAt = book.createdAt,
+        updatedAt = book.updatedAt,
+        deletedAt = book.deletedAt,
+        isDeleted = book.isDeleted,
+    )
+
     fun toModel(): Book {
         return Book(
             id = id,
@@ -64,24 +79,5 @@ class BookEntity(
             deletedAt = deletedAt,
             isDeleted = isDeleted,
         )
-    }
-
-    companion object {
-        fun from(book: Book): BookEntity {
-            return BookEntity(
-                id = book.id,
-                memberId = book.memberId,
-                bookshelfId = book.bookshelfId,
-                title = book.title,
-                author = book.author,
-                isbn = book.isbn,
-                thumbnail = book.thumbnail,
-                likeCount = book.likeCount,
-                createdAt = book.createdAt,
-                updatedAt = book.updatedAt,
-                deletedAt = book.deletedAt,
-                isDeleted = book.isDeleted,
-            )
-        }
     }
 }

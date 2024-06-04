@@ -13,18 +13,14 @@ data class BookListResponse(
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
 ) {
-    companion object {
-        fun from(book: Book): BookListResponse {
-            return BookListResponse(
-                id = book.id!!,
-                bookshelfId = book.bookshelfId,
-                title = book.title,
-                author = book.author,
-                isbn = book.isbn,
-                thumbnail = book.thumbnail,
-                createdAt = book.createdAt,
-                updatedAt = book.updatedAt,
-            )
-        }
-    }
+    constructor(book: Book) : this(
+        id = book.id!!,
+        bookshelfId = book.bookshelfId,
+        title = book.title,
+        author = book.author,
+        isbn = book.isbn,
+        thumbnail = book.thumbnail,
+        createdAt = book.createdAt,
+        updatedAt = book.updatedAt,
+    )
 }

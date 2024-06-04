@@ -23,7 +23,7 @@ class BookshelfController(
 ) {
     @GetMapping
     fun findAll(): ResponseEntity<ApiResponse<List<BookshelfResponse>>> {
-        return ResponseEntity.ok(ApiResponse.of(bookshelfQueryService.findAll().map(BookshelfResponse::from)))
+        return ResponseEntity.ok(ApiResponse.of(bookshelfQueryService.findAll().map(::BookshelfResponse)))
     }
 
     @PostMapping("/{bookshelfId}")

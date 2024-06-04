@@ -10,7 +10,7 @@ class MemberRepositoryImpl(
     private val memberJpaRepository: MemberJpaRepository,
 ) : MemberRepository {
     override fun save(member: Member): Member {
-        return memberJpaRepository.save(MemberEntity.from(member)).toModel()
+        return memberJpaRepository.save(MemberEntity(member)).toModel()
     }
 
     override fun getById(id: Long): Member {

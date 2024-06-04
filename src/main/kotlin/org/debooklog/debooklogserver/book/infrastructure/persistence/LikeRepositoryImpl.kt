@@ -9,7 +9,7 @@ class LikeRepositoryImpl(
     private val likeJpaRepository: LikeJpaRepository,
 ) : LikeRepository {
     override fun save(like: Like): Like {
-        return likeJpaRepository.save(LikeEntity.from(like)).toModel()
+        return likeJpaRepository.save(LikeEntity(like)).toModel()
     }
 
     override fun existsByBookIdAndMemberId(

@@ -19,7 +19,7 @@ class BookTest : BehaviorSpec({
             )
 
         When("Book 을 생성하면") {
-            val actual = Book.from(bookRegisterCommand, 1L)
+            val actual = Book(bookRegisterCommand, 1L)
 
             Then("Book 이 생성된다") {
                 actual.memberId shouldBe 1L

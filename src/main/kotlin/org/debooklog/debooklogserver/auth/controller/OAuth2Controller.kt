@@ -43,7 +43,7 @@ class OAuth2Controller(
     fun loginByAuthCode(
         @RequestBody request: OAuth2LoginRequest,
     ): ResponseEntity<LoginResponse> {
-        return ResponseEntity.ok(LoginResponse.from(oAuth2Service.loginByAuthCode(request.provider, request.code)))
+        return ResponseEntity.ok(LoginResponse(oAuth2Service.loginByAuthCode(request.provider, request.code)))
     }
 
     private fun getTargetUrl(

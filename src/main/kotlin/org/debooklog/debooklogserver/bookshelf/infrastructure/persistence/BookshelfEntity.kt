@@ -34,6 +34,16 @@ class BookshelfEntity(
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) : BaseEntity<BookshelfEntity>() {
+    constructor(bookshelf: Bookshelf) : this(
+        id = bookshelf.id,
+        memberId = bookshelf.memberId,
+        name = bookshelf.name,
+        createdAt = bookshelf.createdAt,
+        updatedAt = bookshelf.updatedAt,
+        deletedAt = bookshelf.deletedAt,
+        isDeleted = bookshelf.isDeleted,
+    )
+
     fun toModel(): Bookshelf {
         return Bookshelf(
             id = id,
@@ -44,18 +54,5 @@ class BookshelfEntity(
             deletedAt = deletedAt,
             isDeleted = isDeleted,
         )
-    }
-
-    companion object {
-        fun from(bookshelf: Bookshelf): BookshelfEntity =
-            BookshelfEntity(
-                id = bookshelf.id,
-                memberId = bookshelf.memberId,
-                name = bookshelf.name,
-                createdAt = bookshelf.createdAt,
-                updatedAt = bookshelf.updatedAt,
-                deletedAt = bookshelf.deletedAt,
-                isDeleted = bookshelf.isDeleted,
-            )
     }
 }
