@@ -31,4 +31,20 @@ class BookServiceImpl(
         val book = bookRepository.getById(bookId)
         bookRepository.save(book.delete(memberId))
     }
+
+    override fun reading(
+        bookId: Long,
+        memberId: Long,
+    ) {
+        val book = bookRepository.getById(bookId)
+        bookRepository.save(book.reading(memberId))
+    }
+
+    override fun done(
+        bookId: Long,
+        memberId: Long,
+    ) {
+        val book = bookRepository.getById(bookId)
+        bookRepository.save(book.done(memberId))
+    }
 }

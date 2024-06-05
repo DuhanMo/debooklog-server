@@ -4,12 +4,12 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions.assertThat
-import org.debooklog.debooklogserver.book.domain.Book
 import org.debooklog.debooklogserver.book.domain.BookRegisterCommand
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
 import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
 import org.debooklog.debooklogserver.bookshelf.mock.FakeBookshelfRepository
+import org.debooklog.debooklogserver.fixture.createBookFixture
 import java.time.LocalDateTime.now
 
 class BookServiceTest : BehaviorSpec({
@@ -51,7 +51,7 @@ class BookServiceTest : BehaviorSpec({
         val fakeBookRepository = FakeBookRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
         fakeBookRepository.save(
-            Book(
+            createBookFixture(
                 id = 1L,
                 memberId = 1L,
                 bookshelfId = 1L,
@@ -59,11 +59,6 @@ class BookServiceTest : BehaviorSpec({
                 author = "어니스트 해밍웨이",
                 isbn = listOf("1231231230"),
                 thumbnail = "thumbnail",
-                likeCount = 0,
-                createdAt = now(),
-                updatedAt = now(),
-                deletedAt = null,
-                isDeleted = false,
             ),
         )
         sut = BookServiceImpl(fakeBookRepository, fakeBookshelfRepository)

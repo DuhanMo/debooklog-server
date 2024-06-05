@@ -3,11 +3,14 @@ package org.debooklog.debooklogserver.book.infrastructure.persistence
 import jakarta.persistence.Column
 import jakarta.persistence.Convert
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType.STRING
+import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import org.debooklog.debooklogserver.book.domain.Book
+import org.debooklog.debooklogserver.book.domain.BookState
 import org.debooklog.debooklogserver.common.domain.BaseEntity
 import org.debooklog.debooklogserver.common.domain.StringListConverter
 import org.hibernate.annotations.SQLRestriction
@@ -38,6 +41,9 @@ class BookEntity(
     val thumbnail: String,
     @Column(name = "like_count")
     val likeCount: Int,
+    @Enumerated(STRING)
+    @Column(name = "state")
+    val state: BookState,
     @CreatedDate
     @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.MAX,
@@ -58,6 +64,7 @@ class BookEntity(
         isbn = book.isbn,
         thumbnail = book.thumbnail,
         likeCount = book.likeCount,
+        state = book.state,
         createdAt = book.createdAt,
         updatedAt = book.updatedAt,
         deletedAt = book.deletedAt,
@@ -74,6 +81,7 @@ class BookEntity(
             isbn = isbn,
             thumbnail = thumbnail,
             likeCount = likeCount,
+            state = state,
             createdAt = createdAt,
             updatedAt = updatedAt,
             deletedAt = deletedAt,

@@ -1,6 +1,8 @@
 package org.debooklog.debooklogserver.fixture
 
 import org.debooklog.debooklogserver.book.domain.Book
+import org.debooklog.debooklogserver.book.domain.BookState
+import org.debooklog.debooklogserver.book.domain.BookState.DONE
 import java.time.LocalDateTime
 
 fun createBookFixture(
@@ -11,6 +13,7 @@ fun createBookFixture(
     author: String = "author",
     isbn: List<String> = listOf("12345678"),
     thumbnail: String = "thumbnail",
+    state: BookState = DONE,
     likeCount: Int = 0,
     deletedAt: LocalDateTime? = null,
     isDeleted: Boolean = false,
@@ -24,6 +27,7 @@ fun createBookFixture(
         isbn = isbn,
         thumbnail = thumbnail,
         likeCount = likeCount,
+        state = state,
         deletedAt = deletedAt,
         isDeleted = isDeleted,
     )

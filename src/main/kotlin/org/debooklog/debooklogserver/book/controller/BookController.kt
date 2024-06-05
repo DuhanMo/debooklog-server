@@ -83,4 +83,22 @@ class BookController(
         likeService.remove(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
     }
+
+    @PostMapping("/{bookId}/reading")
+    fun readNow(
+        @PathVariable bookId: Long,
+        @LoginMember member: Member,
+    ): ResponseEntity<ApiResponse<Unit>> {
+        bookService.reading(bookId, member.id!!)
+        return ResponseEntity.ok(ApiResponse.empty())
+    }
+
+    @PostMapping("/{bookId}/done")
+    fun done(
+        @PathVariable bookId: Long,
+        @LoginMember member: Member,
+    ): ResponseEntity<ApiResponse<Unit>> {
+        bookService.done(bookId, member.id!!)
+        return ResponseEntity.ok(ApiResponse.empty())
+    }
 }

@@ -9,4 +9,14 @@ interface BookService {
         bookId: Long,
         memberId: Long,
     )
+
+    fun reading(
+        bookId: Long,
+        memberId: Long,
+    )
+
+    fun done(
+        bookId: Long,
+        memberId: Long,
+    )
 }

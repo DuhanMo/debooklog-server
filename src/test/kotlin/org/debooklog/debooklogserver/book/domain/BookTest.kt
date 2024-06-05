@@ -5,6 +5,8 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.debooklog.debooklogserver.book.domain.BookState.DONE
+import org.debooklog.debooklogserver.book.domain.BookState.READING
 import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class BookTest : BehaviorSpec({
@@ -125,6 +127,65 @@ class BookTest : BehaviorSpec({
             Then("예외 발생한다") {
                 shouldThrow<IllegalArgumentException> {
                     book.delete(99L)
+                }
+            }
+        }
+    }
+
+    Given("Book 읽는중 상태로 변경하는 경우") {
+        val book =
+            createBookFixture(
+                memberId = 1L,
+                bookshelfId = 1L,
+                state = DONE,
+            )
+
+        When("Book 읽는중 상태로 변경하면") {
+            val actual = book.reading(1L)
+
+            Then("READING 상태로 변경된다") {
+                actual.state shouldBe READING
+            }
+        }
+    }
+
+    Given("Book 완료 상태로 변경하는 경우") {
+        val book =
+            createBookFixture(
+                memberId = 1L,
+                bookshelfId = 1L,
+                state = READING,
+            )
+
+        When("Book 읽는중 상태로 변경하면") {
+            val actual = book.done(1L)
+
+            Then("READING 상태로 변경된다") {
+                actual.state shouldBe DONE
+            }
+        }
+    }
+
+    Given("권한이 없는 경우") {
+        val book =
+            createBookFixture(
+                memberId = 1L,
+                bookshelfId = 1L,
+                state = DONE,
+            )
+
+        When("Book 읽는중 상태로 변경하면") {
+            Then("예외 발생한다") {
+                shouldThrow<IllegalArgumentException> {
+                    book.reading(99L)
+                }
+            }
+        }
+
+        When("Book 완료 상태로 변경하면") {
+            Then("예외 발생한다") {
+                shouldThrow<IllegalArgumentException> {
+                    book.done(99L)
                 }
             }
         }
