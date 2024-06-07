@@ -21,6 +21,7 @@ class MemberServiceTest : BehaviorSpec({
                     email = "test@gmail.com",
                     socialId = "123123",
                     provider = GOOGLE,
+                    profileImage = "imageUrl.com",
                     createdAt = now(),
                     updatedAt = now(),
                     deletedAt = null,

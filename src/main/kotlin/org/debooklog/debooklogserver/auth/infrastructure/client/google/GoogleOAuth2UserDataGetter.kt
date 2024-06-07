@@ -24,7 +24,6 @@ class GoogleOAuth2UserDataGetter(
                 code = code,
                 redirectUri = properties.redirectUri,
             )
-        println(googleToken.accessToken)
         return googleClient.fetchUserInfo("Bearer ${googleToken.accessToken}")
             .toOAuth2UserData()
     }

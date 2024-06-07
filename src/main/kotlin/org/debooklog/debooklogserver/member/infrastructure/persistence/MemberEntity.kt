@@ -35,6 +35,8 @@ class MemberEntity(
     @Enumerated(STRING)
     @Column(name = "provider")
     val provider: SocialProvider,
+    @Column(name = "profile_image")
+    val profileImage: String?,
     @CreatedDate
     @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.MAX,
@@ -52,6 +54,7 @@ class MemberEntity(
         email = member.email,
         socialId = member.socialId,
         provider = member.provider,
+        profileImage = member.profileImage,
         createdAt = member.createdAt,
         updatedAt = member.updatedAt,
         deletedAt = null,
@@ -70,6 +73,7 @@ class MemberEntity(
             email = email,
             socialId = socialId,
             provider = provider,
+            profileImage = profileImage,
             createdAt = createdAt,
             updatedAt = updatedAt,
             deletedAt = deletedAt,

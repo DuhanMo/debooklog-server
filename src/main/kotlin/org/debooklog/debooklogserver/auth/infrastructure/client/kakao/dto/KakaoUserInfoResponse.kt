@@ -13,7 +13,13 @@ data class KakaoUserInfoResponse(
     val kakaoAccount: KakaoAccount,
 ) {
     fun toOAuth2UserData(): OAuth2UserData {
-        return OAuth2UserData(SocialProvider.KAKAO, id.toString(), kakaoAccount.email, properties.nickname)
+        return OAuth2UserData(
+            SocialProvider.KAKAO,
+            id.toString(),
+            kakaoAccount.email,
+            properties.nickname,
+            properties.profileImage,
+        )
     }
 
     @JsonNaming(value = SnakeCaseStrategy::class)

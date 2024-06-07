@@ -17,6 +17,7 @@ class FakeMemberRepository : MemberRepository {
                     email = member.email,
                     socialId = member.socialId,
                     provider = member.provider,
+                    profileImage = member.profileImage,
                     createdAt = now(),
                     updatedAt = now(),
                     deletedAt = null,

@@ -28,7 +28,15 @@ class OAuth2ServiceTest : BehaviorSpec({
                 oAuth2UserDataGetterContext =
                     OAuth2UserDataGetterContext(
                         setOf(
-                            FakeGoogleOAuth2UserDataGetter(OAuth2UserData(GOOGLE, "123456", "test@gmail.com", "구글길동")),
+                            FakeGoogleOAuth2UserDataGetter(
+                                OAuth2UserData(
+                                    GOOGLE,
+                                    "123456",
+                                    "test@gmail.com",
+                                    "구글길동",
+                                    "imageUrl.com",
+                                ),
+                            ),
                         ),
                     ),
                 jwtProvider = JwtProvider(JwtProperties("sercet", 2000L, 2000L)),
