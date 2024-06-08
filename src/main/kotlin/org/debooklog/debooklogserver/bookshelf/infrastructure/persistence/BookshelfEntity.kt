@@ -23,6 +23,8 @@ class BookshelfEntity(
     val memberId: Long,
     @Column(name = "name")
     val name: String,
+    @Column(name = "image_url")
+    val imageUrl: String?,
     @CreatedDate
     @Column(name = "created_at")
     var createdAt: LocalDateTime = LocalDateTime.MAX,
@@ -38,6 +40,7 @@ class BookshelfEntity(
         id = bookshelf.id,
         memberId = bookshelf.memberId,
         name = bookshelf.name,
+        imageUrl = bookshelf.imageUrl,
         createdAt = bookshelf.createdAt,
         updatedAt = bookshelf.updatedAt,
         deletedAt = bookshelf.deletedAt,
@@ -49,6 +52,7 @@ class BookshelfEntity(
             id = id,
             memberId = memberId,
             name = name,
+            imageUrl = imageUrl,
             createdAt = createdAt,
             updatedAt = updatedAt,
             deletedAt = deletedAt,

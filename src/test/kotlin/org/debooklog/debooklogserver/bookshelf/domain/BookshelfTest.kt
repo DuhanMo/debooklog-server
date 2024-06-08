@@ -15,6 +15,7 @@ class BookshelfTest : BehaviorSpec({
                     id = null,
                     memberId = 1L,
                     name = "책장",
+                    imageUrl = "imageUrl.com",
                     createdAt = now(),
                     updatedAt = now(),
                     deletedAt = null,
@@ -31,6 +32,7 @@ class BookshelfTest : BehaviorSpec({
             val bookshelf =
                 Bookshelf(
                     memberId = 1L,
+                    imageUrl = "imageUrl.com",
                     name = "책장",
                     now = now(),
                 )
@@ -49,6 +51,7 @@ class BookshelfTest : BehaviorSpec({
                 id = null,
                 memberId = 1L,
                 name = "책장",
+                imageUrl = "imageUrl.com",
                 createdAt = now,
                 updatedAt = now,
                 deletedAt = null,
@@ -78,6 +81,7 @@ class BookshelfTest : BehaviorSpec({
                 id = null,
                 memberId = 1L,
                 name = "책장",
+                imageUrl = "imageUrl.com",
                 createdAt = now,
                 updatedAt = now,
                 deletedAt = null,

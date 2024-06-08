@@ -16,6 +16,7 @@ class BookshelfServiceTest : BehaviorSpec({
                 id = 1L,
                 memberId = 1L,
                 name = "평화로운 길동의 책장",
+                imageUrl = "imageUrl.com",
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = null,

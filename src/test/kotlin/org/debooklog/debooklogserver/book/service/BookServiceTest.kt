@@ -23,6 +23,7 @@ class BookServiceTest : BehaviorSpec({
             Bookshelf(
                 memberId = 1L,
                 name = BookshelfNameGenerator.generate("홍길동"),
+                imageUrl = "imageUrl.com",
                 now = now(),
             ),
         )

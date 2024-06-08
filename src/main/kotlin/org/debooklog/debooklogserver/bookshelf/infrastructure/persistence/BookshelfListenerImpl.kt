@@ -25,6 +25,7 @@ class BookshelfListenerImpl(
             Bookshelf(
                 memberId = member.id!!,
                 name = bookshelfName,
+                imageUrl = member.profileImage,
                 now = now(),
             )
         bookshelfRepository.save(bookshelf)

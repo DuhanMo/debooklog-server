@@ -7,15 +7,17 @@ data class Bookshelf(
     val id: Long?,
     val memberId: Long,
     val name: String,
+    val imageUrl: String?,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
     val deletedAt: LocalDateTime?,
     val isDeleted: Boolean,
 ) {
-    constructor(memberId: Long, name: String, now: LocalDateTime) : this(
+    constructor(memberId: Long, name: String, imageUrl: String?, now: LocalDateTime) : this(
         id = null,
         memberId = memberId,
         name = name,
+        imageUrl = imageUrl,
         createdAt = now,
         updatedAt = now,
         deletedAt = null,
