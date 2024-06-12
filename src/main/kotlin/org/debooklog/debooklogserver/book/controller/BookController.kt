@@ -1,7 +1,6 @@
 package org.debooklog.debooklogserver.book.controller
 
 import org.debooklog.debooklogserver.book.controller.dto.BookInformationResponse
-import org.debooklog.debooklogserver.book.controller.dto.BookListResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookRankResponse
 import org.debooklog.debooklogserver.book.controller.dto.BookRegisterRequest
 import org.debooklog.debooklogserver.book.controller.port.BookQueryService
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -48,17 +46,6 @@ class BookController(
     ): ResponseEntity<ApiResponse<Unit>> {
         bookService.delete(bookId, member.id!!)
         return ResponseEntity.ok(ApiResponse.empty())
-    }
-
-    @GetMapping
-    fun findAllByBookshelfId(
-        @RequestParam(name = "bookshelfId", required = true) bookshelfId: Long,
-    ): ResponseEntity<ApiResponse<List<BookListResponse>>> {
-        return ResponseEntity.ok(
-            ApiResponse.of(
-                bookQueryService.findAllByBookshelfId(bookshelfId).map(::BookListResponse),
-            ),
-        )
     }
 
     @GetMapping("/ranks")

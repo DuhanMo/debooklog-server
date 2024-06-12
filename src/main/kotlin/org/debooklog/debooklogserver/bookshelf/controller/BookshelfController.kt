@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.bookshelf.controller
 
+import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfDetailResponse
 import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfResponse
 import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfUpdateRequest
 import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQueryService
@@ -24,6 +25,13 @@ class BookshelfController(
     @GetMapping
     fun findAll(): ResponseEntity<ApiResponse<List<BookshelfResponse>>> {
         return ResponseEntity.ok(ApiResponse.of(bookshelfQueryService.findAll().map(::BookshelfResponse)))
+    }
+
+    @GetMapping("/{bookshelfId}")
+    fun find(
+        @PathVariable bookshelfId: Long,
+    ): ResponseEntity<ApiResponse<BookshelfDetailResponse>> {
+        return ResponseEntity.ok(ApiResponse.of(BookshelfDetailResponse(bookshelfQueryService.find(bookshelfId))))
     }
 
     @PostMapping("/{bookshelfId}")
