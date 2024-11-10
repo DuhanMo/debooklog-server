@@ -50,5 +50,5 @@ class OAuth2Controller(
         code: String,
         state: String?,
         provider: SocialProvider,
-    ) = "http://localhost:3000?code=$code&state=${state ?: ""}&provider=$provider"
+    ) = "http://localhost:3000/login?code=$code&state=${state ?: ""}&provider=$provider"
 }
