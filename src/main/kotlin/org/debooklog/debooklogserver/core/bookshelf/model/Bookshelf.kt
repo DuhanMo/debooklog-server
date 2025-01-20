@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.bookshelf.domain
+package org.debooklog.debooklogserver.core.bookshelf.model
 
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now

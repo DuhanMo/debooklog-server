@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.bookshelf.controller.dto
+package org.debooklog.debooklogserver.adapter.controller.bookshelf
 
-import org.debooklog.debooklogserver.bookshelf.service.dto.BookshelfWithBooks
+import org.debooklog.debooklogserver.core.bookshelf.service.BookshelfWithBooks
 import java.time.LocalDateTime
 
 data class BookshelfDetailResponse(

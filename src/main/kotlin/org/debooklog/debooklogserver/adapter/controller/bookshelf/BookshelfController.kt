@@ -1,12 +1,9 @@
-package org.debooklog.debooklogserver.bookshelf.controller
+package org.debooklog.debooklogserver.adapter.controller.bookshelf
 
-import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfDetailResponse
-import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfResponse
-import org.debooklog.debooklogserver.bookshelf.controller.dto.BookshelfUpdateRequest
-import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQueryService
-import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfService
+import org.debooklog.debooklogserver.bookshelf.service.BookshelfQueryService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.debooklog.debooklogserver.common.security.LoginMember
+import org.debooklog.debooklogserver.core.bookshelf.service.BookshelfService
 import org.debooklog.debooklogserver.core.member.model.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

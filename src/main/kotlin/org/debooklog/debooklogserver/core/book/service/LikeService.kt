@@ -1,8 +1,8 @@
 package org.debooklog.debooklogserver.core.book.service
 
-import org.debooklog.debooklogserver.bookshelf.service.port.LikeRepository
 import org.debooklog.debooklogserver.core.book.model.Like
 import org.debooklog.debooklogserver.core.book.port.BookRepository
+import org.debooklog.debooklogserver.core.bookshelf.port.LikeRepository
 import org.springframework.stereotype.Service
 
 @Service

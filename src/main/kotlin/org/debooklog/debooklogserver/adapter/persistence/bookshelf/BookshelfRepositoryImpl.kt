@@ -1,7 +1,7 @@
-package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.bookshelf
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 

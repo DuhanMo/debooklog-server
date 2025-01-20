@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.bookshelf.controller.dto
+package org.debooklog.debooklogserver.adapter.controller.bookshelf
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 
 data class BookshelfResponse(
     val id: Long,

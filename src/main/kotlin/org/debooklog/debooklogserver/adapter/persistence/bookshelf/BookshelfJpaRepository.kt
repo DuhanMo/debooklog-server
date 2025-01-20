@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.bookshelf
 
 import org.springframework.data.jpa.repository.JpaRepository
 

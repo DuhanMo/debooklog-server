@@ -5,11 +5,11 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
-import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
 import org.debooklog.debooklogserver.bookshelf.mock.FakeBookshelfRepository
 import org.debooklog.debooklogserver.core.book.model.BookRegisterCommand
 import org.debooklog.debooklogserver.core.book.service.BookService
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.model.BookshelfNameGenerator
 import org.debooklog.debooklogserver.fixture.createBookFixture
 import java.time.LocalDateTime.now
 

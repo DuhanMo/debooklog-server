@@ -1,9 +1,9 @@
 package org.debooklog.debooklogserver.core.book.service
 
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
 import org.debooklog.debooklogserver.core.book.model.Book
 import org.debooklog.debooklogserver.core.book.model.BookRegisterCommand
 import org.debooklog.debooklogserver.core.book.port.BookRepository
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.bookshelf.mock
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
 import java.time.LocalDateTime.now
 
 class FakeBookshelfRepository : BookshelfRepository {

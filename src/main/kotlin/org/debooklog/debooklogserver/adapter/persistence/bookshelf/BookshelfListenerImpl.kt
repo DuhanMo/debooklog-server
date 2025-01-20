@@ -1,9 +1,9 @@
-package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.bookshelf
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
-import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfListener
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.model.BookshelfNameGenerator
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfListener
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
 import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.debooklog.debooklogserver.core.member.service.MemberCreatedEvent
 import org.springframework.context.event.EventListener

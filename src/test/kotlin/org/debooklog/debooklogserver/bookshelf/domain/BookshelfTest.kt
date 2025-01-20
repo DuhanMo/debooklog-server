@@ -5,6 +5,7 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 import java.time.LocalDateTime.now
 
 class BookshelfTest : BehaviorSpec({

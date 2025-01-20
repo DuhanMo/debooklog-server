@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.bookshelf.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.bookshelf
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.common.domain.BaseEntity
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime

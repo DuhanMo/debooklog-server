@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.bookshelf.service.port
+package org.debooklog.debooklogserver.core.bookshelf.port
 
 import org.debooklog.debooklogserver.core.book.model.Like
 

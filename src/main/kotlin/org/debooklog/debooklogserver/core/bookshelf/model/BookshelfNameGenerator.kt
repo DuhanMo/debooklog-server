@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.bookshelf.domain
+package org.debooklog.debooklogserver.core.bookshelf.model
 
 import kotlin.random.Random
 

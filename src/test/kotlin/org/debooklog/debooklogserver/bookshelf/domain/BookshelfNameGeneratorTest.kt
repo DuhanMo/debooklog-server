@@ -2,6 +2,7 @@ package org.debooklog.debooklogserver.bookshelf.domain
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
+import org.debooklog.debooklogserver.core.bookshelf.model.BookshelfNameGenerator
 
 class BookshelfNameGeneratorTest : BehaviorSpec({
     Given("BookshelfNameGenerator 의 generate를 호출하는 경우") {

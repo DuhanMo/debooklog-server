@@ -1,7 +1,7 @@
-package org.debooklog.debooklogserver.bookshelf.service.dto
+package org.debooklog.debooklogserver.core.bookshelf.service
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.core.book.model.Book
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 
 data class BookshelfWithBooks(
     val bookshelf: Bookshelf,

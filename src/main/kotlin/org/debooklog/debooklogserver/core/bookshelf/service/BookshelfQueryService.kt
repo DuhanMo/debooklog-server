@@ -1,24 +1,23 @@
 package org.debooklog.debooklogserver.bookshelf.service
 
-import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQueryService
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
-import org.debooklog.debooklogserver.bookshelf.service.dto.BookshelfWithBooks
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
 import org.debooklog.debooklogserver.core.book.port.BookRepository
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.bookshelf.service.BookshelfWithBooks
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional(readOnly = true)
-class BookshelfQueryServiceImpl(
+class BookshelfQueryService(
     private val bookshelfRepository: BookshelfRepository,
     private val bookRepository: BookRepository,
-) : BookshelfQueryService {
-    override fun findAll(): List<Bookshelf> {
+) {
+    fun findAll(): List<Bookshelf> {
         return bookshelfRepository.findAll()
     }
 
-    override fun find(bookshelfId: Long): BookshelfWithBooks {
+    fun find(bookshelfId: Long): BookshelfWithBooks {
         return BookshelfWithBooks(
             bookshelf = bookshelfRepository.getById(bookshelfId),
             books = bookRepository.findAllByBookshelfId(bookshelfId),

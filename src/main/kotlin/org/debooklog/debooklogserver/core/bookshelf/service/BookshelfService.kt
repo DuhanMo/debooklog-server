@@ -1,16 +1,15 @@
-package org.debooklog.debooklogserver.bookshelf.service
+package org.debooklog.debooklogserver.core.bookshelf.service
 
-import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfService
-import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.bookshelf.port.BookshelfRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class BookshelfServiceImpl(
+class BookshelfService(
     private val bookshelfRepository: BookshelfRepository,
-) : BookshelfService {
+) {
     @Transactional
-    override fun update(
+    fun update(
         bookshelfId: Long,
         name: String,
         memberId: Long,

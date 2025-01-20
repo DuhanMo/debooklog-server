@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.bookshelf.service.port
+package org.debooklog.debooklogserver.core.bookshelf.port
 
-import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 
 interface BookshelfRepository {
     fun save(bookshelf: Bookshelf): Bookshelf
