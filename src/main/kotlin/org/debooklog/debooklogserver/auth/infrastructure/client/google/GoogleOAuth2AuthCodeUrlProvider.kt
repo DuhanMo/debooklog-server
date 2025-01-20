@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.auth.infrastructure.client.google
 
 import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderStrategy
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.springframework.stereotype.Component
 import org.springframework.web.util.UriComponentsBuilder
 

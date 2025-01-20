@@ -8,7 +8,7 @@ import org.debooklog.debooklogserver.book.controller.port.BookService
 import org.debooklog.debooklogserver.book.controller.port.LikeService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.debooklog.debooklogserver.common.security.LoginMember
-import org.debooklog.debooklogserver.member.domain.Member
+import org.debooklog.debooklogserver.core.member.model.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

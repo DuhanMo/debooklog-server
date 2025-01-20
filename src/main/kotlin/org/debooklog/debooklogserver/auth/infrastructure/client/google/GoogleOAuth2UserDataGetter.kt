@@ -2,8 +2,8 @@ package org.debooklog.debooklogserver.auth.infrastructure.client.google
 
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterStrategy
-import org.debooklog.debooklogserver.member.domain.SocialProvider
-import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 import org.springframework.stereotype.Component
 
 @Component

@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.auth.controller.port
 
 import org.debooklog.debooklogserver.auth.domain.TokenData
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 
 interface OAuth2Service {
     fun getRedirectUrl(

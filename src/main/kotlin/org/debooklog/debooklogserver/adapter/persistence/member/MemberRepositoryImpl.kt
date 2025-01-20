@@ -1,7 +1,7 @@
-package org.debooklog.debooklogserver.member.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.member
 
-import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.service.port.MemberRepository
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 

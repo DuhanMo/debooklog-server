@@ -4,8 +4,8 @@ import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
 import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfListener
 import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
-import org.debooklog.debooklogserver.member.domain.MemberCreatedEvent
-import org.debooklog.debooklogserver.member.service.port.MemberRepository
+import org.debooklog.debooklogserver.core.member.port.MemberRepository
+import org.debooklog.debooklogserver.core.member.service.MemberCreatedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional

@@ -3,7 +3,7 @@ package org.debooklog.debooklogserver.auth.infrastructure.client.kakao.dto
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy
 import com.fasterxml.jackson.databind.annotation.JsonNaming
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 
 @JsonNaming(value = SnakeCaseStrategy::class)
 data class KakaoUserInfoResponse(

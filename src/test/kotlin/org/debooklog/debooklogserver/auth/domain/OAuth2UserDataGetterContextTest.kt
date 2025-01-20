@@ -3,7 +3,7 @@ package org.debooklog.debooklogserver.auth.domain
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
-import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 
 class OAuth2UserDataGetterContextTest : BehaviorSpec({
 

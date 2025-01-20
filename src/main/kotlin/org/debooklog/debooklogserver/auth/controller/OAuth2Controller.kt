@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpServletResponse
 import org.debooklog.debooklogserver.auth.controller.dto.LoginResponse
 import org.debooklog.debooklogserver.auth.controller.dto.OAuth2LoginRequest
 import org.debooklog.debooklogserver.auth.controller.port.OAuth2Service
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

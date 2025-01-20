@@ -2,8 +2,8 @@ package org.debooklog.debooklogserver.auth.infrastructure.client.kakao
 
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterStrategy
-import org.debooklog.debooklogserver.member.domain.SocialProvider
-import org.debooklog.debooklogserver.member.domain.SocialProvider.KAKAO
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider.KAKAO
 import org.springframework.stereotype.Component
 
 @Component

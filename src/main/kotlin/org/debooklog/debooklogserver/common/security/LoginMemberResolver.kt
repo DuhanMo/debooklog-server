@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.common.security
 
-import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.service.port.MemberRepository
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.springframework.core.MethodParameter
 import org.springframework.http.HttpHeaders.AUTHORIZATION
 import org.springframework.stereotype.Component

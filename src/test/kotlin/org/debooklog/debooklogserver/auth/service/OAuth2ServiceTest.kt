@@ -9,7 +9,7 @@ import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvid
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
 import org.debooklog.debooklogserver.common.security.JwtProperties
 import org.debooklog.debooklogserver.common.security.JwtProvider
-import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 import org.debooklog.debooklogserver.member.mock.FakeMemberRepository
 
 class OAuth2ServiceTest : BehaviorSpec({

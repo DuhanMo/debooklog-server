@@ -1,7 +1,7 @@
-package org.debooklog.debooklogserver.member.controller.dto
+package org.debooklog.debooklogserver.adapter.controller.member
 
-import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import java.time.LocalDateTime
 
 data class MemberResponse(

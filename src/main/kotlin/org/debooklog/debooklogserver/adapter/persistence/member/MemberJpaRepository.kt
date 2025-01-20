@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.member.infrastructure.persistence
+package org.debooklog.debooklogserver.adapter.persistence.member
 
 import org.springframework.data.jpa.repository.JpaRepository
 

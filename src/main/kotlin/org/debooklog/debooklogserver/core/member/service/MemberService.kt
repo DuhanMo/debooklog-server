@@ -1,21 +1,21 @@
-package org.debooklog.debooklogserver.member.service.port
+package org.debooklog.debooklogserver.core.member.service
 
-import org.debooklog.debooklogserver.member.controller.port.MemberService
-import org.debooklog.debooklogserver.member.domain.Member
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class MemberServiceImpl(
+class MemberService(
     private val memberRepository: MemberRepository,
-) : MemberService {
+) {
     @Transactional(readOnly = true)
-    override fun findAll(): List<Member> {
+    fun findAll(): List<Member> {
         return memberRepository.findAll()
     }
 
     @Transactional
-    override fun withdrawal(memberId: Long) {
+    fun withdrawal(memberId: Long) {
         val member = memberRepository.getById(memberId)
         memberRepository.save(member.withdrawal())
     }

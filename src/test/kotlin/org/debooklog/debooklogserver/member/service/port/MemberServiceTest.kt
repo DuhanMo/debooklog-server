@@ -3,13 +3,14 @@ package org.debooklog.debooklogserver.member.service.port
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.domain.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
+import org.debooklog.debooklogserver.core.member.service.MemberService
 import org.debooklog.debooklogserver.member.mock.FakeMemberRepository
 import java.time.LocalDateTime.now
 
 class MemberServiceTest : BehaviorSpec({
-    lateinit var sut: MemberServiceImpl
+    lateinit var sut: MemberService
 
     Given("회원탈퇴 하는 경우") {
         val fakeMemberRepository = FakeMemberRepository()
@@ -28,7 +29,7 @@ class MemberServiceTest : BehaviorSpec({
                     isDeleted = false,
                 ),
             )
-        sut = MemberServiceImpl(fakeMemberRepository)
+        sut = MemberService(fakeMemberRepository)
 
         When("회원 탈퇴하면") {
             sut.withdrawal(savedMember.id!!)

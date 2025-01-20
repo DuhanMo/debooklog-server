@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.auth.domain
 
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.springframework.stereotype.Component
 
 // todo: 클래스 위치 변경. 도메인에서 제외

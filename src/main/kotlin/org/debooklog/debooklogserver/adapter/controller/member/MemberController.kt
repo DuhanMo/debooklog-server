@@ -1,8 +1,7 @@
-package org.debooklog.debooklogserver.member.controller
+package org.debooklog.debooklogserver.adapter.controller.member
 
 import org.debooklog.debooklogserver.common.controller.ApiResponse
-import org.debooklog.debooklogserver.member.controller.dto.MemberResponse
-import org.debooklog.debooklogserver.member.controller.port.MemberService
+import org.debooklog.debooklogserver.core.member.service.MemberService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

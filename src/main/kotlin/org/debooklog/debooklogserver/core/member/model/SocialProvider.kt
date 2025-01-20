@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.member.domain
+package org.debooklog.debooklogserver.core.member.model
 
 enum class SocialProvider {
     GOOGLE,

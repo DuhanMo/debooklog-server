@@ -7,7 +7,7 @@ import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQuerySer
 import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfService
 import org.debooklog.debooklogserver.common.controller.ApiResponse
 import org.debooklog.debooklogserver.common.security.LoginMember
-import org.debooklog.debooklogserver.member.domain.Member
+import org.debooklog.debooklogserver.core.member.model.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

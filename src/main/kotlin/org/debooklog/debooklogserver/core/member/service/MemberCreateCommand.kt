@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.member.domain
+package org.debooklog.debooklogserver.core.member.service
 
 data class MemberCreateCommand(
     val name: String,

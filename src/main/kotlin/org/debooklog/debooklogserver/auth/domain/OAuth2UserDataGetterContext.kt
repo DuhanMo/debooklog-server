@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.auth.domain
 
-import org.debooklog.debooklogserver.member.domain.SocialProvider
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.springframework.stereotype.Component
 
 @Component

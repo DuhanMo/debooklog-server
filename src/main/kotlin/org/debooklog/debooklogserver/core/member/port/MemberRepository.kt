@@ -1,6 +1,6 @@
-package org.debooklog.debooklogserver.member.service.port
+package org.debooklog.debooklogserver.core.member.port
 
-import org.debooklog.debooklogserver.member.domain.Member
+import org.debooklog.debooklogserver.core.member.model.Member
 
 interface MemberRepository {
     fun save(member: Member): Member

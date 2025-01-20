@@ -5,9 +5,9 @@ import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderContex
 import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.auth.domain.TokenData
 import org.debooklog.debooklogserver.common.security.JwtProvider
-import org.debooklog.debooklogserver.member.domain.Member
-import org.debooklog.debooklogserver.member.domain.SocialProvider
-import org.debooklog.debooklogserver.member.service.port.MemberRepository
+import org.debooklog.debooklogserver.core.member.model.Member
+import org.debooklog.debooklogserver.core.member.model.SocialProvider
+import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
