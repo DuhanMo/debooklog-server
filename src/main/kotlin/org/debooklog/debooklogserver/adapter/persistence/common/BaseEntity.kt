@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.common.domain
+package org.debooklog.debooklogserver.adapter.persistence.common
 
 import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass

@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.core.auth.service
 
-import org.debooklog.debooklogserver.common.security.JwtProvider
+import org.debooklog.debooklogserver.adapter.security.JwtProvider
 import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.core.auth.model.TokenData

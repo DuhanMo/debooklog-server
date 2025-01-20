@@ -9,8 +9,8 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import org.debooklog.debooklogserver.common.domain.BaseEntity
-import org.debooklog.debooklogserver.common.domain.StringListConverter
+import org.debooklog.debooklogserver.adapter.persistence.common.BaseEntity
+import org.debooklog.debooklogserver.adapter.persistence.common.StringListConverter
 import org.debooklog.debooklogserver.core.book.model.Book
 import org.debooklog.debooklogserver.core.book.model.BookState
 import org.hibernate.annotations.SQLRestriction

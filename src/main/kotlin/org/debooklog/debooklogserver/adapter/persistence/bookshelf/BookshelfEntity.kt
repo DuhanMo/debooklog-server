@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import org.debooklog.debooklogserver.common.domain.BaseEntity
+import org.debooklog.debooklogserver.adapter.persistence.common.BaseEntity
 import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate

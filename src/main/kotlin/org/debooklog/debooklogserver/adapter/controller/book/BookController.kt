@@ -1,7 +1,7 @@
 package org.debooklog.debooklogserver.adapter.controller.book
 
-import org.debooklog.debooklogserver.common.controller.ApiResponse
-import org.debooklog.debooklogserver.common.security.LoginMember
+import org.debooklog.debooklogserver.adapter.controller.common.ApiResponse
+import org.debooklog.debooklogserver.adapter.security.LoginMember
 import org.debooklog.debooklogserver.core.book.service.BookQueryService
 import org.debooklog.debooklogserver.core.book.service.BookService
 import org.debooklog.debooklogserver.core.book.service.LikeService

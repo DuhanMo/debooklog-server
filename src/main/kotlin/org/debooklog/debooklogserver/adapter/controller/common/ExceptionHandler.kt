@@ -1,8 +1,8 @@
-package org.debooklog.debooklogserver.common.controller
+package org.debooklog.debooklogserver.adapter.controller.common
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException
 import jakarta.persistence.EntityNotFoundException
-import org.debooklog.debooklogserver.common.security.LoginFailedException
+import org.debooklog.debooklogserver.adapter.security.LoginFailedException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode

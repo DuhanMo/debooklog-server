@@ -2,10 +2,10 @@ package org.debooklog.debooklogserver.auth.service
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
+import org.debooklog.debooklogserver.adapter.security.JwtProperties
+import org.debooklog.debooklogserver.adapter.security.JwtProvider
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvider
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
-import org.debooklog.debooklogserver.common.security.JwtProperties
-import org.debooklog.debooklogserver.common.security.JwtProvider
 import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserData
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserDataGetterContext

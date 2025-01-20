@@ -1,8 +1,8 @@
 package org.debooklog.debooklogserver.adapter.controller.bookshelf
 
+import org.debooklog.debooklogserver.adapter.controller.common.ApiResponse
+import org.debooklog.debooklogserver.adapter.security.LoginMember
 import org.debooklog.debooklogserver.bookshelf.service.BookshelfQueryService
-import org.debooklog.debooklogserver.common.controller.ApiResponse
-import org.debooklog.debooklogserver.common.security.LoginMember
 import org.debooklog.debooklogserver.core.bookshelf.service.BookshelfService
 import org.debooklog.debooklogserver.core.member.model.Member
 import org.springframework.http.ResponseEntity

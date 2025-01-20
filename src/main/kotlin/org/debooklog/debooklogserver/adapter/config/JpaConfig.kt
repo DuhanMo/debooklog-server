@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.common.config
+package org.debooklog.debooklogserver.adapter.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing

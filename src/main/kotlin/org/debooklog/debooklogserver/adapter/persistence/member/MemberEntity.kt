@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.PostPersist
 import jakarta.persistence.Table
-import org.debooklog.debooklogserver.common.domain.BaseEntity
+import org.debooklog.debooklogserver.adapter.persistence.common.BaseEntity
 import org.debooklog.debooklogserver.core.member.model.Member
 import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.debooklog.debooklogserver.core.member.service.MemberCreatedEvent

@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.common.security
+package org.debooklog.debooklogserver.adapter.security
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

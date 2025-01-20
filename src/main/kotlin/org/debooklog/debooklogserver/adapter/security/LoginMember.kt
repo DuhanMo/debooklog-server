@@ -1,4 +1,4 @@
-package org.debooklog.debooklogserver.common.security
+package org.debooklog.debooklogserver.adapter.security
 
 @Target(AnnotationTarget.VALUE_PARAMETER)
 @Retention(AnnotationRetention.RUNTIME)
