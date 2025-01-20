@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvider
+import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
 import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 import org.debooklog.debooklogserver.core.member.model.SocialProvider.KAKAO
 

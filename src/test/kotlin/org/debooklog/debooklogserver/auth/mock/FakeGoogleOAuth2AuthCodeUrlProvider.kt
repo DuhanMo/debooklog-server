@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.auth.mock
 
-import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderStrategy
+import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderStrategy
 import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 

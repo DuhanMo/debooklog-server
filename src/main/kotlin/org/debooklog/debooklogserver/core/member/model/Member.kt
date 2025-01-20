@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.core.member.model
 
-import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
+import org.debooklog.debooklogserver.core.auth.model.OAuth2UserData
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 

@@ -2,23 +2,24 @@ package org.debooklog.debooklogserver.auth.service
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
-import org.debooklog.debooklogserver.auth.domain.OAuth2AuthCodeUrlProviderContext
-import org.debooklog.debooklogserver.auth.domain.OAuth2UserData
-import org.debooklog.debooklogserver.auth.domain.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2AuthCodeUrlProvider
 import org.debooklog.debooklogserver.auth.mock.FakeGoogleOAuth2UserDataGetter
 import org.debooklog.debooklogserver.common.security.JwtProperties
 import org.debooklog.debooklogserver.common.security.JwtProvider
+import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
+import org.debooklog.debooklogserver.core.auth.model.OAuth2UserData
+import org.debooklog.debooklogserver.core.auth.model.OAuth2UserDataGetterContext
+import org.debooklog.debooklogserver.core.auth.service.OAuth2Service
 import org.debooklog.debooklogserver.core.member.model.SocialProvider.GOOGLE
 import org.debooklog.debooklogserver.member.mock.FakeMemberRepository
 
 class OAuth2ServiceTest : BehaviorSpec({
 
-    lateinit var sut: OAuth2ServiceImpl
+    lateinit var sut: OAuth2Service
 
     Given("AuthCodeProvider가 정상 redirect url 반환하는 경우") {
         sut =
-            OAuth2ServiceImpl(
+            OAuth2Service(
                 oAuth2AuthCodeUrlProviderContext =
                     OAuth2AuthCodeUrlProviderContext(
                         setOf(
