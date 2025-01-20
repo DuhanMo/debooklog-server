@@ -1,6 +1,6 @@
 package org.debooklog.debooklogserver.bookshelf.service.port
 
-import org.debooklog.debooklogserver.book.domain.Like
+import org.debooklog.debooklogserver.core.book.model.Like
 
 interface LikeRepository {
     fun save(like: Like): Like

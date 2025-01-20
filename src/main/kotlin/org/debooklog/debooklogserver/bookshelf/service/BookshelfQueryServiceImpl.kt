@@ -1,10 +1,10 @@
 package org.debooklog.debooklogserver.bookshelf.service
 
-import org.debooklog.debooklogserver.book.service.port.BookRepository
 import org.debooklog.debooklogserver.bookshelf.controller.port.BookshelfQueryService
 import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.bookshelf.service.dto.BookshelfWithBooks
 import org.debooklog.debooklogserver.bookshelf.service.port.BookshelfRepository
+import org.debooklog.debooklogserver.core.book.port.BookRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

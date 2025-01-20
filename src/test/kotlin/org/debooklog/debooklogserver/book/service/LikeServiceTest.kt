@@ -3,20 +3,21 @@ package org.debooklog.debooklogserver.book.service
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.debooklog.debooklogserver.book.domain.Like
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
 import org.debooklog.debooklogserver.book.mock.FakeLikeRepository
+import org.debooklog.debooklogserver.core.book.model.Like
+import org.debooklog.debooklogserver.core.book.service.LikeService
 import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class LikeServiceTest : BehaviorSpec({
-    lateinit var sut: LikeServiceImpl
+    lateinit var sut: LikeService
 
     Given("좋아요를 생성하는 경우") {
         val fakeBookRepository = FakeBookRepository()
         val fakeLikeRepository = FakeLikeRepository()
         fakeBookRepository.save(createBookFixture(id = 1, memberId = 1L, bookshelfId = 1L))
 
-        sut = LikeServiceImpl(fakeBookRepository, fakeLikeRepository)
+        sut = LikeService(fakeBookRepository, fakeLikeRepository)
 
         When("좋아요를 생성하면") {
             sut.create(1L, 1L)
@@ -45,7 +46,7 @@ class LikeServiceTest : BehaviorSpec({
         fakeBookRepository.save(createBookFixture(id = 1, memberId = 1L, bookshelfId = 1L, likeCount = 100))
         fakeLikeRepository.save(Like(1L, 1L))
 
-        sut = LikeServiceImpl(fakeBookRepository, fakeLikeRepository)
+        sut = LikeService(fakeBookRepository, fakeLikeRepository)
 
         When("좋아요를 제거하면") {
             sut.remove(1L, 1L)
@@ -65,7 +66,7 @@ class LikeServiceTest : BehaviorSpec({
         val fakeLikeRepository = FakeLikeRepository()
         fakeBookRepository.save(createBookFixture(id = 1, memberId = 1L, bookshelfId = 1L, likeCount = 100))
 
-        sut = LikeServiceImpl(fakeBookRepository, fakeLikeRepository)
+        sut = LikeService(fakeBookRepository, fakeLikeRepository)
 
         When("좋아요를 제거하면") {
             sut.remove(1L, 1L)

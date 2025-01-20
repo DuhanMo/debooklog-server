@@ -5,8 +5,11 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import org.debooklog.debooklogserver.book.domain.BookState.DONE
-import org.debooklog.debooklogserver.book.domain.BookState.READING
+import org.debooklog.debooklogserver.core.book.model.Book
+import org.debooklog.debooklogserver.core.book.model.BookRegisterCommand
+import org.debooklog.debooklogserver.core.book.model.BookState.DONE
+import org.debooklog.debooklogserver.core.book.model.BookState.READING
+import org.debooklog.debooklogserver.core.book.model.DuplicateBookException
 import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class BookTest : BehaviorSpec({

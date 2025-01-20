@@ -4,15 +4,16 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import org.assertj.core.api.Assertions.assertThat
-import org.debooklog.debooklogserver.book.domain.Book
-import org.debooklog.debooklogserver.book.domain.BookInformationData
-import org.debooklog.debooklogserver.book.domain.BookRank
 import org.debooklog.debooklogserver.book.mock.FakeBookInformationGetter
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
+import org.debooklog.debooklogserver.core.book.model.Book
+import org.debooklog.debooklogserver.core.book.model.BookInformationData
+import org.debooklog.debooklogserver.core.book.model.BookRank
+import org.debooklog.debooklogserver.core.book.service.BookQueryService
 import org.debooklog.debooklogserver.fixture.createBookFixture
 
 class BookQueryServiceTest : BehaviorSpec({
-    lateinit var sut: BookQueryServiceImpl
+    lateinit var sut: BookQueryService
 
     Given("외부 API 책 검색결과가 존재하는 경우") {
         val books =
@@ -26,7 +27,7 @@ class BookQueryServiceTest : BehaviorSpec({
             )
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = books)
         val fakeBookRepository = FakeBookRepository()
-        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+        sut = BookQueryService(fakeBookInformationGetter, fakeBookRepository)
 
         When("책을 검색하면") {
             val actual = sut.search("미움받을용기")
@@ -44,7 +45,7 @@ class BookQueryServiceTest : BehaviorSpec({
     Given("외부 API 책 검색결과가 존재하지 않는 경우") {
         val fakeBookInformationGetter = FakeBookInformationGetter(stub = emptyList())
         val fakeBookRepository = FakeBookRepository()
-        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+        sut = BookQueryService(fakeBookInformationGetter, fakeBookRepository)
 
         When("책을 검색하면") {
             val actual = sut.search("검색결과없는타이틀")
@@ -61,7 +62,7 @@ class BookQueryServiceTest : BehaviorSpec({
         createBooks().forEach { book ->
             fakeBookRepository.save(book)
         }
-        sut = BookQueryServiceImpl(fakeBookInformationGetter, fakeBookRepository)
+        sut = BookQueryService(fakeBookInformationGetter, fakeBookRepository)
 
         When("책 랭크를 검색하면") {
             val actual = sut.findBookRanks()

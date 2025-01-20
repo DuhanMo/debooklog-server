@@ -4,16 +4,17 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.assertj.core.api.Assertions.assertThat
-import org.debooklog.debooklogserver.book.domain.BookRegisterCommand
 import org.debooklog.debooklogserver.book.mock.FakeBookRepository
 import org.debooklog.debooklogserver.bookshelf.domain.Bookshelf
 import org.debooklog.debooklogserver.bookshelf.domain.BookshelfNameGenerator
 import org.debooklog.debooklogserver.bookshelf.mock.FakeBookshelfRepository
+import org.debooklog.debooklogserver.core.book.model.BookRegisterCommand
+import org.debooklog.debooklogserver.core.book.service.BookService
 import org.debooklog.debooklogserver.fixture.createBookFixture
 import java.time.LocalDateTime.now
 
 class BookServiceTest : BehaviorSpec({
-    lateinit var sut: BookServiceImpl
+    lateinit var sut: BookService
 
     Given("책을 저장하는 경우") {
         val fakeBookRepository = FakeBookRepository()
@@ -27,7 +28,7 @@ class BookServiceTest : BehaviorSpec({
                 now = now(),
             ),
         )
-        sut = BookServiceImpl(fakeBookRepository, fakeBookshelfRepository)
+        sut = BookService(fakeBookRepository, fakeBookshelfRepository)
 
         When("책을 저장하면") {
             sut.register(
@@ -62,7 +63,7 @@ class BookServiceTest : BehaviorSpec({
                 thumbnail = "thumbnail",
             ),
         )
-        sut = BookServiceImpl(fakeBookRepository, fakeBookshelfRepository)
+        sut = BookService(fakeBookRepository, fakeBookshelfRepository)
 
         When("책을 삭제하면") {
             sut.delete(1L, 1L)

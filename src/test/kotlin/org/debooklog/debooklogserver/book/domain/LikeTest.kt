@@ -3,6 +3,7 @@ package org.debooklog.debooklogserver.book.domain
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.debooklog.debooklogserver.core.book.model.Like
 
 class LikeTest : BehaviorSpec({
     Given("Like 를 삭제하는 경우") {

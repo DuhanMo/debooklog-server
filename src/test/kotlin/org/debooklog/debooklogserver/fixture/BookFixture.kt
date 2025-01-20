@@ -1,8 +1,8 @@
 package org.debooklog.debooklogserver.fixture
 
-import org.debooklog.debooklogserver.book.domain.Book
-import org.debooklog.debooklogserver.book.domain.BookState
-import org.debooklog.debooklogserver.book.domain.BookState.DONE
+import org.debooklog.debooklogserver.core.book.model.Book
+import org.debooklog.debooklogserver.core.book.model.BookState
+import org.debooklog.debooklogserver.core.book.model.BookState.DONE
 import java.time.LocalDateTime
 
 fun createBookFixture(

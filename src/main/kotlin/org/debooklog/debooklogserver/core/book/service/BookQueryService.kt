@@ -1,0 +1,36 @@
+package org.debooklog.debooklogserver.core.book.service
+
+import org.debooklog.debooklogserver.core.book.model.BookInformationData
+import org.debooklog.debooklogserver.core.book.model.BookRank
+import org.debooklog.debooklogserver.core.book.port.BookInformationGetter
+import org.debooklog.debooklogserver.core.book.port.BookRepository
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+@Service
+@Transactional(readOnly = true)
+class BookQueryService(
+    private val bookInformationGetter: BookInformationGetter,
+    private val bookRepository: BookRepository,
+) {
+    fun search(title: String): List<BookInformationData> {
+        return bookInformationGetter.search(title)
+    }
+
+    fun findBookRanks(): List<BookRank> {
+        val books = bookRepository.findAll()
+        val isbnFrequency = books.groupingBy { it.isbn.first() }.eachCount()
+        val isbnToBookTitle = books.associateBy { it.isbn.first() }.mapValues { it.value.title }
+        val rankedIsbn = isbnFrequency.entries.sortedByDescending { it.value }
+
+        return rankedIsbn.mapIndexed { index, (isbn, count) ->
+            val bookTitle = isbnToBookTitle[isbn]
+            BookRank(
+                isbn = isbn,
+                rank = index + 1,
+                bookTitle = bookTitle ?: "",
+                count = count,
+            )
+        }
+    }
+}
