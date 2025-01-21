@@ -6,15 +6,16 @@ import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
+import org.debooklog.debooklogserver.core.auth.port.JwtProvider
 import org.springframework.stereotype.Component
 import java.util.Date
 import javax.crypto.SecretKey
 
 @Component
-class JwtProvider(
+class JwtProviderImpl(
     private val properties: JwtProperties,
-) {
-    fun createAccessJwt(payload: String): String {
+) : JwtProvider {
+    override fun createAccessJwt(payload: String): String {
         val claims: Claims = Jwts.claims().setSubject(payload)
         val now = Date()
         val expiration = Date(now.time + properties.accessExpiration)
@@ -26,7 +27,7 @@ class JwtProvider(
             .compact()
     }
 
-    fun createRefreshJwt(payload: String): String {
+    override fun createRefreshJwt(payload: String): String {
         val claims: Claims = Jwts.claims().setSubject(payload)
         val now = Date()
         val expiration = Date(now.time + properties.refreshExpiration)
@@ -38,18 +39,12 @@ class JwtProvider(
             .compact()
     }
 
-    fun getSubject(jwt: String): String =
+    override fun getSubject(jwt: String): String =
         getClaimsJws(jwt)
             .body
             .subject
 
-    private fun getClaimsJws(jwt: String): Jws<Claims> =
-        Jwts.parserBuilder()
-            .setSigningKey(getSignInKey().encoded)
-            .build()
-            .parseClaimsJws(jwt)
-
-    fun isValidJwt(jwt: String): Boolean {
+    override fun isValidJwt(jwt: String): Boolean {
         return try {
             getClaimsJws(jwt)
             true
@@ -64,4 +59,10 @@ class JwtProvider(
         val keyBytes = Decoders.BASE64.decode(properties.secret)
         return Keys.hmacShaKeyFor(keyBytes)
     }
+
+    private fun getClaimsJws(jwt: String): Jws<Claims> =
+        Jwts.parserBuilder()
+            .setSigningKey(getSignInKey().encoded)
+            .build()
+            .parseClaimsJws(jwt)
 }

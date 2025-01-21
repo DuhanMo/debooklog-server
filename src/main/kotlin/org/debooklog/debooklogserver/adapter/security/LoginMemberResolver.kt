@@ -1,5 +1,6 @@
 package org.debooklog.debooklogserver.adapter.security
 
+import org.debooklog.debooklogserver.core.auth.port.JwtProvider
 import org.debooklog.debooklogserver.core.member.model.Member
 import org.debooklog.debooklogserver.core.member.port.MemberRepository
 import org.springframework.core.MethodParameter

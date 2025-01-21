@@ -3,7 +3,7 @@ package org.debooklog.debooklogserver.core.auth.service
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.string.shouldContain
 import org.debooklog.debooklogserver.adapter.security.JwtProperties
-import org.debooklog.debooklogserver.adapter.security.JwtProvider
+import org.debooklog.debooklogserver.adapter.security.JwtProviderImpl
 import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserData
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserDataGetterContext
@@ -39,7 +39,7 @@ class OAuth2ServiceTest : BehaviorSpec({
                             ),
                         ),
                     ),
-                jwtProvider = JwtProvider(JwtProperties("sercet", 2000L, 2000L)),
+                jwtProvider = JwtProviderImpl(JwtProperties("sercet", 2000L, 2000L)),
                 memberRepository = FakeMemberRepository(),
             )
         When("getRedirectUrl을 호출하면") {

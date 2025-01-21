@@ -1,13 +1,12 @@
 package org.debooklog.debooklogserver.core.auth.service
 
-import org.debooklog.debooklogserver.adapter.security.JwtProvider
 import org.debooklog.debooklogserver.core.auth.model.OAuth2AuthCodeUrlProviderContext
 import org.debooklog.debooklogserver.core.auth.model.OAuth2UserDataGetterContext
 import org.debooklog.debooklogserver.core.auth.model.TokenData
+import org.debooklog.debooklogserver.core.auth.port.JwtProvider
 import org.debooklog.debooklogserver.core.member.model.Member
 import org.debooklog.debooklogserver.core.member.model.SocialProvider
 import org.debooklog.debooklogserver.core.member.port.MemberRepository
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
@@ -37,9 +36,5 @@ class OAuth2Service(
             jwtProvider.createAccessJwt(oAuth2UserData.email),
             jwtProvider.createRefreshJwt(oAuth2UserData.email),
         )
-    }
-
-    companion object {
-        private val logger = LoggerFactory.getLogger(OAuth2Service::class.java)
     }
 }
