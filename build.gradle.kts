@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.2.4"
-    id("io.spring.dependency-management") version "1.1.4"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
-    kotlin("jvm") version "1.9.23"
-    kotlin("plugin.spring") version "1.9.23"
-    kotlin("plugin.jpa") version "1.9.23"
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    id("org.jlleitschuh.gradle.ktlint")
+    kotlin("jvm")
+    kotlin("plugin.spring")
+    kotlin("plugin.jpa")
 }
 
 allOpen {
@@ -14,21 +14,13 @@ allOpen {
     annotation("jakarta.persistence.MappedSuperclass")
     annotation("jakarta.persistence.Embeddable")
 }
-group = "org.debooklog"
-version = "0.0.1-SNAPSHOT"
+group = "${property("projectGroup")}"
+version = "${property("applicationVersion")}"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-}
+java.sourceCompatibility = JavaVersion.valueOf("VERSION_${property("javaVersion")}")
 
 repositories {
     mavenCentral()
-}
-
-val asciidoctorExt: Configuration by configurations.creating
-
-object Version {
-    const val JJWT = "0.11.5"
 }
 
 dependencies {
@@ -44,21 +36,21 @@ dependencies {
     // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     // jwt
-    implementation("io.jsonwebtoken:jjwt-api:${Version.JJWT}")
-    implementation("io.jsonwebtoken:jjwt-impl:${Version.JJWT}")
-    implementation("io.jsonwebtoken:jjwt-jackson:${Version.JJWT}")
+    implementation("io.jsonwebtoken:jjwt-api:${property("jjwtVersion")}")
+    implementation("io.jsonwebtoken:jjwt-impl:${property("jjwtVersion")}")
+    implementation("io.jsonwebtoken:jjwt-jackson:${property("jjwtVersion")}")
     // swagger
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${property("swaggerVersion")}")
     // kotest
-    testImplementation("io.kotest:kotest-runner-junit5:5.8.1")
-    testImplementation("io.kotest:kotest-assertions-core:5.8.1")
-    testImplementation("io.kotest:kotest-property:5.8.1")
-    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.3")
+    testImplementation("io.kotest:kotest-runner-junit5:${property("kotestVersion")}")
+    testImplementation("io.kotest:kotest-assertions-core:${property("kotestVersion")}")
+    testImplementation("io.kotest:kotest-property:${property("kotestVersion")}")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:${property("kotestExtensionsSpringVersion")}")
 }
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.1")
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudDependenciesVersion")}")
     }
 }
 
@@ -66,7 +58,7 @@ tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs += "-Xjsr305=strict"
-            jvmTarget = "21"
+            jvmTarget = "${project.property("javaVersion")}"
         }
     }
     withType<Test> {
