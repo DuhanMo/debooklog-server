@@ -1,6 +1,7 @@
 package org.debooklog.adapter.controller.member
 
 import org.debooklog.core.member.model.Member
+import org.debooklog.core.member.model.SocialProvider
 import java.time.LocalDateTime
 
 data class MemberResponse(
@@ -8,7 +9,7 @@ data class MemberResponse(
     val name: String,
     val email: String,
     val socialId: String,
-    val provider: org.debooklog.core.member.model.SocialProvider,
+    val provider: SocialProvider,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
 ) {

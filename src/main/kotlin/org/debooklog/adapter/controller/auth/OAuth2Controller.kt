@@ -2,6 +2,7 @@ package org.debooklog.adapter.controller.auth
 
 import jakarta.servlet.http.HttpServletResponse
 import org.debooklog.core.auth.service.OAuth2Service
+import org.debooklog.core.member.model.SocialProvider
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -18,7 +19,7 @@ class OAuth2Controller(
 ) {
     @GetMapping("/code/{provider}")
     fun redirectGetAuthCodePage(
-        @PathVariable provider: org.debooklog.core.member.model.SocialProvider,
+        @PathVariable provider: SocialProvider,
         @RequestParam(name = "state", required = false) state: String?,
         response: HttpServletResponse,
     ) {
@@ -28,7 +29,7 @@ class OAuth2Controller(
 
     @GetMapping("/callback/{provider}")
     fun redirectCodeAndStateToClient(
-        @PathVariable provider: org.debooklog.core.member.model.SocialProvider,
+        @PathVariable provider: SocialProvider,
         @RequestParam(name = "code", required = true) code: String,
         @RequestParam(name = "state", required = false) state: String?,
         response: HttpServletResponse,
@@ -53,6 +54,6 @@ class OAuth2Controller(
     private fun getTargetUrl(
         code: String,
         state: String?,
-        provider: org.debooklog.core.member.model.SocialProvider,
+        provider: SocialProvider,
     ) = "http://localhost:3000/login?code=$code&state=${state ?: ""}&provider=$provider"
 }

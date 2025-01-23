@@ -2,6 +2,7 @@ package org.debooklog.adapter.client.auth.google
 
 import org.debooklog.core.auth.model.OAuth2UserData
 import org.debooklog.core.auth.model.OAuth2UserDataGetterStrategy
+import org.debooklog.core.member.model.SocialProvider
 import org.debooklog.core.member.model.SocialProvider.GOOGLE
 import org.springframework.stereotype.Component
 
@@ -11,7 +12,7 @@ class GoogleOAuth2UserDataGetter(
     private val googleOAuth2Client: GoogleOAuth2Client,
     private val googleClient: GoogleClient,
 ) : OAuth2UserDataGetterStrategy {
-    override val support: org.debooklog.core.member.model.SocialProvider
+    override val support: SocialProvider
         get() = GOOGLE
 
     override fun fetch(code: String): OAuth2UserData {

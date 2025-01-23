@@ -1,7 +1,9 @@
 package org.debooklog.core.auth.model
 
+import org.debooklog.core.member.model.SocialProvider
+
 interface OAuth2UserDataGetterStrategy {
-    val support: org.debooklog.core.member.model.SocialProvider
+    val support: SocialProvider
 
     fun fetch(code: String): OAuth2UserData
 }

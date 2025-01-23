@@ -11,6 +11,7 @@ import jakarta.persistence.PostPersist
 import jakarta.persistence.Table
 import org.debooklog.adapter.persistence.common.BaseEntity
 import org.debooklog.core.member.model.Member
+import org.debooklog.core.member.model.SocialProvider
 import org.debooklog.core.member.service.MemberCreatedEvent
 import org.hibernate.annotations.SQLRestriction
 import org.springframework.data.annotation.CreatedDate
@@ -33,7 +34,7 @@ class MemberEntity(
     val socialId: String,
     @Enumerated(STRING)
     @Column(name = "provider")
-    val provider: org.debooklog.core.member.model.SocialProvider,
+    val provider: SocialProvider,
     @Column(name = "profile_image")
     val profileImage: String?,
     @CreatedDate

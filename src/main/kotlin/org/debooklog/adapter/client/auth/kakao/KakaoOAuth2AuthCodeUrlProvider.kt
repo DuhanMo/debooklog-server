@@ -1,6 +1,7 @@
 package org.debooklog.adapter.client.auth.kakao
 
 import org.debooklog.core.auth.model.OAuth2AuthCodeUrlProviderStrategy
+import org.debooklog.core.member.model.SocialProvider
 import org.springframework.stereotype.Component
 import org.springframework.web.util.UriComponentsBuilder
 
@@ -8,8 +9,8 @@ import org.springframework.web.util.UriComponentsBuilder
 class KakaoOAuth2AuthCodeUrlProvider(
     private val properties: KakaoOAuth2Properties,
 ) : OAuth2AuthCodeUrlProviderStrategy {
-    override val support: org.debooklog.core.member.model.SocialProvider
-        get() = org.debooklog.core.member.model.SocialProvider.KAKAO
+    override val support: SocialProvider
+        get() = SocialProvider.KAKAO
 
     override fun provide(state: String?): String {
         return UriComponentsBuilder

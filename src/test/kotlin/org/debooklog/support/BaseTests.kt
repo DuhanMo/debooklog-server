@@ -16,5 +16,5 @@ annotation class TestEnvironment
 @Retention(AnnotationRetention.RUNTIME)
 @TestEnvironment
 @DataJpaTest
-@Import(org.debooklog.adapter.config.JpaConfig::class)
+@Import(JpaConfig::class)
 annotation class RepositoryTest

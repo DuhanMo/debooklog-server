@@ -8,7 +8,7 @@ import org.debooklog.core.member.model.SocialProvider.GOOGLE
 class FakeGoogleOAuth2UserDataGetter(
     private val stubOAuth2UserData: OAuth2UserData,
 ) : OAuth2UserDataGetterStrategy {
-    override val support: org.debooklog.core.member.model.SocialProvider
+    override val support: SocialProvider
         get() = GOOGLE
 
     override fun fetch(code: String): OAuth2UserData {

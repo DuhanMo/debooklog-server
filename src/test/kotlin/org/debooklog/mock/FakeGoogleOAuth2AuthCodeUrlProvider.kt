@@ -7,7 +7,7 @@ import org.debooklog.core.member.model.SocialProvider.GOOGLE
 class FakeGoogleOAuth2AuthCodeUrlProvider(
     private val stubRedirectUrl: String,
 ) : OAuth2AuthCodeUrlProviderStrategy {
-    override val support: org.debooklog.core.member.model.SocialProvider
+    override val support: SocialProvider
         get() = GOOGLE
 
     override fun provide(state: String?): String {

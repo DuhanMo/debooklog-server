@@ -2,6 +2,7 @@ package org.debooklog.adapter.client.auth.kakao
 
 import org.debooklog.core.auth.model.OAuth2UserData
 import org.debooklog.core.auth.model.OAuth2UserDataGetterStrategy
+import org.debooklog.core.member.model.SocialProvider
 import org.debooklog.core.member.model.SocialProvider.KAKAO
 import org.springframework.stereotype.Component
 
@@ -11,7 +12,7 @@ class KakaoOAuth2UserDataGetter(
     private val kakaoOAuth2Client: KakaoOAuth2Client,
     private val kakaoClient: KakaoClient,
 ) : OAuth2UserDataGetterStrategy {
-    override val support: org.debooklog.core.member.model.SocialProvider
+    override val support: SocialProvider
         get() = KAKAO
 
     override fun fetch(code: String): OAuth2UserData {
