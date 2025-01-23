@@ -1,26 +1,27 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:test;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/debooklog?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    database: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
-  h2:
-    console:
-      enabled: true
-
-logging:
-  level:
-    org.debooklog.debooklogserver.book.infrastructure.api.org.debooklog.debooklogserver.book.infrastructure.client.api.KakaoDaumSearchApi: DEBUG
 
 spring.cloud.openfeign:
   client:
     config:
       kakao-daum-search-api:
         loggerLevel: full
+
+logging:
+  level:
+    org.debooklog.adapter.client.book.api.KakaoDaumSearchApi: DEBUG
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
@@ -36,3 +37,4 @@ kakao:
 google:
   oauth2-token-url: https://oauth2.googleapis.com
   api-url: https://www.googleapis.com
+

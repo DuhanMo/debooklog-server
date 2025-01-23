@@ -4,11 +4,12 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-
   jpa:
     hibernate:
       ddl-auto: create
     show-sql: true
+  liquibase:
+    enabled: false
 
 kakao:
   daum:
@@ -19,7 +20,6 @@ kakao:
 google:
   oauth2-token-url: https://test.googleapis.com
   api-url: https://test.google-api.com
-
 
 jwt:
   secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret

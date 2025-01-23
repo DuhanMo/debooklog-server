@@ -1,5 +1,0 @@
-package org.debooklog.debooklogserver.adapter.security
-
-@Target(AnnotationTarget.VALUE_PARAMETER)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class LoginMember

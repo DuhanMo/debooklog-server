@@ -1,0 +1,162 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-book-table
+      author: liquibase
+      changes:
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: member_id
+                  type: BIGINT
+              - column:
+                  name: bookshelf_id
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  name: author
+                  type: VARCHAR(255)
+              - column:
+                  name: isbn
+                  type: JSON
+              - column:
+                  name: thumbnail
+                  type: VARCHAR(255)
+              - column:
+                  name: like_count
+                  type: INT
+              - column:
+                  name: state
+                  type: ENUM('READING','DONE')
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+
+  - changeSet:
+      id: 002-create-member-table
+      author: liquibase
+      changes:
+        - createTable:
+            tableName: member
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: social_id
+                  type: VARCHAR(255)
+              - column:
+                  name: provider
+                  type: ENUM('GOOGLE','KAKAO','GITHUB')
+              - column:
+                  name: profile_image
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+
+  - changeSet:
+      id: 003-create-bookshelf-table
+      author: liquibase
+      changes:
+        - createTable:
+            tableName: bookshelf
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: member_id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: image_url
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN
+
+  - changeSet:
+      id: 004-create-book-like-table
+      author: liquibase
+      changes:
+        - createTable:
+            tableName: book_like
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: book_id
+                  type: BIGINT
+              - column:
+                  name: member_id
+                  type: BIGINT
+              - column:
+                  name: created_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP(6)
+              - column:
+                  name: is_deleted
+                  type: BOOLEAN

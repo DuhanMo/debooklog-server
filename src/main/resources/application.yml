@@ -1,4 +1,4 @@
-spring.application.name: debooklog-server
+spring.application.name: debooklog
 spring:
   profiles:
     active: local

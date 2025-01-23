@@ -1,4 +1,4 @@
-rootProject.name = "debooklog-server"
+rootProject.name = "debooklog"
 
 pluginManagement {
     val kotlinVersion: String by settings
