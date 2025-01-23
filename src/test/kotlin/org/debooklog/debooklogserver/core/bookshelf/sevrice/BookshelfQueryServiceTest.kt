@@ -1,8 +1,8 @@
 package org.debooklog.debooklogserver.core.bookshelf.sevrice
 
 import org.assertj.core.api.Assertions.assertThat
-import org.debooklog.debooklogserver.bookshelf.service.BookshelfQueryService
 import org.debooklog.debooklogserver.core.bookshelf.model.Bookshelf
+import org.debooklog.debooklogserver.core.bookshelf.service.BookshelfQueryService
 import org.debooklog.debooklogserver.fixture.createBookFixture
 import org.debooklog.debooklogserver.mock.FakeBookRepository
 import org.debooklog.debooklogserver.mock.FakeBookshelfRepository
