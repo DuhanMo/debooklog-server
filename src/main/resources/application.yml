@@ -1,89 +1,25 @@
 spring.application.name: debooklog-server
-spring.profiles.active: local
 spring:
+  profiles:
+    active: local
   config:
     import:
       - application-secret.yml
----
-spring.config.activate.on-profile: local
-spring:
   datasource:
-    url: jdbc:h2:mem:test;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
-  h2:
-    console:
-      enabled: true
-logging:
-  level:
-    org.debooklog.debooklogserver.book.infrastructure.api.org.debooklog.debooklogserver.book.infrastructure.client.api.KakaoDaumSearchApi: DEBUG
-
-spring.cloud.openfeign:
-  client:
-    config:
-      kakao-daum-search-api:
-        loggerLevel: full
-
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    driver-class-name: ${${spring.datasource.driver-class-name}
 kakao:
   daum:
-    search-url: https://dapi.kakao.com
-  oauth2-token-url: https://kauth.kakao.com
-  api-url: https://kapi.kakao.com
+    search-url: ${kakao.daum.search-url}
+  oauth2-token-url: ${kakao.oauth2-token-url}
+  api-url: ${kakao.api-url}
 google:
-  oauth2-token-url: https://oauth2.googleapis.com
-  api-url: https://www.googleapis.com
+  oauth2-token-url: ${google.oauth2-token-url}
+  api-url: ${google.api-url}
 
 jwt:
-  secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
-  access-expiration: 3600000
-  refresh-expiration: 604800000
-
----
-spring.config.activate.on-profile: test
-spring:
-  datasource:
-    url: jdbc:h2:mem:test;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
-
-kakao:
-  daum:
-    search-url: http://test-url
-  api-key: test
-  oauth2-token-url: https://test-oauth2.kakao.com
-  api-url: https://test-api.kakao.com
-google:
-  oauth2-token-url: https://test.googleapis.com
-  api-url: https://test.google-api.com
-
-
-jwt:
-  secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
-  access-expiration: 3600000
-  refresh-expiration: 604800000
-
-oauth2:
-  kakao:
-    client-id: test-client-id
-    client-secret: test-client-secret
-    redirect-uri: test-redirect-uri
-    scope:
-      - "profile_nickname"
-  google:
-    client-id: test-client-id
-    client-secret: test-client-id
-    redirect-uri: test-client-secret
-    scope:
-      - "email"
-      - "profile"
+  secret: ${jwt.secret}
+  access-expiration: ${jwt.access-expiration}
+  refresh-expiration: ${jwt.refresh-expiration}

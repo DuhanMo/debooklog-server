@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    org.debooklog.debooklogserver.book.infrastructure.api.org.debooklog.debooklogserver.book.infrastructure.client.api.KakaoDaumSearchApi: DEBUG
+
+spring.cloud.openfeign:
+  client:
+    config:
+      kakao-daum-search-api:
+        loggerLevel: full
+
+jwt:
+  secret: 1231231321321secret1231231321321secret1231231321321secret1231231321321secret1231231321321secret
+  access-expiration: 3600000
+  refresh-expiration: 604800000
+
+kakao:
+  daum:
+    search-url: https://dapi.kakao.com
+  oauth2-token-url: https://kauth.kakao.com
+  api-url: https://kapi.kakao.com
+
+google:
+  oauth2-token-url: https://oauth2.googleapis.com
+  api-url: https://www.googleapis.com
