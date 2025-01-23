@@ -16,7 +16,7 @@ class BookInformationGetterImpl(
                 BookInformationData(
                     title = it.title ?: "",
                     author = it.authors?.joinToString() ?: "",
-                    isbn = it.isbn?.split(",")?.map { isbn -> isbn.trim() } ?: emptyList(),
+                    isbn = it.isbn?.split(" ")?.map { isbn -> isbn.trim() } ?: emptyList(),
                     thumbnail = it.thumbnail ?: "",
                 )
             }

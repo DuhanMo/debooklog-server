@@ -1,7 +1,6 @@
 package org.debooklog.adapter.persistence.book
 
 import jakarta.persistence.Column
-import jakarta.persistence.Convert
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType.STRING
 import jakarta.persistence.Enumerated
@@ -10,13 +9,14 @@ import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import org.debooklog.adapter.persistence.common.BaseEntity
-import org.debooklog.adapter.persistence.common.StringListConverter
 import org.debooklog.core.book.model.Book
 import org.debooklog.core.book.model.BookState
 import org.hibernate.annotations.SQLRestriction
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 
 @SQLRestriction("is_deleted = false")
 @Entity
@@ -34,8 +34,8 @@ class BookEntity(
     val title: String,
     @Column(name = "author")
     val author: String,
-    @Column(name = "isbn")
-    @Convert(converter = StringListConverter::class)
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name ="isbn", columnDefinition = "json")
     val isbn: List<String>,
     @Column(name = "thumbnail")
     val thumbnail: String,
