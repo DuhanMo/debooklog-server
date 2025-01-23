@@ -46,6 +46,8 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:${property("kotestVersion")}")
     testImplementation("io.kotest:kotest-property:${property("kotestVersion")}")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:${property("kotestExtensionsSpringVersion")}")
+    // liquibase
+    implementation("org.liquibase:liquibase-core")
 }
 
 dependencyManagement {
