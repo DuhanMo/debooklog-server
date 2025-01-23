@@ -28,7 +28,8 @@ class OAuth2Service(
         code: String,
     ): TokenData {
         val oAuth2UserData = oAuth2UserDataGetterContext.getOAuth2UserData(provider, code)
-        memberRepository.findByEmail(oAuth2UserData.email)?.let {
+        val member = memberRepository.findByEmail(oAuth2UserData.email)
+        if (member == null) {
             memberRepository.save(Member(oAuth2UserData))
         }
         return TokenData(
