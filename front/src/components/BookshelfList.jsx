@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchBookshelves } from '../api/bookshelfApi';
+import { fetchBookshelves } from '../api/api';
+import defaultImage from '../assets/free-icon-profile-4519729.png';
 
 const BookshelfList = () => {
     const [bookshelves, setBookshelves] = useState([]);
@@ -10,7 +11,7 @@ const BookshelfList = () => {
         const loadBookshelves = async () => {
             try {
                 const data = await fetchBookshelves();
-                setBookshelves(data); // 🔹 올바른 배열 데이터 설정
+                setBookshelves(data);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -28,10 +29,10 @@ const BookshelfList = () => {
         <div>
             <h1>Bookshelves</h1>
             <ul>
-                {bookshelves.length > 0 ? ( // 🔹 bookshelves가 비어있는 경우도 체크
+                {bookshelves.length > 0 ? (
                     bookshelves.map((shelf) => (
                         <li key={shelf.id}>
-                            <img src={shelf.imageUrl} alt={shelf.name} width="50" />
+                            <img src={shelf.imageUrl || defaultImage} alt={shelf.name} width="50" />
                             {shelf.name}
                         </li>
                     ))
