@@ -46,7 +46,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: ${{ env.AWS_REGION }}
-          application_name: sample #생성한 ElasticBeanstalk의 Application name
-          environment_name: Sample-env # 생성한 ElasticBeanstalk의 Environments name
+          application_name: debooklog #생성한 ElasticBeanstalk의 Application name
+          environment_name: Debooklog-env # 생성한 ElasticBeanstalk의 Environments name
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           deployment_package: deploy/deploy.zip
