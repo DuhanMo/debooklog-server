@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+
+kakao:
+  api-key: ${KAKAO_API_KEY}
+
+oauth2:
+  kakao:
+    client-id: ${OAUTH2_KAKAO_CLIENT_ID}
+    client-secret: ${OAUTH2_KAKAO_CLIENT_SECRET}
+    redirect-uri: ${OAUTH2_KAKAO_REDIRECT_URI}
+    scope:
+      - "profile_nickname"
+
+  google:
+    client-id: ${OAUTH2_GOOGLE_CLIENT_ID}
+    client-secret: ${OAUTH2_GOOGLE_CLIENT_SECRET}
+    redirect-uri: ${OAUTH2_GOOGLE_REDIRECT_URI}
+    scope:
+      - "email"
+      - "profile"
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-expiration: ${JWT_ACCESS_EXPIRATION}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION}

@@ -5,21 +5,13 @@ spring:
   config:
     import:
       - application-secret.yml
-  datasource:
-    url: ${spring.datasource.url}
-    username: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    driver-class-name: ${${spring.datasource.driver-class-name}
+
 kakao:
   daum:
-    search-url: ${kakao.daum.search-url}
-  oauth2-token-url: ${kakao.oauth2-token-url}
-  api-url: ${kakao.api-url}
-google:
-  oauth2-token-url: ${google.oauth2-token-url}
-  api-url: ${google.api-url}
+    search-url: https://dapi.kakao.com
+  oauth2-token-url: https://kauth.kakao.com
+  api-url: https://kapi.kakao.com
 
-jwt:
-  secret: ${jwt.secret}
-  access-expiration: ${jwt.access-expiration}
-  refresh-expiration: ${jwt.refresh-expiration}
+google:
+  oauth2-token-url: https://oauth2.googleapis.com
+  api-url: https://www.googleapis.com

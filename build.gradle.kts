@@ -67,4 +67,8 @@ tasks {
     withType<Test> {
         useJUnitPlatform()
     }
+
+    named<Jar>("jar") {
+        enabled = false
+    }
 }

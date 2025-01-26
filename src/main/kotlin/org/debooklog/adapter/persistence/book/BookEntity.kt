@@ -11,12 +11,12 @@ import jakarta.persistence.Table
 import org.debooklog.adapter.persistence.common.BaseEntity
 import org.debooklog.core.book.model.Book
 import org.debooklog.core.book.model.BookState
+import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.annotations.SQLRestriction
+import org.hibernate.type.SqlTypes
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
-import org.hibernate.annotations.JdbcTypeCode
-import org.hibernate.type.SqlTypes
 
 @SQLRestriction("is_deleted = false")
 @Entity
@@ -35,7 +35,7 @@ class BookEntity(
     @Column(name = "author")
     val author: String,
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name ="isbn", columnDefinition = "json")
+    @Column(name = "isbn", columnDefinition = "json")
     val isbn: List<String>,
     @Column(name = "thumbnail")
     val thumbnail: String,

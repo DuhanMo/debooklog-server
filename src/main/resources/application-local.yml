@@ -28,13 +28,4 @@ jwt:
   access-expiration: 3600000
   refresh-expiration: 604800000
 
-kakao:
-  daum:
-    search-url: https://dapi.kakao.com
-  oauth2-token-url: https://kauth.kakao.com
-  api-url: https://kapi.kakao.com
-
-google:
-  oauth2-token-url: https://oauth2.googleapis.com
-  api-url: https://www.googleapis.com
 
