@@ -2,9 +2,6 @@ spring.application.name: debooklog
 spring:
   profiles:
     active: local
-  config:
-    import:
-      - application-secret.yml
 
 kakao:
   daum:
