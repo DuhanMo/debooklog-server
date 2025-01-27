@@ -36,6 +36,7 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("io.github.openfeign:feign-hc5")
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:${property("jjwtVersion")}")
     implementation("io.jsonwebtoken:jjwt-impl:${property("jjwtVersion")}")

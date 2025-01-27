@@ -3,6 +3,8 @@ spring:
   profiles:
     active: local
 
+
+
 kakao:
   daum:
     search-url: https://dapi.kakao.com
