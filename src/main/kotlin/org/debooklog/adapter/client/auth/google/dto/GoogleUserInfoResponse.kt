@@ -11,7 +11,7 @@ data class GoogleUserInfoResponse(
     val name: String,
     val email: String,
     val givenName: String,
-    val familyName: String,
+    val familyName: String?,
     val picture: String,
     val emailVerified: Boolean,
 ) {
