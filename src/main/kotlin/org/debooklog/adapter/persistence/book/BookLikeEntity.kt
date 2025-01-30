@@ -19,7 +19,7 @@ class BookLikeEntity(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    val id: Long? = null,
+    val id: Long = 0,
     @Column(name = "book_id")
     val bookId: Long,
     @Column(name = "member_id")

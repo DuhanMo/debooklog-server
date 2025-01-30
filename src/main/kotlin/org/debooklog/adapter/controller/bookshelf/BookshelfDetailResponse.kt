@@ -1,21 +1,24 @@
 package org.debooklog.adapter.controller.bookshelf
 
+import org.debooklog.core.bookshelf.service.BookshelfWithBooks
 import java.time.LocalDateTime
 
 data class BookshelfDetailResponse(
     val id: Long,
+    val memberId: Long,
     val name: String,
     val imageUrl: String?,
     val books: List<BookResponse>,
 ) {
-    constructor(bookshelfWithBooks: org.debooklog.core.bookshelf.service.BookshelfWithBooks) : this(
-        id = bookshelfWithBooks.bookshelf.id!!,
+    constructor(bookshelfWithBooks: BookshelfWithBooks) : this(
+        id = bookshelfWithBooks.bookshelf.id,
+        memberId = bookshelfWithBooks.member.id,
         name = bookshelfWithBooks.bookshelf.name,
         imageUrl = bookshelfWithBooks.bookshelf.imageUrl,
         books =
             bookshelfWithBooks.books.map {
                 BookResponse(
-                    id = it.id!!,
+                    id = it.id,
                     title = it.title,
                     author = it.author,
                     isbn = it.isbn,

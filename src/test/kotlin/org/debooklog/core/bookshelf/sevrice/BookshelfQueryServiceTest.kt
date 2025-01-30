@@ -3,9 +3,11 @@ package org.debooklog.core.bookshelf.sevrice
 import org.assertj.core.api.Assertions.assertThat
 import org.debooklog.core.bookshelf.model.Bookshelf
 import org.debooklog.core.bookshelf.service.BookshelfQueryService
-import org.debooklog.fixture.createBookFixture
+import org.debooklog.core.member.model.Member
+import org.debooklog.core.member.model.SocialProvider.GOOGLE
 import org.debooklog.mock.FakeBookRepository
 import org.debooklog.mock.FakeBookshelfRepository
+import org.debooklog.mock.FakeMemberRepository
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime.now
 
@@ -15,8 +17,23 @@ class BookshelfQueryServiceTest {
     @Test
     fun `findAll 은 삭제되지 않은 모든 Bookshelf 를 조회한다`() {
         // given
+        val fakeMemberRepository = FakeMemberRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
         val fakeBookRepository = FakeBookRepository()
+        fakeMemberRepository.save(
+            Member(
+                id = 1,
+                name = "홍길동",
+                email = "test@test.com",
+                socialId = "socialId",
+                provider = GOOGLE,
+                profileImage = "image.url",
+                createdAt = now(),
+                updatedAt = now(),
+                deletedAt = null,
+                isDeleted = false,
+            ),
+        )
         fakeBookshelfRepository.save(
             Bookshelf(
                 id = 1L,
@@ -53,7 +70,7 @@ class BookshelfQueryServiceTest {
                 isDeleted = false,
             ),
         )
-        bookshelfQueryService = BookshelfQueryService(fakeBookshelfRepository, fakeBookRepository)
+        bookshelfQueryService = BookshelfQueryService(fakeMemberRepository, fakeBookshelfRepository, fakeBookRepository)
         // when
         val bookShelves = bookshelfQueryService.findAll()
         // then
@@ -63,8 +80,23 @@ class BookshelfQueryServiceTest {
     @Test
     fun `find 는 책장과 책장에 포함된 책을 조회한다`() {
         // given
+        val fakeMemberRepository = FakeMemberRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
         val fakeBookRepository = FakeBookRepository()
+        fakeMemberRepository.save(
+            Member(
+                id = 1,
+                name = "홍길동",
+                email = "test@test.com",
+                socialId = "socialId",
+                provider = GOOGLE,
+                profileImage = "image.url",
+                createdAt = now(),
+                updatedAt = now(),
+                deletedAt = null,
+                isDeleted = false,
+            ),
+        )
         fakeBookshelfRepository.save(
             Bookshelf(
                 id = 1L,
@@ -102,7 +134,7 @@ class BookshelfQueryServiceTest {
             ),
         )
 
-        bookshelfQueryService = BookshelfQueryService(fakeBookshelfRepository, fakeBookRepository)
+        bookshelfQueryService = BookshelfQueryService(fakeMemberRepository, fakeBookshelfRepository, fakeBookRepository)
         // when
         val bookshelf = bookshelfQueryService.find(1L)
         // then

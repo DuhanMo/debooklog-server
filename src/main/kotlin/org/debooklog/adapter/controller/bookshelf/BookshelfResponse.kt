@@ -9,7 +9,7 @@ data class BookshelfResponse(
     val imageUrl: String?,
 ) {
     constructor(bookshelf: Bookshelf) : this(
-        id = bookshelf.id!!,
+        id = bookshelf.id,
         memberId = bookshelf.memberId,
         name = bookshelf.name,
         imageUrl = bookshelf.imageUrl,

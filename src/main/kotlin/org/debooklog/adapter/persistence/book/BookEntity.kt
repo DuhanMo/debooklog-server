@@ -25,7 +25,7 @@ class BookEntity(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    val id: Long? = null,
+    val id: Long = 0,
     @Column(name = "member_id")
     val memberId: Long,
     @Column(name = "bookshelf_id")

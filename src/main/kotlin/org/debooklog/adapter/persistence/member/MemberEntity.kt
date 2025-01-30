@@ -25,7 +25,7 @@ class MemberEntity(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    val id: Long? = null,
+    val id: Long = 0,
     @Column(name = "name")
     val name: String,
     @Column(name = "email")
@@ -63,7 +63,7 @@ class MemberEntity(
 
     @PostPersist
     fun onPostPersist() {
-        registerEvent(MemberCreatedEvent(id ?: throw IllegalStateException("id must not be null")))
+        registerEvent(MemberCreatedEvent(id))
     }
 
     fun toModel(): Member {

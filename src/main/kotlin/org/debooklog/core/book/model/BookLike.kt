@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
 data class BookLike(
-    val id: Long?,
+    val id: Long,
     val bookId: Long,
     val memberId: Long,
     val createdAt: LocalDateTime = LocalDateTime.MAX,
@@ -17,7 +17,7 @@ data class BookLike(
     }
 
     constructor(bookId: Long, memberId: Long) : this(
-        id = null,
+        id = 0,
         bookId = bookId,
         memberId = memberId,
         createdAt = LocalDateTime.MAX,

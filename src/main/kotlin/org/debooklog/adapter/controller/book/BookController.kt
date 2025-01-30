@@ -32,7 +32,7 @@ class BookController(
         @RequestBody request: BookRegisterRequest,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookService.register(request.toCommand(member.id!!))
+        bookService.register(request.toCommand(member.id))
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
@@ -41,7 +41,7 @@ class BookController(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookService.delete(bookId, member.id!!)
+        bookService.delete(bookId, member.id)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
@@ -55,7 +55,7 @@ class BookController(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookLikeService.create(bookId, member.id!!)
+        bookLikeService.create(bookId, member.id)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
@@ -64,7 +64,7 @@ class BookController(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookLikeService.remove(bookId, member.id!!)
+        bookLikeService.remove(bookId, member.id)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
@@ -73,7 +73,7 @@ class BookController(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookService.reading(bookId, member.id!!)
+        bookService.reading(bookId, member.id)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 
@@ -82,7 +82,7 @@ class BookController(
         @PathVariable bookId: Long,
         @LoginMember member: Member,
     ): ResponseEntity<ApiResponse<Unit>> {
-        bookService.done(bookId, member.id!!)
+        bookService.done(bookId, member.id)
         return ResponseEntity.ok(ApiResponse.empty())
     }
 }

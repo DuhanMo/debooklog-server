@@ -6,7 +6,7 @@ import org.debooklog.core.book.model.BookState.DONE
 import java.time.LocalDateTime
 
 fun createBookFixture(
-    id: Long? = null,
+    id: Long = 0,
     memberId: Long,
     bookshelfId: Long,
     title: String = "title",

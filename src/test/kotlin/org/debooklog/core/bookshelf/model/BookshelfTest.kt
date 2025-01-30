@@ -11,8 +11,8 @@ class BookshelfTest : BehaviorSpec({
     Given("Bookshelf를 생성하는 경우") {
         When("생성자 파라미터를 전달하면") {
             val bookshelf =
-                org.debooklog.core.bookshelf.model.Bookshelf(
-                    id = null,
+                Bookshelf(
+                    id = 0,
                     memberId = 1L,
                     name = "책장",
                     imageUrl = "imageUrl.com",
@@ -30,7 +30,7 @@ class BookshelfTest : BehaviorSpec({
 
         When("createdAt과 updatedAt을 설정하지 않으면") {
             val bookshelf =
-                org.debooklog.core.bookshelf.model.Bookshelf(
+                Bookshelf(
                     memberId = 1L,
                     imageUrl = "imageUrl.com",
                     name = "책장",
@@ -47,8 +47,8 @@ class BookshelfTest : BehaviorSpec({
     Given("Bookshelf를 수정하는 경우") {
         val now = now()
         val bookshelf =
-            org.debooklog.core.bookshelf.model.Bookshelf(
-                id = null,
+            Bookshelf(
+                id = 0,
                 memberId = 1L,
                 name = "책장",
                 imageUrl = "imageUrl.com",
@@ -77,8 +77,8 @@ class BookshelfTest : BehaviorSpec({
     Given("Bookshelf 의 memberId와 요청자의 memberId가 다른 경우") {
         val now = now()
         val bookshelf =
-            org.debooklog.core.bookshelf.model.Bookshelf(
-                id = null,
+            Bookshelf(
+                id = 0,
                 memberId = 1L,
                 name = "책장",
                 imageUrl = "imageUrl.com",

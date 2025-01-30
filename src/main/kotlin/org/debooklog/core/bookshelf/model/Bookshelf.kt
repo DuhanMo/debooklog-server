@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
 data class Bookshelf(
-    val id: Long?,
+    val id: Long,
     val memberId: Long,
     val name: String,
     val imageUrl: String?,
@@ -14,7 +14,7 @@ data class Bookshelf(
     val isDeleted: Boolean,
 ) {
     constructor(memberId: Long, name: String, imageUrl: String?, now: LocalDateTime) : this(
-        id = null,
+        id = 0,
         memberId = memberId,
         name = name,
         imageUrl = imageUrl,

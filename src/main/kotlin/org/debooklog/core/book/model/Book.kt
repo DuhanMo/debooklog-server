@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 
 data class Book(
-    val id: Long?,
+    val id: Long,
     val memberId: Long,
     val bookshelfId: Long,
     val title: String,
@@ -21,7 +21,7 @@ data class Book(
     val isDeleted: Boolean,
 ) {
     constructor(command: BookRegisterCommand, bookshelfId: Long) : this(
-        id = null,
+        id = 0,
         memberId = command.memberId,
         bookshelfId = bookshelfId,
         title = command.title,

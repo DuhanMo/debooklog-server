@@ -23,7 +23,7 @@ class BookshelfListenerImpl(
         val bookshelfName = BookshelfNameGenerator.generate(member.name)
         val bookshelf =
             Bookshelf(
-                memberId = member.id!!,
+                memberId = member.id,
                 name = bookshelfName,
                 imageUrl = member.profileImage,
                 now = now(),

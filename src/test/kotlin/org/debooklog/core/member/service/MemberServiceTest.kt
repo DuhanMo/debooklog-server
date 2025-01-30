@@ -31,11 +31,11 @@ class MemberServiceTest : BehaviorSpec({
         sut = MemberService(fakeMemberRepository)
 
         When("회원 탈퇴하면") {
-            sut.withdrawal(savedMember.id!!)
+            sut.withdrawal(savedMember.id)
 
             Then("소프트 딜리트된다") {
-                fakeMemberRepository.getById(savedMember.id!!).isDeleted shouldBe true
-                fakeMemberRepository.getById(savedMember.id!!).deletedAt shouldNotBe null
+                fakeMemberRepository.getById(savedMember.id).isDeleted shouldBe true
+                fakeMemberRepository.getById(savedMember.id).deletedAt shouldNotBe null
             }
         }
     }

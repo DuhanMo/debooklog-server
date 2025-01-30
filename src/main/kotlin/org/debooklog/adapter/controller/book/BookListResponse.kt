@@ -14,7 +14,7 @@ data class BookListResponse(
     val updatedAt: LocalDateTime,
 ) {
     constructor(book: Book) : this(
-        id = book.id!!,
+        id = book.id,
         bookshelfId = book.bookshelfId,
         title = book.title,
         author = book.author,
