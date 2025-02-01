@@ -26,4 +26,9 @@ class MemberRepositoryImpl(
     override fun findByEmail(email: String): Member? {
         return memberJpaRepository.findByEmail(email)?.toModel()
     }
+
+    override fun findById(id: Long): Member? {
+        return memberJpaRepository.findByIdOrNull(id)
+            ?.toModel()
+    }
 }

@@ -16,7 +16,7 @@ class MemberServiceTest : BehaviorSpec({
         val savedMember =
             fakeMemberRepository.save(
                 Member(
-                    id = null,
+                    id = 0,
                     name = "홍길동",
                     email = "test@gmail.com",
                     socialId = "123123",

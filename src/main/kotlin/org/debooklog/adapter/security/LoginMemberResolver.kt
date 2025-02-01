@@ -32,8 +32,8 @@ class LoginMemberResolver(
         if (!jwtProvider.isValidJwt(jwt)) {
             throw LoginFailedException()
         }
-        val email = jwtProvider.getSubject(jwt)
-        return memberRepository.findByEmail(email)
+        val id = jwtProvider.getSubject(jwt)
+        return memberRepository.findById(id.toLong())
             ?: throw LoginFailedException()
     }
 

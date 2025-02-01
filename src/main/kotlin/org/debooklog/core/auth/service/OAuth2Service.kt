@@ -28,13 +28,10 @@ class OAuth2Service(
         code: String,
     ): TokenData {
         val oAuth2UserData = oAuth2UserDataGetterContext.getOAuth2UserData(provider, code)
-        val member = memberRepository.findByEmail(oAuth2UserData.email)
-        if (member == null) {
-            memberRepository.save(Member(oAuth2UserData))
-        }
+        val member = memberRepository.findByEmail(oAuth2UserData.email) ?: memberRepository.save(Member(oAuth2UserData))
         return TokenData(
-            jwtProvider.createAccessJwt(oAuth2UserData.email),
-            jwtProvider.createRefreshJwt(oAuth2UserData.email),
+            jwtProvider.createAccessJwt(member.id.toString()),
+            jwtProvider.createRefreshJwt(member.id.toString()),
         )
     }
 }
