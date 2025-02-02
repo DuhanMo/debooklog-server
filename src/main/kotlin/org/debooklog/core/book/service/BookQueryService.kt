@@ -23,7 +23,7 @@ class BookQueryService(
         val isbnToBookTitle = books.associateBy { it.isbn.first() }.mapValues { it.value.title }
         val rankedIsbn = isbnFrequency.entries.sortedByDescending { it.value }
 
-        return rankedIsbn.mapIndexed { index, (isbn, count) ->
+        return rankedIsbn.take(BOOK_RANK_MAX_COUNT).mapIndexed { index, (isbn, count) ->
             val bookTitle = isbnToBookTitle[isbn]
             BookRank(
                 isbn = isbn,
@@ -32,5 +32,9 @@ class BookQueryService(
                 count = count,
             )
         }
+    }
+
+    companion object {
+        private const val BOOK_RANK_MAX_COUNT = 5
     }
 }
