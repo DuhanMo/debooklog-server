@@ -7,21 +7,21 @@ data class BookLike(
     val id: Long,
     val bookId: Long,
     val memberId: Long,
-    val createdAt: LocalDateTime = LocalDateTime.MAX,
-    val updatedAt: LocalDateTime = LocalDateTime.MAX,
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime,
     val deletedAt: LocalDateTime?,
     val isDeleted: Boolean,
 ) {
     fun delete(): BookLike {
-        return this.copy(deletedAt = now(), isDeleted = true)
+        return this.copy(updatedAt = now(), deletedAt = now(), isDeleted = true)
     }
 
-    constructor(bookId: Long, memberId: Long) : this(
+    constructor(bookId: Long, memberId: Long, now: LocalDateTime) : this(
         id = 0,
         bookId = bookId,
         memberId = memberId,
-        createdAt = LocalDateTime.MAX,
-        updatedAt = LocalDateTime.MAX,
+        createdAt = now,
+        updatedAt = now,
         deletedAt = null,
         isDeleted = false,
     )

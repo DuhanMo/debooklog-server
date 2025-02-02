@@ -8,6 +8,7 @@ import io.kotest.matchers.shouldNotBe
 import org.debooklog.core.book.model.BookState.DONE
 import org.debooklog.core.book.model.BookState.READING
 import org.debooklog.fixture.createBookFixture
+import java.time.LocalDateTime.now
 
 class BookTest : BehaviorSpec({
     Given("Book 을 생성하는 경우") {
@@ -21,7 +22,7 @@ class BookTest : BehaviorSpec({
             )
 
         When("Book 을 생성하면") {
-            val actual = Book(bookRegisterCommand, 1L)
+            val actual = Book(bookRegisterCommand, 1L, now())
 
             Then("Book 이 생성된다") {
                 actual.memberId shouldBe 1L

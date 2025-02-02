@@ -26,10 +26,10 @@ class BookLikeEntity(
     val memberId: Long,
     @CreatedDate
     @Column(name = "created_at")
-    var createdAt: LocalDateTime = LocalDateTime.MAX,
+    var createdAt: LocalDateTime,
     @LastModifiedDate
     @Column(name = "updated_at")
-    var updatedAt: LocalDateTime = LocalDateTime.MAX,
+    var updatedAt: LocalDateTime,
     @Column(name = "deleted_at")
     val deletedAt: LocalDateTime?,
     @Column(name = "is_deleted")

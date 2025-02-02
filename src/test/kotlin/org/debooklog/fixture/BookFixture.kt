@@ -4,6 +4,7 @@ import org.debooklog.core.book.model.Book
 import org.debooklog.core.book.model.BookState
 import org.debooklog.core.book.model.BookState.DONE
 import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 
 fun createBookFixture(
     id: Long = 0,
@@ -28,6 +29,8 @@ fun createBookFixture(
         thumbnail = thumbnail,
         likeCount = likeCount,
         state = state,
+        createdAt = now(),
+        updatedAt = now(),
         deletedAt = deletedAt,
         isDeleted = isDeleted,
     )

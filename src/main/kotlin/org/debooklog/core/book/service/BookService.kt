@@ -6,6 +6,7 @@ import org.debooklog.core.book.port.BookRepository
 import org.debooklog.core.bookshelf.port.BookshelfRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDateTime.now
 
 @Service
 @Transactional
@@ -18,7 +19,7 @@ class BookService(
         val bookshelf =
             bookshelfRepository.findByMemberId(command.memberId)
                 ?: throw NoSuchElementException("책장을 찾지 못했습니다")
-        val book = Book(command, bookshelf.id)
+        val book = Book(command, bookshelf.id, now())
         book.validateForDuplicate(books)
         bookRepository.save(book)
     }

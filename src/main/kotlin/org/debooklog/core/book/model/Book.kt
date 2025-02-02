@@ -15,12 +15,12 @@ data class Book(
     val thumbnail: String,
     val likeCount: Int,
     val state: BookState,
-    val createdAt: LocalDateTime = LocalDateTime.MAX,
-    val updatedAt: LocalDateTime = LocalDateTime.MAX,
+    val createdAt: LocalDateTime,
+    val updatedAt: LocalDateTime,
     val deletedAt: LocalDateTime?,
     val isDeleted: Boolean,
 ) {
-    constructor(command: BookRegisterCommand, bookshelfId: Long) : this(
+    constructor(command: BookRegisterCommand, bookshelfId: Long, now: LocalDateTime) : this(
         id = 0,
         memberId = command.memberId,
         bookshelfId = bookshelfId,
@@ -30,6 +30,8 @@ data class Book(
         thumbnail = command.thumbnail,
         likeCount = 0,
         state = DONE,
+        createdAt = now,
+        updatedAt = now,
         deletedAt = null,
         isDeleted = false,
     )

@@ -4,6 +4,7 @@ import org.debooklog.core.book.model.BookLike
 import org.debooklog.core.book.port.BookRepository
 import org.debooklog.core.bookshelf.port.BookLikeRepository
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime.now
 
 @Service
 class BookLikeService(
@@ -14,13 +15,14 @@ class BookLikeService(
         bookId: Long,
         memberId: Long,
     ) {
+        val now = now()
         if (bookLikeRepository.existsByBookIdAndMemberId(bookId, memberId)) {
             return
         }
         val book = bookRepository.getById(bookId)
         bookRepository.save(book.increaseLikeCount())
 
-        bookLikeRepository.save(BookLike(bookId = bookId, memberId = memberId))
+        bookLikeRepository.save(BookLike(bookId = bookId, memberId = memberId, now = now))
     }
 
     fun remove(

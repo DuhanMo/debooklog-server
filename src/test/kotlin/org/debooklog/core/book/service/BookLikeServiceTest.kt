@@ -6,6 +6,7 @@ import io.kotest.matchers.shouldNotBe
 import org.debooklog.core.book.model.BookLike
 import org.debooklog.mock.FakeBookLikeRepository
 import org.debooklog.mock.FakeBookRepository
+import java.time.LocalDateTime.now
 
 class BookLikeServiceTest : BehaviorSpec({
     lateinit var sut: BookLikeService
@@ -49,7 +50,7 @@ class BookLikeServiceTest : BehaviorSpec({
                 likeCount = 100,
             ),
         )
-        fakeLikeRepository.save(BookLike(1L, 1L))
+        fakeLikeRepository.save(BookLike(1L, 1L, now()))
 
         sut = BookLikeService(fakeBookRepository, fakeLikeRepository)
 
