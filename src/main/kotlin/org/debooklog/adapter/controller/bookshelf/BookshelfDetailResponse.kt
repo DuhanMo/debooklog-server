@@ -1,5 +1,6 @@
 package org.debooklog.adapter.controller.bookshelf
 
+import org.debooklog.core.book.model.BookState
 import org.debooklog.core.bookshelf.service.BookshelfWithBooks
 import java.time.LocalDateTime
 
@@ -23,6 +24,8 @@ data class BookshelfDetailResponse(
                     author = it.author,
                     isbn = it.isbn,
                     thumbnail = it.thumbnail,
+                    likeCount = it.likeCount,
+                    state = it.state,
                     createdAt = it.createdAt,
                     updatedAt = it.updatedAt,
                 )
@@ -35,6 +38,8 @@ data class BookshelfDetailResponse(
         val author: String,
         val isbn: List<String>,
         val thumbnail: String,
+        val likeCount: Int,
+        val state: BookState,
         val createdAt: LocalDateTime,
         val updatedAt: LocalDateTime,
     )
