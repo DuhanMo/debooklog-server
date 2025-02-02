@@ -14,4 +14,6 @@ interface BookLikeRepository {
         bookId: Long,
         memberId: Long,
     ): BookLike?
+
+    fun findAllByBookIdIn(bookIds: List<Long>): List<BookLike>
 }

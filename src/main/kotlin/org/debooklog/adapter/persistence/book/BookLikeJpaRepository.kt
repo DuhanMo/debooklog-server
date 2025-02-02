@@ -12,4 +12,6 @@ interface BookLikeJpaRepository : JpaRepository<BookLikeEntity, Long> {
         bookId: Long,
         memberId: Long,
     ): BookLikeEntity?
+
+    fun findAllByBookIdIn(bookIds: List<Long>): List<BookLikeEntity>
 }

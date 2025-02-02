@@ -25,4 +25,8 @@ class BookLikeRepositoryImpl(
     ): BookLike? {
         return bookLikeJpaRepository.findByBookIdAndMemberId(bookId, memberId)?.toModel()
     }
+
+    override fun findAllByBookIdIn(bookIds: List<Long>): List<BookLike> {
+        return bookLikeJpaRepository.findAllByBookIdIn(bookIds).map { it.toModel() }
+    }
 }

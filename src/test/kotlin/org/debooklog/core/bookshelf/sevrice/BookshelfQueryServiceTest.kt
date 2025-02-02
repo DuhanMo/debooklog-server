@@ -5,6 +5,7 @@ import org.debooklog.core.bookshelf.model.Bookshelf
 import org.debooklog.core.bookshelf.service.BookshelfQueryService
 import org.debooklog.core.member.model.Member
 import org.debooklog.core.member.model.SocialProvider.GOOGLE
+import org.debooklog.mock.FakeBookLikeRepository
 import org.debooklog.mock.FakeBookRepository
 import org.debooklog.mock.FakeBookshelfRepository
 import org.debooklog.mock.FakeMemberRepository
@@ -20,6 +21,7 @@ class BookshelfQueryServiceTest {
         val fakeMemberRepository = FakeMemberRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
         val fakeBookRepository = FakeBookRepository()
+        val fakeBookLikeRepository = FakeBookLikeRepository()
         fakeMemberRepository.save(
             Member(
                 id = 1,
@@ -70,7 +72,13 @@ class BookshelfQueryServiceTest {
                 isDeleted = false,
             ),
         )
-        bookshelfQueryService = BookshelfQueryService(fakeMemberRepository, fakeBookshelfRepository, fakeBookRepository)
+        bookshelfQueryService =
+            BookshelfQueryService(
+                fakeMemberRepository,
+                fakeBookshelfRepository,
+                fakeBookRepository,
+                fakeBookLikeRepository,
+            )
         // when
         val bookShelves = bookshelfQueryService.findAll()
         // then
@@ -83,6 +91,7 @@ class BookshelfQueryServiceTest {
         val fakeMemberRepository = FakeMemberRepository()
         val fakeBookshelfRepository = FakeBookshelfRepository()
         val fakeBookRepository = FakeBookRepository()
+        val fakeBookLikeRepository = FakeBookLikeRepository()
         fakeMemberRepository.save(
             Member(
                 id = 1,
@@ -134,7 +143,13 @@ class BookshelfQueryServiceTest {
             ),
         )
 
-        bookshelfQueryService = BookshelfQueryService(fakeMemberRepository, fakeBookshelfRepository, fakeBookRepository)
+        bookshelfQueryService =
+            BookshelfQueryService(
+                fakeMemberRepository,
+                fakeBookshelfRepository,
+                fakeBookRepository,
+                fakeBookLikeRepository,
+            )
         // when
         val bookshelf = bookshelfQueryService.find(1L)
         // then

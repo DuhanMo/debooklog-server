@@ -41,4 +41,8 @@ class FakeBookLikeRepository : BookLikeRepository {
     ): BookLike? {
         return data.singleOrNull { it.bookId == bookId && it.memberId == memberId }
     }
+
+    override fun findAllByBookIdIn(bookIds: List<Long>): List<BookLike> {
+        return data.filter { it.bookId in bookIds }
+    }
 }
