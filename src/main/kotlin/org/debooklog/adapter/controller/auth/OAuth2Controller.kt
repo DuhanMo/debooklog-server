@@ -1,6 +1,7 @@
 package org.debooklog.adapter.controller.auth
 
 import jakarta.servlet.http.HttpServletResponse
+import org.debooklog.adapter.config.ClientProperties
 import org.debooklog.core.auth.service.OAuth2Service
 import org.debooklog.core.member.model.SocialProvider
 import org.springframework.http.ResponseEntity
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/oauth2")
 class OAuth2Controller(
+    private val clientProperties: ClientProperties,
     private val oAuth2Service: OAuth2Service,
 ) {
     @GetMapping("/code/{provider}")
@@ -55,5 +57,5 @@ class OAuth2Controller(
         code: String,
         state: String?,
         provider: SocialProvider,
-    ) = "http://localhost:3000/oauth2/redirect?code=$code&state=${state ?: ""}&provider=$provider"
+    ) = "${clientProperties.url}/oauth2/redirect?code=$code&state=${state ?: ""}&provider=$provider"
 }

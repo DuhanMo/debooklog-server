@@ -11,7 +11,7 @@ class OAuth2AuthCodeUrlProviderContextTest : BehaviorSpec({
     Given("지원하는 provider가 있는 경우") {
         val fakeGoogleOAuth2AuthCodeUrlProvider = FakeGoogleOAuth2AuthCodeUrlProvider("http://redirect.url")
         val oAuth2AuthCodeUrlProviderContext =
-            org.debooklog.core.auth.model.OAuth2AuthCodeUrlProviderContext(setOf(fakeGoogleOAuth2AuthCodeUrlProvider))
+            OAuth2AuthCodeUrlProviderContext(setOf(fakeGoogleOAuth2AuthCodeUrlProvider))
 
         When("redirect url을 요청 하면") {
             val redirectUrl = oAuth2AuthCodeUrlProviderContext.getRedirectUrl(GOOGLE, "keepState")
@@ -25,7 +25,7 @@ class OAuth2AuthCodeUrlProviderContextTest : BehaviorSpec({
     Given("지원하는 provider가 없는 경우") {
         val fakeGoogleOAuth2AuthCodeUrlProvider = FakeGoogleOAuth2AuthCodeUrlProvider("http://redirect.url")
         val oAuth2AuthCodeUrlProviderContext =
-            org.debooklog.core.auth.model.OAuth2AuthCodeUrlProviderContext(setOf(fakeGoogleOAuth2AuthCodeUrlProvider))
+            OAuth2AuthCodeUrlProviderContext(setOf(fakeGoogleOAuth2AuthCodeUrlProvider))
         When("redirect url을 요청 하면") {
             Then("예외 발생한다") {
                 shouldThrow<IllegalArgumentException> {

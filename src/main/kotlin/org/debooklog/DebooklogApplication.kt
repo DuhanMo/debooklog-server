@@ -2,8 +2,10 @@ package org.debooklog
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.info.Info
+import org.debooklog.adapter.config.ClientProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 import org.springframework.cloud.openfeign.EnableFeignClients
 
@@ -15,6 +17,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients
             description = "개발자를 위한 독서기록 커뮤니티",
         ),
 )
+@EnableConfigurationProperties(ClientProperties::class)
 @EnableFeignClients
 @ConfigurationPropertiesScan
 @SpringBootApplication

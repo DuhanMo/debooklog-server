@@ -40,3 +40,6 @@ oauth2:
     scope:
       - "email"
       - "profile"
+
+client:
+  url: http://test:3000

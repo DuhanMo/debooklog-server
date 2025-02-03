@@ -31,4 +31,5 @@ jwt:
   access-expiration: 3600000
   refresh-expiration: 604800000
 
-
+client:
+  url: http://localhost:3000
