@@ -3,7 +3,7 @@
 이곳에서 당신만의 책장을 만들고, 책을 검색하고, 독서 상태를 업데이트하고, 좋아하는 책에 ‘좋아요’를 남겨보세요!
 
 ## 🌍 **배포 URL**
-🔗 [https://debooklog-front.vercel.app](https://debooklog-front.vercel.app)
+🔗 [https://debooklog.vercel.app](https://debooklog.vercel.app)
 
 ---
 
