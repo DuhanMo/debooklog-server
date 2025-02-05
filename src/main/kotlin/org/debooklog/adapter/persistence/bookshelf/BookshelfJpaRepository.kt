@@ -10,11 +10,13 @@ interface BookshelfJpaRepository : JpaRepository<BookshelfEntity, Long> {
 
     @Query(
         """
-            SELECT b FROM BookshelfEntity b
-            LEFT JOIN BookEntity bk ON b.id = bk.bookshelfId AND bk.isDeleted = false
-            WHERE b.isDeleted = false
-            GROUP BY b.id
-            ORDER BY COALESCE(MAX(bk.createdAt), b.updatedAt) DESC
+        SELECT b FROM BookshelfEntity b
+        LEFT JOIN BookEntity bk ON b.id = bk.bookshelfId AND bk.isDeleted = false
+        WHERE b.isDeleted = false
+        GROUP BY b.id
+        ORDER BY
+            CASE WHEN COUNT(bk.id) > 0 THEN 1 ELSE 0 END DESC,
+            COALESCE(MAX(bk.createdAt), b.updatedAt) DESC
         """,
     )
     fun findBookshelvesSortedByLatestActivity(): List<BookshelfEntity>
