@@ -17,7 +17,7 @@ class BookshelfQueryService(
     private val bookLikeRepository: BookLikeRepository,
 ) {
     fun findAll(): List<Bookshelf> {
-        return bookshelfRepository.findAll()
+        return bookshelfRepository.findBookshelvesSortedByLatestBook()
     }
 
     fun find(bookshelfId: Long): BookshelfWithBooks {

@@ -41,4 +41,8 @@ class FakeBookshelfRepository : BookshelfRepository {
     override fun findByMemberId(memberId: Long): Bookshelf? {
         return data.firstOrNull { it.memberId == memberId }
     }
+
+    override fun findBookshelvesSortedByLatestBook(): List<Bookshelf> {
+        return data.filter { it.deletedAt == null }
+    }
 }

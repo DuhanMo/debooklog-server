@@ -10,4 +10,6 @@ interface BookshelfRepository {
     fun findAll(): List<Bookshelf>
 
     fun findByMemberId(memberId: Long): Bookshelf?
+
+    fun findBookshelvesSortedByLatestBook(): List<Bookshelf>
 }

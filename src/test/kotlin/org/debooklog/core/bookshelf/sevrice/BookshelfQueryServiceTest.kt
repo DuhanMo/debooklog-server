@@ -69,7 +69,7 @@ class BookshelfQueryServiceTest {
                 createdAt = now(),
                 updatedAt = now(),
                 deletedAt = now(),
-                isDeleted = false,
+                isDeleted = true,
             ),
         )
         bookshelfQueryService =

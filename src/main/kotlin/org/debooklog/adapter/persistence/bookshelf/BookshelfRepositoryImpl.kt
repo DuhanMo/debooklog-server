@@ -28,4 +28,8 @@ class BookshelfRepositoryImpl(
     override fun findByMemberId(memberId: Long): Bookshelf? {
         return bookshelfJpaRepository.findByMemberId(memberId)?.toModel()
     }
+
+    override fun findBookshelvesSortedByLatestBook(): List<Bookshelf> {
+        return bookshelfJpaRepository.findBookshelvesSortedByLatestActivity().map { it.toModel() }
+    }
 }
