@@ -19,22 +19,39 @@ class BookQueryService(
 
     fun findBookRanks(): List<BookRank> {
         val books = bookRepository.findAll()
+
+        // ISBN별 빈도 계산
         val isbnFrequency = books.groupingBy { it.isbn.first() }.eachCount()
-        val isbnToBookTitle = books.associateBy { it.isbn.first() }.mapValues { it.value.title }
-        val rankedIsbn = isbnFrequency.entries.sortedByDescending { it.value }
+
+        // ISBN별 책 제목 매핑
+        val bookTitleByIsbn = books.associateBy { it.isbn.first() }.mapValues { it.value.title }
+
+        // ISBN별 최신 생성일 매핑
+        val latestCreatedAtByIsbn =
+            books
+                .groupBy { it.isbn.first() }
+                .mapValues { (_, bookList) -> bookList.maxOf { it.createdAt } }
+
+        // 빈도 수가 높은 순 + 같은 빈도면 최신 생성일 기준 정렬
+        val rankedIsbn =
+            isbnFrequency.entries
+                .sortedWith(
+                    compareByDescending<Map.Entry<String, Int>> { it.value }
+                        .thenByDescending { latestCreatedAtByIsbn[it.key] },
+                )
 
         return rankedIsbn.take(BOOK_RANK_MAX_COUNT).mapIndexed { index, (isbn, count) ->
-            val bookTitle = isbnToBookTitle[isbn]
+            val bookTitle = bookTitleByIsbn[isbn] ?: ""
             BookRank(
                 isbn = isbn,
                 rank = index + 1,
-                bookTitle = bookTitle ?: "",
+                bookTitle = bookTitle,
                 count = count,
             )
         }
     }
 
     companion object {
-        private const val BOOK_RANK_MAX_COUNT = 5
+        private const val BOOK_RANK_MAX_COUNT = 10
     }
 }
