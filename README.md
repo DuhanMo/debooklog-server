@@ -7,6 +7,11 @@
 
 ---
 
+## ☁️ 인프라
+![Untitled-2025-02-05-2221](https://github.com/user-attachments/assets/28859340-d3fc-48d3-a30d-a157b7a64607)
+
+---
+
 ## 🎯 **주요 기능**
 - ✔ **책장 생성 및 관리** – 나만의 책장 추가 및 수정
 - ✔ **도서 검색** – 원하는 책을 검색하고 추가 가능
@@ -17,8 +22,8 @@
 ---
 
 ## 🛠 **기술 스택**
-- **Frontend:** React, Styled-Components, React Router
-- **Backend:** Kotlin, Spring Boot, Hexagonal Architecture
+- **Frontend:** React, Styled-Components
+- **Backend:** Kotlin, Spring Boot, MySqlHexagonal Architecture
 - **Database:** MySQL
 - **Authentication:** OAuth 2.0 (Google, Kakao)
 - **Deployment:** Vercel (Frontend), AWS Elastic Beanstalk (Backend)
