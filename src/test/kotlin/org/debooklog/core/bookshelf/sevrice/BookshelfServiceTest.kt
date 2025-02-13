@@ -5,7 +5,7 @@ import io.kotest.matchers.shouldBe
 import org.debooklog.core.bookshelf.model.Bookshelf
 import org.debooklog.core.bookshelf.service.BookshelfService
 import org.debooklog.mock.FakeBookshelfRepository
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookshelfServiceTest : BehaviorSpec({
     lateinit var sut: BookshelfService

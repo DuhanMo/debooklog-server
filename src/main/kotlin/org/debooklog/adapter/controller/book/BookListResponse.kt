@@ -1,7 +1,7 @@
 package org.debooklog.adapter.controller.book
 
 import org.debooklog.core.book.model.Book
-import java.time.LocalDateTime
+import java.time.Instant
 
 data class BookListResponse(
     val id: Long,
@@ -10,8 +10,8 @@ data class BookListResponse(
     val author: String,
     val isbn: List<String>,
     val thumbnail: String,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
+    val createdAt: Instant,
+    val updatedAt: Instant,
 ) {
     constructor(book: Book) : this(
         id = book.id,

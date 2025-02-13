@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldNotBe
 import org.debooklog.core.book.model.BookLike
 import org.debooklog.mock.FakeBookLikeRepository
 import org.debooklog.mock.FakeBookRepository
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookLikeServiceTest : BehaviorSpec({
     lateinit var sut: BookLikeService

@@ -4,7 +4,7 @@ import org.debooklog.core.book.model.BookLike
 import org.debooklog.core.book.port.BookRepository
 import org.debooklog.core.bookshelf.port.BookLikeRepository
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 @Service
 class BookLikeService(

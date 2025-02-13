@@ -9,7 +9,7 @@ import org.debooklog.core.member.service.MemberCreatedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 @Component
 class BookshelfListenerImpl(

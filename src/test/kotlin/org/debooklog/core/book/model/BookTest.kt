@@ -8,7 +8,7 @@ import io.kotest.matchers.shouldNotBe
 import org.debooklog.core.book.model.BookState.DONE
 import org.debooklog.core.book.model.BookState.READING
 import org.debooklog.fixture.createBookFixture
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookTest : BehaviorSpec({
     Given("Book 을 생성하는 경우") {

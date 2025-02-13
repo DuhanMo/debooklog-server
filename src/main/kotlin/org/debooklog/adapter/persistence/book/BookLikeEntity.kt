@@ -10,7 +10,7 @@ import org.debooklog.core.book.model.BookLike
 import org.hibernate.annotations.SQLRestriction
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
-import java.time.LocalDateTime
+import java.time.Instant
 
 @SQLRestriction("is_deleted = false")
 @Entity
@@ -26,12 +26,12 @@ class BookLikeEntity(
     val memberId: Long,
     @CreatedDate
     @Column(name = "created_at")
-    var createdAt: LocalDateTime,
+    var createdAt: Instant,
     @LastModifiedDate
     @Column(name = "updated_at")
-    var updatedAt: LocalDateTime,
+    var updatedAt: Instant,
     @Column(name = "deleted_at")
-    val deletedAt: LocalDateTime?,
+    val deletedAt: Instant?,
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) {

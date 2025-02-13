@@ -10,7 +10,7 @@ import org.debooklog.mock.FakeBookRepository
 import org.debooklog.mock.FakeBookshelfRepository
 import org.debooklog.mock.FakeMemberRepository
 import org.junit.jupiter.api.Test
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookshelfQueryServiceTest {
     private lateinit var bookshelfQueryService: BookshelfQueryService
