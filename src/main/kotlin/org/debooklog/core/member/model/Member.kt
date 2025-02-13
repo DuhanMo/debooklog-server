@@ -1,8 +1,8 @@
 package org.debooklog.core.member.model
 
 import org.debooklog.core.auth.model.OAuth2UserData
-import java.time.LocalDateTime
-import java.time.LocalDateTime.now
+import java.time.Instant
+import java.time.Instant.now
 
 data class Member(
     val id: Long,
@@ -11,9 +11,9 @@ data class Member(
     val socialId: String,
     val provider: SocialProvider,
     val profileImage: String?,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
-    val deletedAt: LocalDateTime?,
+    val createdAt: Instant,
+    val updatedAt: Instant,
+    val deletedAt: Instant?,
     val isDeleted: Boolean,
 ) {
     constructor(oAuth2UserData: OAuth2UserData) : this(

@@ -4,7 +4,7 @@ import org.debooklog.core.book.model.Book
 import org.debooklog.core.book.model.BookLike
 import org.debooklog.core.book.model.BookState
 import org.debooklog.core.bookshelf.service.BookshelfWithBooks
-import java.time.LocalDateTime
+import java.time.Instant
 
 data class BookshelfDetailResponse(
     val id: Long,
@@ -30,8 +30,8 @@ data class BookshelfDetailResponse(
         val likeCount: Int,
         val state: BookState,
         val bookLikes: List<BookLikeResponse>,
-        val createdAt: LocalDateTime,
-        val updatedAt: LocalDateTime,
+        val createdAt: Instant,
+        val updatedAt: Instant,
     ) {
         companion object {
             fun from(

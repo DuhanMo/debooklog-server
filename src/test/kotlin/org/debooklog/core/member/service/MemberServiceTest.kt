@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldNotBe
 import org.debooklog.core.member.model.Member
 import org.debooklog.core.member.model.SocialProvider.GOOGLE
 import org.debooklog.mock.FakeMemberRepository
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class MemberServiceTest : BehaviorSpec({
     lateinit var sut: MemberService

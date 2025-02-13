@@ -3,8 +3,8 @@ package org.debooklog.fixture
 import org.debooklog.core.book.model.Book
 import org.debooklog.core.book.model.BookState
 import org.debooklog.core.book.model.BookState.DONE
-import java.time.LocalDateTime
-import java.time.LocalDateTime.now
+import java.time.Instant
+import java.time.Instant.now
 
 fun createBookFixture(
     id: Long = 0,
@@ -16,7 +16,7 @@ fun createBookFixture(
     thumbnail: String = "thumbnail",
     state: BookState = DONE,
     likeCount: Int = 0,
-    deletedAt: LocalDateTime? = null,
+    deletedAt: Instant? = null,
     isDeleted: Boolean = false,
 ): Book {
     return Book(

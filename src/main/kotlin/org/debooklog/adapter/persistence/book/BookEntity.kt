@@ -16,7 +16,7 @@ import org.hibernate.annotations.SQLRestriction
 import org.hibernate.type.SqlTypes
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
-import java.time.LocalDateTime
+import java.time.Instant
 
 @SQLRestriction("is_deleted = false")
 @Entity
@@ -46,12 +46,12 @@ class BookEntity(
     val state: BookState,
     @CreatedDate
     @Column(name = "created_at")
-    var createdAt: LocalDateTime = LocalDateTime.MAX,
+    var createdAt: Instant = Instant.MAX,
     @LastModifiedDate
     @Column(name = "updated_at")
-    var updatedAt: LocalDateTime = LocalDateTime.MAX,
+    var updatedAt: Instant = Instant.MAX,
     @Column(name = "deleted_at")
-    val deletedAt: LocalDateTime?,
+    val deletedAt: Instant?,
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) : BaseEntity<BookEntity>() {

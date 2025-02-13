@@ -10,7 +10,7 @@ import org.debooklog.core.bookshelf.model.BookshelfNameGenerator
 import org.debooklog.fixture.createBookFixture
 import org.debooklog.mock.FakeBookRepository
 import org.debooklog.mock.FakeBookshelfRepository
-import java.time.LocalDateTime
+import java.time.Instant
 
 class BookServiceTest : BehaviorSpec({
     lateinit var sut: BookService
@@ -24,7 +24,7 @@ class BookServiceTest : BehaviorSpec({
                 memberId = 1L,
                 name = BookshelfNameGenerator.generate("홍길동"),
                 imageUrl = "imageUrl.com",
-                now = LocalDateTime.now(),
+                now = Instant.now(),
             ),
         )
         sut = BookService(fakeBookRepository, fakeBookshelfRepository)

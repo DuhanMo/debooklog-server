@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.date.shouldBeAfter
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookshelfTest : BehaviorSpec({
     Given("Bookshelf를 생성하는 경우") {

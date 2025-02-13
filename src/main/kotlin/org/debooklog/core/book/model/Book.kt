@@ -2,8 +2,8 @@ package org.debooklog.core.book.model
 
 import org.debooklog.core.book.model.BookState.DONE
 import org.debooklog.core.book.model.BookState.READING
-import java.time.LocalDateTime
-import java.time.LocalDateTime.now
+import java.time.Instant
+import java.time.Instant.now
 
 data class Book(
     val id: Long,
@@ -15,12 +15,12 @@ data class Book(
     val thumbnail: String,
     val likeCount: Int,
     val state: BookState,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
-    val deletedAt: LocalDateTime?,
+    val createdAt: Instant,
+    val updatedAt: Instant,
+    val deletedAt: Instant?,
     val isDeleted: Boolean,
 ) {
-    constructor(command: BookRegisterCommand, bookshelfId: Long, now: LocalDateTime) : this(
+    constructor(command: BookRegisterCommand, bookshelfId: Long, now: Instant) : this(
         id = 0,
         memberId = command.memberId,
         bookshelfId = bookshelfId,

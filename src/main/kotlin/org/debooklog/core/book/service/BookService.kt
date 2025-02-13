@@ -6,7 +6,7 @@ import org.debooklog.core.book.port.BookRepository
 import org.debooklog.core.bookshelf.port.BookshelfRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 @Service
 @Transactional

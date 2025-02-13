@@ -10,7 +10,7 @@ import org.debooklog.adapter.persistence.common.BaseEntity
 import org.debooklog.core.bookshelf.model.Bookshelf
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
-import java.time.LocalDateTime
+import java.time.Instant
 
 @Entity
 @Table(name = "bookshelf")
@@ -27,12 +27,12 @@ class BookshelfEntity(
     val imageUrl: String?,
     @CreatedDate
     @Column(name = "created_at")
-    var createdAt: LocalDateTime = LocalDateTime.MAX,
+    var createdAt: Instant = Instant.MAX,
     @LastModifiedDate
     @Column(name = "updated_at")
-    var updatedAt: LocalDateTime = LocalDateTime.MAX,
+    var updatedAt: Instant = Instant.MAX,
     @Column(name = "deleted_at")
-    val deletedAt: LocalDateTime?,
+    val deletedAt: Instant?,
     @Column(name = "is_deleted")
     val isDeleted: Boolean,
 ) : BaseEntity<BookshelfEntity>() {

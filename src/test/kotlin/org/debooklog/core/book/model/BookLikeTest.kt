@@ -3,7 +3,7 @@ package org.debooklog.core.book.model
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import java.time.LocalDateTime.now
+import java.time.Instant.now
 
 class BookLikeTest : BehaviorSpec({
     Given("Like 를 삭제하는 경우") {
